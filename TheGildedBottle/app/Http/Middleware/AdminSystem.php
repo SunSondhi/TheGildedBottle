@@ -23,10 +23,8 @@ class AdminSystem
             //check if role is 1 as admin or 0 to normal user
             if (Auth::user()->role == '1') {
                 $admin = True;
-                return $next($request);
-            }elseif(Auth::user()->role=='2'){
-                return redirect('home')->with('message', 'Access denied: Error, You are not an Administrator');
-            } else {
+                return $next($request);}
+            else{
                 return redirect('home')->with('message', 'Access denied: Error, You are not an Administrator');
             }
         } else {

@@ -2,6 +2,7 @@
 
 use App\Http\Middleware\AdminSystem;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,9 +20,6 @@ Route::get('/', function () {
     return view("HomePage");
 })->name('HomePage');
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 // products page route
@@ -41,10 +39,46 @@ Route::get('/contacus', function () {
     return view("Contactus");
 })->name('Contactus');
 
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 
 // admin routes 
-Route::middleware([AdminSystem::class])->group(function () {
-    Route::get('home', [HomeController::class, 'home']);
+Route::prefix('admin')->middleware(['auth', 'AdminSystem'])->group(function (){
+
+    // Route::get('/adminhome', function () {
+    //     return view("adminhome");
+    // })->name('admin.adminhome');
+    Route::get('/adminhome', [App\Http\Controllers\HomeController::class, 'adminhome'])->name('admin.adminhome');
+
+
+    Route::get('/', function () {
+        return view("HomePage");
+    })->name('admin.HomePage');
+
+    Route::get('/products', function () {
+        return view("Products");
+    })->name('admin.Products');
+
+    Route::get('/basket', function () {
+        return view("Basket");
+    })->name('admin.Basket');
+
+    Route::get('/aboutus', function () {
+        return view("Aboutus");
+    })->name('admin.Aboutus');
+
+    Route::get('/contactus', function () {
+        return view('Contactus');
+    })->name('admin.Contactus');
+
+    Route::get('/login', function () {
+        return view('login');
+    })->name('admin.login');
+
+    Route::get('/register', function () {
+        return view('register');
+    })->name('admin.register');
 });

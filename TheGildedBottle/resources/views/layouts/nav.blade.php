@@ -108,8 +108,7 @@
                 <?php
                 if (Auth::check() && Auth::user()->role == '1') {
                 ?>
-                    <a href="{{ route('admin.adminhome') }}"><button type="button" class="button">Login</button></a>
-                    <a href="{{ route('admin.adminhome')}}"><button type="button" class="button">Sign-up</button></a>
+                    <a href="{{ route('admin.adminhome') }}"><button type="button" class="button">Home</button></a>
 
                 <?php
                 } else {
