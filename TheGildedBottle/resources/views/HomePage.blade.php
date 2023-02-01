@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html>
-
 @section('title','| HomePage')
 @include('layouts/head')
 
@@ -12,8 +9,5 @@
     <h3>we sell alcohol</h3>
 
 
-    @include('layouts/footer')
 
 </body>
-
-</html>

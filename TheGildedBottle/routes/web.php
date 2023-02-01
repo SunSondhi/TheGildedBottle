@@ -48,12 +48,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // admin routes 
 Route::prefix('admin')->middleware(['auth', 'AdminSystem'])->group(function (){
 
-    // Route::get('/adminhome', function () {
-    //     return view("adminhome");
-    // })->name('admin.adminhome');
     Route::get('/adminhome', [App\Http\Controllers\HomeController::class, 'adminhome'])->name('admin.adminhome');
-
-
+    Route::get('/adminhome', [App\Http\Controllers\Controller::class, 'search'])->name('admin.adminhome');
     Route::get('/', function () {
         return view("HomePage");
     })->name('admin.HomePage');
@@ -81,4 +77,11 @@ Route::prefix('admin')->middleware(['auth', 'AdminSystem'])->group(function (){
     Route::get('/register', function () {
         return view('register');
     })->name('admin.register');
+});
+
+// employee routes 
+Route::prefix('employee')->middleware(['auth', 'isEmployee'])->group(function () {
+    Route::get('/products', function () {
+        return view("Products");
+    })->name('employee.Products');
 });

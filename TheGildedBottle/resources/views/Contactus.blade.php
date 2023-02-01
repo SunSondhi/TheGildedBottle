@@ -3,10 +3,5 @@
 @include('layouts/nav')
 
 <body>
-
-    <h1>Contact us page</h1>
-
-
+    <h1>Contact Us</h1>
 </body>
-
-@include('layouts/footer')

@@ -8,5 +8,3 @@
 
 
 </body>
-
-@include('layouts/footer')

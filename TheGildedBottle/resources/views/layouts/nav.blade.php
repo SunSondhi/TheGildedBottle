@@ -124,9 +124,3 @@
         </div>
     </div>
 </div>
-<div class="bottom-bottom-navbar">
-    <a href="{{ route('Products') }}">X</a>
-    <a href="{{ route('Products') }}">X</a>
-    <a href="{{ route('Products') }}">X</a>
-    <a href="{{ route('Products') }}">X</a>
-</div>
