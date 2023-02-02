@@ -23,7 +23,7 @@ Route::get('/', function () {
 
 
 // products page route
-Route::get('/products', function () {
+Route::get('/products', [App\Http\Controllers\ProductController::class, 'ProductList'], function () {
     return view("Products");
 })->name('Products');
 // about us page route
@@ -54,7 +54,7 @@ Route::prefix('admin')->middleware(['auth', 'AdminSystem'])->group(function (){
         return view("HomePage");
     })->name('admin.HomePage');
 
-    Route::get('/products', function () {
+    Route::get('/products', [App\Http\Controllers\ProductController::class, 'ProductList'], function () {
         return view("Products");
     })->name('admin.Products');
 
