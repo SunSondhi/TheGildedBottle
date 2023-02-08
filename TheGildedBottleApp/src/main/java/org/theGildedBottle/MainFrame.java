@@ -3,7 +3,7 @@ package org.theGildedBottle;
 import javax.swing.*;
 import java.awt.*;
 
-public class MainFrame {
+public class MainFrame extends JFrame{
     JFrame window;
     JPanel panel;
     int minWidth = 960;
@@ -18,13 +18,9 @@ public class MainFrame {
         window.setVisible(true);
         //Panel creation
         panel = new JPanel();
-        panel.setBorder(BorderFactory.createEmptyBorder(25,25,25,25));
         panel.setBackground(backgroundColour);
         //attaching panel to window
         window.add(panel);
     }
-
-    //Adding the main components is done through methods here
-
 
 }
