@@ -3,7 +3,7 @@
 use App\Http\Middleware\AdminSystem;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-
+use App\Http\Controllers\productController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,9 +23,16 @@ Route::get('/', function () {
 
 
 // products page route
-Route::get('/products', [App\Http\Controllers\ProductController::class, 'ProductList'], function () {
+Route::get('/products',[App\Http\Controllers\ProductController::class, 'productList'], function () {
     return view("Products");
 })->name('Products');
+
+Route::get('products/filter/{productCat}', [App\Http\Controllers\ProductController::class, 'filterByCategory'])->name('products.filter.category');
+
+Route::get('products/filter/{type}', [App\Http\Controllers\ProductController::class, 'filterByType'])->name('products.filter.type');
+
+Route::get('products/filter/{price}', [App\Http\Controllers\ProductController::class, 'filterByPrice'])->name('products.filter.price');
+
 // about us page route
 Route::get('/aboutus', function () {
     return view("Aboutus");

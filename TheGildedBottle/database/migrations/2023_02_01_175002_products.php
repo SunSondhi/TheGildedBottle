@@ -21,7 +21,8 @@ return new class extends Migration
             $table->text('description');
             $table->string('image');
             $table->integer('quantity');
-            $table->string('productCat');
+            $table->enum('type',['Spirits','BottleBeer','Wine']);
+            $table->enum('productCat',['Rum', 'Whiskey', 'Gin', 'Brandy','Vodka','Wines']);
             $table->string('flavour');
             $table->integer('percentage');
             $table->timestamps();

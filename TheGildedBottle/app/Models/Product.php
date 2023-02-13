@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Filters\ProductFilter;
+use Illuminate\Database\Eloquent\Builder;
 
 class Product extends Model
 {
@@ -18,4 +20,9 @@ class Product extends Model
         'flavour',
         'percentage'
     ];
+
+    public function scopeFilter(Builder $builder, $request)
+    {
+        return (new ProductFilter($request))->filter($builder);
+    }
 }

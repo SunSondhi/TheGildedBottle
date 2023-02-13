@@ -55,7 +55,7 @@ public class DbCon {
             DbCon c = new DbCon();
             c.setQueryInput();
             //here instead is when we want to UPDATE, INSERT and DELETE, but they way i did it is to insert from terminal
-            int result = statement.executeUpdate(query);
+            int result = statement.executeUpdate(queryInput);
 
             if (result > 0)
                 System.out.println("successfully inserted");
