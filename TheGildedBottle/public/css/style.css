@@ -61,3 +61,82 @@
 .dropdown:hover .dropbtn {
     background-color: #3e8e41;
 }
+
+
+
+
+
+/* nav CSS */
+
+.nav-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    background-color: rgba(0, 0, 0, 0.582);
+}
+
+
+.nav-container img {
+    height: 200px;
+    display: block;
+}
+
+.nav-container #left {
+    margin: 0px;
+    padding: 0px;
+}
+
+.nav-container a {
+    display: inline-block;
+    margin-right: 20px;
+    letter-spacing: 2px;
+    border: 1px solid black;
+    border-radius: 4px !important;
+    color: white;
+    font-size: 18px;
+    padding: 18px 35px
+}
+
+.highlight-button:hover {
+    background-color: #000;
+    border: 1px solid #000;
+    color: #fff
+}
+
+.highlight-button i {
+    color: #000
+}
+
+.highlight-button:hover i {
+    color: #fff
+}
+
+/* login side */
+.card mx-4 mx-md-5 shadow-5-strong {
+    margin-top: -100px;
+    background: hsla(0, 0%, 100%, 0.8);
+    backdrop-filter: blur(30px);
+}
+
+
+
+/* homepage */
+
+.video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+    transition: 1s opacity;
+    min-height: 30%;
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

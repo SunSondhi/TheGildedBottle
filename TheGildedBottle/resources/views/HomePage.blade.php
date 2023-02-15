@@ -4,9 +4,14 @@
 <body>
     @include('layouts/nav')
 
+    <!-- <video class="video" id="bgVideo" preload="true" autoplay loop muted>
+        <source src="{{url('images/video.mp4')}}" type="video/mp4" />
+    </video> -->
 
-    <h1>Welcome to The GildedBottle</h1>
-    <h3>we sell alcohol</h3>
+    <div>
+        <h1>HomePage</h1>
+    </div>
 
-    <iframe src="data.xml" xml="Java/test2.fxml"></iframe>
+
+
 </body>

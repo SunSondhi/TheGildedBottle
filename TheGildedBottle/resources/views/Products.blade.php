@@ -45,7 +45,7 @@ if (Auth::check() && Auth::user()->role == '1') {
     </div>
 
 
-    <form action="{{ route('products.filter.price', ['price' => '50-150']) }}" method="get">
+    <form action="{{ route('products.filter.price', ['price' => '$priceMin - $priceMax']) }}" method="get">
         <button type="submit" class="btn btn-primary">$50 - $100</button>
     </form>
 
