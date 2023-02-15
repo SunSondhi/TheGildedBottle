@@ -1,17 +1,5 @@
-.card2 {
-    height: fit-content;
-    background-color: rgb(34, 33, 33);
-    color: white;
-    text-align: center;
-    padding: 2%;
-    font-family: 'Bodoni Moda', serif;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.card2 img {
-    width: 200px;
-    height: 200px;
-    margin: auto;
+body{
+    margin:0px;
 }
 
 /* Dropdown Button */
@@ -87,7 +75,7 @@
     padding: 0px;
 }
 
-.nav-container a {
+.nav-container a, .filter-btn button {
     display: inline-block;
     margin-right: 20px;
     letter-spacing: 2px;
@@ -98,7 +86,7 @@
     padding: 18px 35px
 }
 
-.highlight-button:hover {
+.highlight-button:hover , .filter-btn button:hover {
     background-color: #000;
     border: 1px solid #000;
     color: #fff
@@ -139,4 +127,36 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+
+
+
+/* products page */
+.flex-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+.card {
+    padding:3%;
+    box-shadow:
+        4.3px 4.5px 7.2px rgba(0, 0, 0, 0.027),
+        11.8px 12.5px 19.9px rgba(0, 0, 0, 0.039),
+        28.3px 30.1px 47.9px rgba(0, 0, 0, 0.049),
+        94px 100px 159px rgba(0, 0, 0, 0.07);
+}
+
+
+.card img {
+    height: auto;
+    padding: 15%;
+    max-width: 100px;
+}
+
+.filter-btn{
+    display: flex;
+    justify-content: space-around;
 }
