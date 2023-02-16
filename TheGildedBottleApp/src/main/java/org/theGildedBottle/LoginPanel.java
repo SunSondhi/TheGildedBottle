@@ -7,7 +7,6 @@ public class LoginPanel extends JPanel{
     JTextField emailField;
     JPasswordField passwordField;
     JButton submitButton;
-    //I have a plan for this, couple things need figuring out but the content manager will deal with swapping "scenes" (panels)
     public LoginPanel(ContentManager c) {
         super();
         cM = c;
