@@ -27,50 +27,62 @@ if (Auth::check() && Auth::user()->role == '1') {
 
 
 
-
-    <div>
+    <div class="row">
         <h3>Product Category</h3>
-        <form action="{{ route('products.filter.category', ['productCat' => 'Rum']) }}" method="get">
-            <button type="submit" class="btn btn-primary">Rum</button>
-        </form>
-        <form action="{{ route('products.filter.category', ['productCat' => 'Whiskey']) }}" method="get">
-            <button type="submit" class="btn btn-primary">Whiskey</button>
-        </form>
-        <form action="{{ route('products.filter.category', ['productCat' => 'Vodka']) }}" method="get">
-            <button type="submit" class="btn btn-primary">Vodka</button>
-        </form>
-        <form action="{{ route('products.filter.category', ['productCat' => 'Gin']) }}" method="get">
-            <button type="submit" class="btn btn-primary">Gin</button>
-        </form>
+        <div class="flex-container">
+            <div class="filter-btn">
+                <form action="{{ route('products.filter.category', ['productCat' => 'Rum']) }}" method="get">
+                    <button type="submit" class="btn btn-primary">Rum</button>
+                </form>
+                <form action=" {{ route('products.filter.category', ['productCat' => 'Whiskey']) }}" method="get">
+                    <button type="submit" class="btn btn-primary">Whiskey</button>
+                </form>
+                <form action="{{ route('products.filter.category', ['productCat' => 'Vodka']) }}" method="get">
+                    <button type="submit" class="btn btn-primary">Vodka</button>
+                </form>
+                <form action="{{ route('products.filter.category', ['productCat' => 'Gin']) }}" method="get">
+                    <button type="submit" class="btn btn-primary">Gin</button>
+                </form>
+                <form action="{{ route('products.filter.price', ['price' => '$priceMin - $priceMax']) }}" method="get">
+                    <button type="submit" class="btn btn-primary">$50 - $100</button>
+                </form>
+            </div>
+        </div>
     </div>
 
 
-    <form action="{{ route('products.filter.price', ['price' => '50-150']) }}" method="get">
-        <button type="submit" class="btn btn-primary">$50 - $100</button>
-    </form>
 
-    <div class="container">
-        <div class="flex-container">
-            @foreach ($products as $us)
-            <div class="card2">
-                <div>
-                    <img src="{{ $us->image }}" alt="">
+
+
+
+    <div class="row">
+        <div class="col">
+            <div class="flex-container">
+                @foreach ($products as $us)
+                <div class="card">
+                    <h4>{{ $us->name }}</h4>
+                    <img id="product-card-image" src="{{ $us->image }}">
+                    <p><strong>Price: </strong> £{{ $us->price }}</p>
+                    <button>click me</button>
                 </div>
                 <div>
-                    <h4>{{ $us->name }}</h4>
-                    <p>{{ $us->description }}</p>
-                    <p><strong>Price: </strong> £{{ $us->price }}</p>
                     <?php
                     if ((Auth::check() && Auth::user()->role == '1') || (Auth::check() && Auth::user()->role == '2')) {
                     ?>
-                        <p><strong>Quantity: </strong> {{ $us->quantity }}</p><?php
-
-                                                                            } ?>
+                        <p><strong>Quantity: </strong> {{ $us->quantity }}</p>
+                    <?php
+                    }
+                    ?>
                 </div>
+                @endforeach
             </div>
-            @endforeach
         </div>
     </div>
+
+
+
+
+
 
 
 

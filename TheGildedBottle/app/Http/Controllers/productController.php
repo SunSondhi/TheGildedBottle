@@ -37,7 +37,10 @@ class productController extends Controller
     {
         $priceRange = explode("-", $price);
 
-        $products = Product::whereBetween('price', [$priceRange[0], $priceRange[1]])->get();
+        $priceMin = 50;
+        $priceMax = 150;
+
+        $products = Product::whereBetween('price', $priceMin, $priceMax)->get();
 
         return view('products', compact('products'));
     }

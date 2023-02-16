@@ -42,9 +42,12 @@ Route::get('/basket', function () {
     return view("Basket");
 })->name('Basket');
 // Contact us page route
-Route::get('/contacus', function () {
+Route::get('/contacus', [App\Http\Controllers\contactUsController::class, 'showForm'],function () {
     return view("Contactus");
 })->name('Contactus');
+Route::post('/contacus', [App\Http\Controllers\contactUsController::class, 'sendForm'], function () {
+    return view("Contactus");
+})->name('Contactus.send');
 
 Auth::routes();
 
@@ -92,3 +95,4 @@ Route::prefix('employee')->middleware(['auth', 'isEmployee'])->group(function ()
         return view("Products");
     })->name('employee.Products');
 });
+
