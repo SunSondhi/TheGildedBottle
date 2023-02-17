@@ -28,7 +28,9 @@ if (Auth::check() && Auth::user()->role == '1') {
 
 
     <div class="row">
-        <h3>Product Category</h3>
+        <div style="margin:auto;">
+            <h3>Product Category</h3>
+        </div>
         <div class="flex-container">
             <div class="filter-btn">
                 <form action="{{ route('products.filter.category', ['productCat' => 'Rum']) }}" method="get">
@@ -63,17 +65,17 @@ if (Auth::check() && Auth::user()->role == '1') {
                     <h4>{{ $us->name }}</h4>
                     <img id="product-card-image" src="{{ $us->image }}">
                     <p><strong>Price: </strong> £{{ $us->price }}</p>
-                    <button>click me</button>
-                </div>
-                <div>
                     <?php
                     if ((Auth::check() && Auth::user()->role == '1') || (Auth::check() && Auth::user()->role == '2')) {
                     ?>
-                        <p><strong>Quantity: </strong> {{ $us->quantity }}</p>
+                        <p><strong>Stock: </strong> {{ $us->quantity }}</p>
                     <?php
                     }
                     ?>
+                    <button>Buy</button>
+                    <button>Add basket</button>
                 </div>
+
                 @endforeach
             </div>
         </div>
