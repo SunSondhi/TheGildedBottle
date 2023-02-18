@@ -54,7 +54,7 @@ if (Auth::check() && Auth::user()->role == '1') {
             @foreach ($products as $us)
             <div class="card2">
                 <div>
-                    <img src="{{ $us->image }}" alt="">
+                <a href="Product_details/{{$us->id}}"> <img src="{{ $us->image }}" alt=""></a>
                 </div>
                 <div>
                     <h4>{{ $us->name }}</h4>
