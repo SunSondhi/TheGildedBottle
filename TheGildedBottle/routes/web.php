@@ -33,6 +33,10 @@ Route::get('/Product_details/{id}', [App\Http\Controllers\productController::cla
     return view("Product_details");
 }
 );
+
+Route::post('/Product_details/{id}', [App\Http\Controllers\productController::class, 'add_to_basket'], function(){
+    return view("Product_details");
+});
 Route::post('/Basket/{id}', [App\Http\Controllers\productController::class, 'product_delete']);
 Route::post('/Basket/{id}', [App\Http\Controllers\productController::class, 'update_amount']);
 Route::post('/Basket/{id}', [App\Http\Controllers\productController::class, 'buy']);
