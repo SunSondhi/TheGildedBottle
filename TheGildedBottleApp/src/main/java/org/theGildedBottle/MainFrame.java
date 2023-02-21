@@ -2,25 +2,21 @@ package org.theGildedBottle;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 
 public class MainFrame extends JFrame {
-    JFrame window;
-    JPanel panel;
+    //JFrame window;
     int minWidth = 960;
     int minHeight = 640;
-    Color backgroundColour = Color.darkGray;
 
     DbCon Con =  new DbCon();
 
     public MainFrame(String title) {
-        //Frame creation
-        window = new JFrame(title);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setMinimumSize(new Dimension(minWidth, minHeight));
-        window.setVisible(true);
+        super(title);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setMinimumSize(new Dimension(minWidth, minHeight));
+        this.setVisible(true);
         //Panel creation
-        panel = new JPanel();
+        /*panel = new JPanel();
         panel.setBackground(backgroundColour);
         //attaching panel to window
         window.add(panel);
@@ -40,9 +36,6 @@ public class MainFrame extends JFrame {
         panel.setLayout(null);
         panel.setVisible(true);
 
-
-
-
+*/
     }
-
 }

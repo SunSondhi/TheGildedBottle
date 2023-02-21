@@ -1,31 +1,25 @@
 package org.theGildedBottle;
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
 
-public class LoginPanel implements ActionListener{
-
-    MainFrame window;
+public class LoginPanel extends JPanel{
+    ContentManager cM;
     JTextField emailField;
     JPasswordField passwordField;
     JButton submitButton;
-    //I have a plan for this, couple things need figuring out but the content manager will deal with swapping "scenes" (panels)
-    public LoginPanel() {
-        //this.window = window;
-        //window.add(buildPanel());
-        buildPanel();
-    }
-
-    private JPanel buildPanel () {
-        JPanel loginPanel = new JPanel();
-        loginPanel.add(emailInput());
-        loginPanel.add(passwordInput());
-        loginPanel.add(SubmitButton());
+    public LoginPanel(ContentManager c) {
+        super();
+        cM = c;
+        this.setBackground(Color.blue);
+        this.add(emailInput());
+        this.add(passwordInput());
+        this.add(SubmitButton());
         emailField.setVisible(true);
         passwordField.setVisible(true);
         submitButton.setVisible(true);
-        return loginPanel;
+        this.setVisible(true);
     }
+
 
     private JTextField emailInput() {
         emailField = new JTextField("E-mail address");
@@ -35,18 +29,14 @@ public class LoginPanel implements ActionListener{
     private JPasswordField passwordInput() {
         passwordField = new JPasswordField("Password");
         passwordField.setActionCommand("Submit");
-        passwordField.addActionListener(this);
+        passwordField.addActionListener(cM);
         return passwordField;
     }
 
     private JButton SubmitButton () {
         submitButton = new JButton();
         submitButton.setActionCommand("Submit");
+        submitButton.addActionListener(cM);
         return submitButton;
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        //authentication is to be added here!
     }
 }

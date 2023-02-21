@@ -1,5 +1,12 @@
 package org.theGildedBottle;
 
-public class ProductPanel {
+import javax.swing.*;
+import java.awt.*;
 
+public class ProductPanel extends JPanel  {
+    public ProductPanel( ) {
+        super();
+        this.setBackground(Color.red);
+        this.setVisible(true);
+    }
 }
