@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Baskets;
+use App\Models\Purchases;
 use App\Models\Basket_product;
 use Illuminate\Support\Facades\DB;
 class BasketsController extends Controller
@@ -12,6 +13,8 @@ class BasketsController extends Controller
         $basket = Baskets::firstOrNew(['user_id' => (Auth::id())]);
 
         $id=$basket->id;
+
+        $user = Auth::id();
       
        //write a query to filter
        $products = DB::table('basket_products')
@@ -29,20 +32,37 @@ class BasketsController extends Controller
     
     }
 
-    public function Buyall(){
+    public function get_user(){
+       $user = Auth::id();
+      
+       if(is_null($user)){
+       return redirect()->back()->with('message',"log in to view basket");
+      
+      }else{
+            return view('Basket',compact('user'));
+      }
+    
+    }
+
+    public function buy_all(){
+        $basket = Baskets::firstOrNew(['user_id' => (Auth::id())]);
+
+        $id=$basket->id;
+
         $products = DB::table('basket_products')
       
        ->where('baskets_id', 'like', '%'.$id.'%')
       
        ->get();
 
-       $bought->each(function ($products, $each) {
-        $product = New Basket_product();
+       $products->each(function ($bought, $each) {
+        $product = New Purchases();
         $product->name = $each->name;
         $product->price = $each->price;
         $product->image = $each->image;
         $product->user = Auth::id();
         $product->save(); 
+        $each->delete();
     });
 
     }

@@ -14,6 +14,7 @@
             @foreach ($products as $us)
             <div class="card2">
                 <div>
+                <i class="uil uil-times-circle"><button id="remove_btn" ></i></a></td>
                    <a href="Product_details/{{$us->id}}"> <img src="{{ $us->image }}" alt=""></a>
                 </div>
                 <div>
@@ -28,7 +29,8 @@
                 </div>
             </div>
             @endforeach
-        </div>
+        <form action="" method="POST">@csrf
+                <input id="buy_all" type="submit" value="Click" />
     </div>
 
 

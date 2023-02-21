@@ -37,13 +37,14 @@ Route::get('/Product_details/{id}', [App\Http\Controllers\productController::cla
 Route::post('/Product_details/{id}', [App\Http\Controllers\productController::class, 'add_to_basket'], function(){
     return view("Product_details");
 });
-Route::post('/Basket/{id}', [App\Http\Controllers\productController::class, 'product_delete']);
-Route::post('/Basket/{id}', [App\Http\Controllers\productController::class, 'update_amount']);
-Route::post('/Basket/{id}', [App\Http\Controllers\productController::class, 'buy']);
-Route::post('/Basket', [App\Http\Controllers\productController::class, 'buy_all']);
+
+
 
 Route::get('/basket', [App\Http\Controllers\BasketsController::class, 'List'], function () {
     return view("Basket");
+})->name('Basket');
+Route::post('/basket', [App\Http\Controllers\BasketsController::class, 'buy_all'], function(){
+    return view("basket");
 })->name('Basket');
 Route::get('products/filter/{productCat}', [App\Http\Controllers\ProductController::class, 'filterByCategory'])->name('products.filter.category');
 
