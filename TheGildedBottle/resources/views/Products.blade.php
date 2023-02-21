@@ -32,6 +32,22 @@ if (Auth::check() && Auth::user()->role == '1') {
             <h3>Product Category</h3>
         </div>
         <div class="flex-container">
+            @foreach ($products as $us)
+            <div class="card2">
+                <div>
+                <a href="Product_details/{{$us->id}}"> <img src="{{ $us->image }}" alt=""></a>
+                </div>
+                <div>
+                    <h4>{{ $us->name }}</h4>
+                    <p>{{ $us->description }}</p>
+                    <p><strong>Price: </strong> £{{ $us->price }}</p>
+                    <?php
+                    if ((Auth::check() && Auth::user()->role == '1') || (Auth::check() && Auth::user()->role == '2')) {
+                    ?>
+                        <p><strong>Quantity: </strong> {{ $us->quantity }}</p><?php
+
+                                                                            } ?>
+                </div>
             <div class="filter-btn">
                 <form action="{{ route('products.filter.category', ['productCat' => 'Rum']) }}" method="get">
                     <button type="submit" class="btn btn-primary">Rum</button>

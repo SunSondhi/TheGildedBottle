@@ -4,6 +4,9 @@ use App\Http\Middleware\AdminSystem;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\productController;
+use App\Models\Basket_product;
+use App\Models\Basket;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,13 +23,29 @@ Route::get('/', function () {
     return view("HomePage");
 })->name('HomePage');
 
-
-
 // products page route
 Route::get('/products',[App\Http\Controllers\ProductController::class, 'productList'], function () {
     return view("Products");
 })->name('Products');
 
+//Product details and add to basket prepopulated form
+Route::get('/Product_details/{id}', [App\Http\Controllers\productController::class, 'Product_details'], function(){
+    return view("Product_details");
+}
+);
+
+Route::post('/Product_details/{id}', [App\Http\Controllers\productController::class, 'add_to_basket'], function(){
+    return view("Product_details");
+});
+
+
+
+Route::get('/basket', [App\Http\Controllers\BasketsController::class, 'List'], function () {
+    return view("Basket");
+})->name('Basket');
+Route::post('/basket', [App\Http\Controllers\BasketsController::class, 'buy_all'], function(){
+    return view("basket");
+})->name('Basket');
 Route::get('products/filter/{productCat}', [App\Http\Controllers\ProductController::class, 'filterByCategory'])->name('products.filter.category');
 
 Route::get('products/filter/{type}', [App\Http\Controllers\ProductController::class, 'filterByType'])->name('products.filter.type');
@@ -38,9 +57,7 @@ Route::get('/aboutus', function () {
     return view("Aboutus");
 })->name('Aboutus');
 // Basket page route
-Route::get('/basket', function () {
-    return view("Basket");
-})->name('Basket');
+
 // Contact us page route
 Route::get('/contacus', [App\Http\Controllers\contactUsController::class, 'showForm'],function () {
     return view("Contactus");
