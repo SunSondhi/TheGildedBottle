@@ -11,11 +11,10 @@ class productController extends Controller
     {
         $products = Product::all();
 
-        $result  = Product::filter($request)->get();
 
         
 
-        return view('products', compact('products','result'));
+        return view('products', compact('products'));
 
     }
 
@@ -33,14 +32,12 @@ class productController extends Controller
         return view('products', compact('products'));
     }
 
-    public function filterByPrice($price)
+    public function filterByPrice(Request $request)
     {
-        $priceRange = explode("-", $price);
+        $minPrice = $request->input('minPrice');
+        $maxPrice = $request->input('maxPrice');
 
-        $priceMin = 50;
-        $priceMax = 150;
-
-        $products = Product::whereBetween('price', $priceMin, $priceMax)->get();
+        $products = Product::where('price', [$minPrice, $maxPrice])->get();
 
         return view('products', compact('products'));
     }

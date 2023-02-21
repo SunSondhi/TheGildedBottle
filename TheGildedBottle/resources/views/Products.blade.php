@@ -45,8 +45,17 @@ if (Auth::check() && Auth::user()->role == '1') {
                 <form action="{{ route('products.filter.category', ['productCat' => 'Gin']) }}" method="get">
                     <button type="submit" class="btn btn-primary">Gin</button>
                 </form>
-                <form action="{{ route('products.filter.price', ['price' => '$priceMin - $priceMax']) }}" method="get">
+                <form action="{{ route('products.filter.price', ['price' => '$minPrice - $maxPrice']) }}" method="get">
                     <button type="submit" class="btn btn-primary">$50 - $100</button>
+                </form>
+                <form action="{{ route('products.filter.price') }}" method="GET">
+                    <label for="min_price">Minimum price:</label>
+                    <input type="number" name="min_price" id="min_price">
+
+                    <label for="max_price">Maximum price:</label>
+                    <input type="number" name="max_price" id="max_price">
+
+                    <button type="submit">Filter</button>
                 </form>
             </div>
         </div>
@@ -60,6 +69,7 @@ if (Auth::check() && Auth::user()->role == '1') {
     <div class="row">
         <div class="col">
             <div class="flex-container">
+                @if (count($products) > 0)
                 @foreach ($products as $us)
                 <div class="card">
                     <h4>{{ $us->name }}</h4>
@@ -77,6 +87,9 @@ if (Auth::check() && Auth::user()->role == '1') {
                 </div>
 
                 @endforeach
+                @else
+                <p>No products found.</p>
+                @endif
             </div>
         </div>
     </div>

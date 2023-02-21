@@ -31,7 +31,7 @@ Route::get('products/filter/{productCat}', [App\Http\Controllers\ProductControll
 
 Route::get('products/filter/{type}', [App\Http\Controllers\ProductController::class, 'filterByType'])->name('products.filter.type');
 
-Route::get('products/filter/{price}', [App\Http\Controllers\ProductController::class, 'filterByPrice'])->name('products.filter.price');
+Route::get('products/filter/', [App\Http\Controllers\ProductController::class, 'filterByPrice'])->name('products.filter.price');
 
 // about us page route
 Route::get('/aboutus', function () {
