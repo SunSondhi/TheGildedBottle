@@ -28,9 +28,7 @@ if (Auth::check() && Auth::user()->role == '1') {
 
 
     <div class="row">
-        <div style="margin:auto;">
-            <h3>Product Category</h3>
-        </div>
+        <h3>Product Category</h3>
         <div class="flex-container">
             @foreach ($products as $us)
             <div class="card2">
@@ -91,17 +89,17 @@ if (Auth::check() && Auth::user()->role == '1') {
                     <h4>{{ $us->name }}</h4>
                     <img id="product-card-image" src="{{ $us->image }}">
                     <p><strong>Price: </strong> £{{ $us->price }}</p>
+                    <button>click me</button>
+                </div>
+                <div>
                     <?php
                     if ((Auth::check() && Auth::user()->role == '1') || (Auth::check() && Auth::user()->role == '2')) {
                     ?>
-                        <p><strong>Stock: </strong> {{ $us->quantity }}</p>
+                        <p><strong>Quantity: </strong> {{ $us->quantity }}</p>
                     <?php
                     }
                     ?>
-                    <button>Buy</button>
-                    <button>Add basket</button>
                 </div>
-
                 @endforeach
                 @else
                 <p>No products found.</p>
