@@ -6,7 +6,7 @@ This is an academi project for TeamProject Module
 This project is Developed by:
 Sunny Sondhi
 Josh
-Kush
+Khush
 Joel
 Kevin
 Philip
