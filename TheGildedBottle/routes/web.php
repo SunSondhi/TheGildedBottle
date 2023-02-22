@@ -48,7 +48,7 @@ Route::post('/basket', [App\Http\Controllers\BasketsController::class, 'buy_all'
 })->name('Basket');
 Route::get('products/filter/{productCat}', [App\Http\Controllers\ProductController::class, 'filterByCategory'])->name('products.filter.category');
 
-Route::get('products/filter/{type}', [App\Http\Controllers\ProductController::class, 'filterByType'])->name('products.filter.type');
+Route::get('products/filter/{type}', [App\Http\Controllers\ProductController::class, 'filterByCategory'])->name('products.filter.type');
 
 Route::get('products/filter/', [App\Http\Controllers\ProductController::class, 'filterByPrice'])->name('products.filter.price');
 
