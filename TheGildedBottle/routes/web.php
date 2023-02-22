@@ -85,6 +85,12 @@ Route::prefix('admin')->middleware(['auth', 'AdminSystem'])->group(function (){
         return view("Products");
     })->name('admin.Products');
 
+    Route::post('admin/addproduct', [App\Http\Controllers\ProductController::class, 'addNewProducts'])->name('admin.addnewproduct');
+
+    Route::get('/addproduct', function () {
+        return view("AddProduct");
+    })->name('admin.AddProducts');
+
     Route::get('/basket', function () {
         return view("Basket");
     })->name('admin.Basket');

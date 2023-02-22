@@ -1,50 +1,42 @@
 @extends('layouts.app')
 @include('layouts/head')
 @include('layouts/nav')
-
+@include('layouts/adminsidenav')
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
+<div class="container-fluid py-5">
+    <div class="row">
 
-                    {{ __('You are logged as an admin!') }}
-                </div>
+
+        <!-- Main Content -->
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+            <div class="d-flex justify-content-between align-items-center py-4">
+                <h1 class="h2">All Users</h1>
             </div>
-        </div>
+
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($user as $user)
+                        <tr>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>{{ $user->role }}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </main>
+
     </div>
-</div>
-
-
-
-<div class="main-content">
-    <h1>List of all users</h1>
-    <table class="table" id="table">
-        <thead>
-            <tr>
-                <th>name</th>
-                <th>email</th>
-                <th>role</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($user as $us)
-            <tr>
-                <td> {{$us->name}} </td>
-                <td> {{$us->email }} </td>
-                <td> {{$us->role }} </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
 </div>
 
 @endsection

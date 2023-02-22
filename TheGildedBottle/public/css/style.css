@@ -170,18 +170,23 @@ body{
 .flex-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
     margin: 0 -15px;
 }
 
 .card {
-    width: 100%;
+    width: 30%;
     margin: 0 0 30px;
     background: #f5f5f5;
     border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    box-shadow:
+            4.3px 4.5px 7.2px rgba(0, 0, 0, 0.027),
+            11.8px 12.5px 19.9px rgba(0, 0, 0, 0.039),
+            28.3px 30.1px 47.9px rgba(0, 0, 0, 0.049),
+            94px 100px 159px rgba(0, 0, 0, 0.07);
     transition: box-shadow 0.2s ease;
     display: flex;
+    padding: 3%;
     flex-direction: column;
 }
 
@@ -192,7 +197,7 @@ body{
 .card-image img {
     display: block;
     max-width: 100%;
-    height: auto;
+    height: fit-content;
     object-fit: cover;
     border-radius: 5px 5px 0 0;
 }
@@ -251,4 +256,26 @@ body{
 .filter-btn{
     display: flex;
     justify-content: space-around;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+    border-color: #e0a800;
+}
+
+.text-black {
+    color: #000;
+}
+
+.mt-5 {
+    margin-top: 3rem !important;
+}
+
+.mb-4 {
+    margin-bottom: 2rem !important;
 }
