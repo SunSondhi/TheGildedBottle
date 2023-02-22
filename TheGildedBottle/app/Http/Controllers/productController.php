@@ -66,5 +66,21 @@ class productController extends Controller
         redirect('/');
     }
 
+    public function addNewProducts(Request $r)
+    {
+        $newProduct = new product;
+        $newProduct->name = $r->name;
+        $newProduct->price = $r->price;
+        $newProduct->description = $r->description;
+        $newProduct->image = $r->image;
+        $newProduct->quantity = $r->quantity;
+        $newProduct->type = $r->type;
+        $newProduct->productCat = $r->productCat;
+        $newProduct->flavour = $r->flavour;
+        $newProduct->percentage = $r->percentage;
+        $newProduct->save();
+        return redirect()->route('admin.adminhome');
+    }
+
 
 }
