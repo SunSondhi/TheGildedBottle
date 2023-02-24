@@ -3,7 +3,7 @@
 
 
 
-<div class="nav-container">
+<div class="nav-container navbar sticky-top">
 
     <!-- <div id='left'>
         <a href="{{route('HomePage')}}" id="logo-txt" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-black text-decoration-none">

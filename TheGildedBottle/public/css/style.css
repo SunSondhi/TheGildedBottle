@@ -1,6 +1,7 @@
-body{
-    margin:0px;
+body {
+    margin: 0px;
 }
+
 
 /* Dropdown Button */
 .dropbtn {
@@ -60,8 +61,8 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 200px;
-    background-color: rgba(0, 0, 0, 0.582);
+    height: 120px;
+    background-color: rgb(0, 0, 0);
 }
 
 
@@ -75,7 +76,8 @@ body{
     padding: 0px;
 }
 
-.nav-container a, .filter-btn button {
+.nav-container a,
+.filter-btn button {
     display: inline-block;
     margin-right: 20px;
     letter-spacing: 2px;
@@ -86,7 +88,8 @@ body{
     padding: 18px 35px
 }
 
-.highlight-button:hover , .filter-btn button:hover {
+.highlight-button:hover,
+.filter-btn button:hover {
     background-color: #000;
     border: 1px solid #000;
     color: #fff
@@ -180,10 +183,10 @@ body{
     background: #f5f5f5;
     border-radius: 5px;
     box-shadow:
-            4.3px 4.5px 7.2px rgba(0, 0, 0, 0.027),
-            11.8px 12.5px 19.9px rgba(0, 0, 0, 0.039),
-            28.3px 30.1px 47.9px rgba(0, 0, 0, 0.049),
-            94px 100px 159px rgba(0, 0, 0, 0.07);
+        4.3px 4.5px 7.2px rgba(0, 0, 0, 0.027),
+        11.8px 12.5px 19.9px rgba(0, 0, 0, 0.039),
+        28.3px 30.1px 47.9px rgba(0, 0, 0, 0.049),
+        94px 100px 159px rgba(0, 0, 0, 0.07);
     transition: box-shadow 0.2s ease;
     display: flex;
     padding: 3%;
@@ -253,7 +256,7 @@ body{
     }
 }
 
-.filter-btn{
+.filter-btn {
     display: flex;
     justify-content: space-around;
 }
@@ -279,3 +282,129 @@ body{
 .mb-4 {
     margin-bottom: 2rem !important;
 }
+
+/* floating ojc hompage */
+
+.floating-object {
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    animation-name: float;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes float {
+    from {
+        transform: translate(-50%, -50%) translateY(-20px);
+    }
+
+    to {
+        transform: translate(-50%, -50%) translateY(20px);
+    }
+}
+
+
+.hero {
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 1000px;
+    position: relative;
+}
+
+.hero h1 {
+    font-size: 70px;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+
+.parallax-section {
+    background-color: #e0a800;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+    margin-top: 10%;
+    margin-right: 0%;
+    transform: skewY(-11deg);
+    color: black;
+}
+
+.parallax-section .content {
+    transform-style: preserve-3d;
+    transform: translateZ(-100px) scale(2);
+    transform: skewY(11deg);
+    width: fit-content;
+    padding:5%;
+    position: absolute;
+    right: 50%;
+    color: #ddd;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.parallax-section img {
+    margin: 0%;
+    width: 50%;
+    position: absolute;
+    left: 50%;
+}
+
+.profile-card-2 {
+    max-width: 300px;
+    background-color: black;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.1);
+    background-position: center;
+    overflow: hidden;
+    position: relative;
+    margin: 10px auto;
+    cursor: pointer;
+    border-radius: 10px;
+    height: 600px;
+    width: 600px;
+}
+
+.profile-card-2 img {
+    transition: all linear 0.25s;
+}
+
+.profile-card-2 .profile-name {
+    position: absolute;
+    left: 30px;
+    bottom: 70px;
+    font-size: 30px;
+    color: #FFF;
+    text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+    transition: all linear 0.25s;
+}
+
+
+.profile-card-2:hover img {
+    filter: grayscale(100%);
+}
+
+.profile-card-2:hover .profile-name {
+    bottom: 80px;
+}
+
+.home-product-container{
+    display: flex;
+    align-content: ;
+}
+
