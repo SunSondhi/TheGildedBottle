@@ -9,7 +9,6 @@ use Illuminate\Routing\Controller as BaseController;
 use Symfony\Component\HttpFoundation\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use App\Models\User;
 
 class Controller extends BaseController
 {
@@ -29,5 +28,4 @@ class Controller extends BaseController
             }
         }
     }
-
 }

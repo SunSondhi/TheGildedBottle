@@ -51,9 +51,9 @@ Route::post('/basket', [App\Http\Controllers\BasketsController::class, 'buy_all'
 })->name('Basket');
 Route::get('products/filter/{productCat}', [App\Http\Controllers\ProductController::class, 'filterByCategory'])->name('products.filter.category');
 
-Route::get('products/filter/{type}', [App\Http\Controllers\ProductController::class, 'filterByType'])->name('products.filter.type');
+Route::get('products/filter/{type}', [App\Http\Controllers\ProductController::class, 'filterByCategory'])->name('products.filter.type');
 
-Route::get('products/filter/{price}', [App\Http\Controllers\ProductController::class, 'filterByPrice'])->name('products.filter.price');
+Route::get('products/filter/', [App\Http\Controllers\ProductController::class, 'filterByPrice'])->name('products.filter.price');
 
 // about us page route
 Route::get('/aboutus', function () {
@@ -87,6 +87,12 @@ Route::prefix('admin')->middleware(['auth', 'AdminSystem'])->group(function (){
     Route::get('/products', [App\Http\Controllers\ProductController::class, 'ProductList'], function () {
         return view("Products");
     })->name('admin.Products');
+
+    Route::post('admin/addproduct', [App\Http\Controllers\ProductController::class, 'addNewProducts'])->name('admin.addnewproduct');
+
+    Route::get('/addproduct', function () {
+        return view("AddProduct");
+    })->name('admin.AddProducts');
 
     Route::get('/basket', function () {
         return view("Basket");

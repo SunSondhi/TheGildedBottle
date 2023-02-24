@@ -14,39 +14,30 @@ class productController extends Controller
     {
         $products = Product::all();
 
-        $result  = Product::filter($request)->get();
 
         
 
-        return view('products', compact('products','result'));
+        return view('products', compact('products'));
 
     }
 
     public function filterByCategory($category)
     {
-        $products = Product::where('productCat', $category)->get();
 
+        $products = Product::query()->where('productCat', $category)->get();
+        
         return view('products', compact('products'));
     }
 
-
-    public function filterByType($type)
-    {
-        $products = Product::where('type', $type)->get();
+    
+    public function filterByPrice(Request $request)
+    {    
+        $minPrice = $request->input('min_price', 0); 
+        $maxPrice = $request->input('max_price', 50);
+        $products = Product::whereBetween('price', [$minPrice, $maxPrice])->get();
         return view('products', compact('products'));
     }
-
-    public function filterByPrice($price)
-    {
-        $priceRange = explode("-", $price);
-
-        $priceMin = 50;
-        $priceMax = 150;
-
-        $products = Product::whereBetween('price', $priceMin, $priceMax)->get();
-
-        return view('products', compact('products'));
-    }
+    
     function product_details($id){
         $data = Product::find($id);
         return view('Products_details',['product' => $data]);
@@ -67,6 +58,22 @@ class productController extends Controller
         $product->save(); 
 
         redirect('/');
+    }
+
+    public function addNewProducts(Request $r)
+    {
+        $newProduct = new product;
+        $newProduct->name = $r->name;
+        $newProduct->price = $r->price;
+        $newProduct->description = $r->description;
+        $newProduct->image = $r->image;
+        $newProduct->quantity = $r->quantity;
+        $newProduct->type = $r->type;
+        $newProduct->productCat = $r->productCat;
+        $newProduct->flavour = $r->flavour;
+        $newProduct->percentage = $r->percentage;
+        $newProduct->save();
+        return redirect()->route('admin.adminhome');
     }
 
 
