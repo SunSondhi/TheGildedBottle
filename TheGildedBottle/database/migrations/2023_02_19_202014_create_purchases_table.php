@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('purchases', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->double('price');
+            $table->string('image');
+            $table->integer('quantity');
             $table->timestamps();
         });
     }

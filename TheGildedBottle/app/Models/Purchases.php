@@ -11,6 +11,7 @@ class Purchases extends Model
     protected $fillable = [
         'name',
         'price',
+        'user',
         'image',
         'quantity'];
 }

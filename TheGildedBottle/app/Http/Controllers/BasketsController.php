@@ -57,12 +57,13 @@ class BasketsController extends Controller
 
        $products->each(function ($bought, $each) {
         $product = New Purchases();
-        $product->name = $each->name;
-        $product->price = $each->price;
-        $product->image = $each->image;
-        $product->user = Auth::id();
+        $product->name = $bought->name;
+        $product->price = $bought->price;
+        $product->image = $bought->image;
+        $product->quantity = $bought->quantity;
+        $product->user_id = Auth::id();
         $product->save(); 
-        $each->delete();
+        DB::table('basket_products')->where('id', $bought->id)->delete();
     });
 
     }

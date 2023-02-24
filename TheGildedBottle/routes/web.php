@@ -43,6 +43,9 @@ Route::post('/Product_details/{id}', [App\Http\Controllers\productController::cl
 Route::get('/basket', [App\Http\Controllers\BasketsController::class, 'List'], function () {
     return view("Basket");
 })->name('Basket');
+Route::get('/purchases', [App\Http\Controllers\PurchasesController::class, 'List'], function () {
+    return view("Purchases");
+})->name('Purchases');
 Route::post('/basket', [App\Http\Controllers\BasketsController::class, 'buy_all'], function(){
     return view("basket");
 })->name('Basket');

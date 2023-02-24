@@ -21,7 +21,7 @@ if (Auth::check() && Auth::user()->role == '1') {
 
 
 <div class="main-content">
-    <h1>List of all products</h1>
+    <h1>List of your purchase history</h1>
 
 
 
@@ -29,7 +29,7 @@ if (Auth::check() && Auth::user()->role == '1') {
 
     <div class="row">
         <div style="margin:auto;">
-            <h3>Product Category</h3>
+            <h3>Purchases history</h3>
         </div>
         <div class="flex-container">
             @foreach ($products as $us)
@@ -39,7 +39,7 @@ if (Auth::check() && Auth::user()->role == '1') {
                 </div>
                 <div>
                     <a href="Product_details/{{$us->id}}"> <h4>{{ $us->name }}</h4> </a>
-                    <p>{{ $us->description }}</p>
+        
                     <p><strong>Price: </strong> £{{ $us->price }}</p>
                     <?php
                     if ((Auth::check() && Auth::user()->role == '1') || (Auth::check() && Auth::user()->role == '2')) {
@@ -51,24 +51,13 @@ if (Auth::check() && Auth::user()->role == '1') {
                             
                 </div>
             <div class="filter-btn">
-                <form action="{{ route('products.filter.category', ['productCat' => 'Rum']) }}" method="get">
-                    <button type="submit" class="btn btn-primary">Rum</button>
-                </form>
-                <form action=" {{ route('products.filter.category', ['productCat' => 'Whiskey']) }}" method="get">
-                    <button type="submit" class="btn btn-primary">Whiskey</button>
-                </form>
-                <form action="{{ route('products.filter.category', ['productCat' => 'Vodka']) }}" method="get">
-                    <button type="submit" class="btn btn-primary">Vodka</button>
-                </form>
-                <form action="{{ route('products.filter.category', ['productCat' => 'Gin']) }}" method="get">
-                    <button type="submit" class="btn btn-primary">Gin</button>
-                </form>
-                <form action="{{ route('products.filter.price', ['price' => '$priceMin - $priceMax']) }}" method="get">
-                    <button type="submit" class="btn btn-primary">$50 - $100</button>
-                </form>
+             
             </div>
         </div>
     </div>
+
+
+
 
 
 

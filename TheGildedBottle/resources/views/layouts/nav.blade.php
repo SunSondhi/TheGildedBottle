@@ -74,6 +74,21 @@
                 <?php
                 if (Auth::check() && Auth::user()->role == '1') {
                 ?>
+                    <a href="{{ route('admin.Basket') }}" class="highlight-button btn btn-large button xs-margin-bottom-five">Basket</a>
+
+                <?php
+                } else {
+                ?>
+                    <a href="{{ route('Purchases') }}" class="highlight-button btn btn-large button xs-margin-bottom-five">Purchases</a>
+
+                <?php
+                }
+                ?>
+            </li>
+            <li>
+                <?php
+                if (Auth::check() && Auth::user()->role == '1') {
+                ?>
                     <a href="{{ route('admin.Aboutus') }}" class="highlight-button btn btn-large button xs-margin-bottom-five">About Us</a>
 
                 <?php
