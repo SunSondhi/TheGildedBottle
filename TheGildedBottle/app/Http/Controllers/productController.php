@@ -56,8 +56,7 @@ class productController extends Controller
         $product->baskets_id = $basket->id;
         $product->image = request('image');
         $product->save(); 
-
-        redirect('/');
+        return redirect()->route('Basket')->with('message', 'product added to basket');
     }
 
     public function addNewProducts(Request $r)

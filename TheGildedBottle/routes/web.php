@@ -38,11 +38,17 @@ Route::post('/Product_details/{id}', [App\Http\Controllers\productController::cl
     return view("Product_details");
 });
 
+Route::post('/products/{id}', [App\Http\Controllers\productController::class, 'add_to_basket'], function(){
+    return view("Products");
+})->name('add_to_basket');
+
 
 
 Route::get('/basket', [App\Http\Controllers\BasketsController::class, 'List'], function () {
     return view("Basket");
 })->name('Basket');
+
+
 Route::get('/purchases', [App\Http\Controllers\PurchasesController::class, 'List'], function () {
     return view("Purchases");
 })->name('Purchases');
@@ -55,7 +61,8 @@ Route::get('products/filter/{type}', [App\Http\Controllers\ProductController::cl
 
 Route::get('products/filter/', [App\Http\Controllers\ProductController::class, 'filterByPrice'])->name('products.filter.price');
 
-// about us page route
+
+
 Route::get('/aboutus', function () {
     return view("Aboutus");
 })->name('Aboutus');

@@ -49,7 +49,7 @@
                 @foreach ($products as $product)
                 <div class="card">
                     <div class="card-image">
-                        <img src="{{ $product->image }}" alt="{{ $product->name }}">
+                      <a href="Product_details/{{$product->id}}"> <img src="{{ $product->image }}" alt="{{ $product->name }}"></a>
                     </div>
                     <div class="card-info">
                         <h4 class="card-title">{{ $product->name }}</h4>
@@ -58,7 +58,12 @@
                         @if (Auth::check() && in_array(Auth::user()->role, ['1', '2']))
                         <p class="card-quantity"><strong>Quantity: </strong> {{ $product->quantity }}</p>
                         @endif
-                        <button class="card-button">Add to cart</button>
+                        <form action="{{ route('add_to_basket', ['id' => '$product->id']) }}" method="POST">@csrf
+                    <input type="hidden" name="name" value="{{$product->name}}">
+                    <input type="hidden" name="price" value="{{$product->price}}">
+                    <input type="hidden" name="image" value="{{$product->image}}">
+                    <input type="hidden" name="quantity" value=1>
+                    <input type="submit"><button class="card-button">Add to cart</button><input>
                     </div>
                 </div>
                 @endforeach

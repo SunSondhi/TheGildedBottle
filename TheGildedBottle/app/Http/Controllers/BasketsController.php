@@ -58,31 +58,42 @@ class BasketsController extends Controller
 
         $products->each(function ($bought, $each) {
             $product = new Purchases();
-            $product->name = $each->name;
-            $product->price = $each->price;
-            $product->image = $each->image;
-            $product->user = Auth::id();
+            $product->name = $bought->name;
+            $product->price = $bought->price;
+            $product->image = $bought->image;
+            $product->quantity = $bought->quantity;
+            $product->user_id = Auth::id();
             $product->save();
-            $each->delete();
+            $data = Basket_product::find($bought->id);
+            $data->delete();
+            return redirect()->route('Purchases')->with('message', "items bought");
         });
     }
 
-    function product_delete($id)
+    function delete($id)
     {
         $data = Basket_product::find($id);
-        $data . delete();
+        $data->delete();
+        return redirect('/');
     }
 
     function buy($id)
     {
         $data = Basket_product::find($id);
-        $data . delete();
+        $product = new Purchases();
+        $product->name = $data->name;
+        $product->price = $data->price;
+        $product->image = $data->image;
+        $product->quantity = $data->quantity;
+        $product->user_id = Auth::id();
+        $product->save();
+        $data->delete();
+        return redirect()->route('Purchases')->with('message', "items bought");
     }
 
     function updateAmount($id)
-    {
-        $data = Basket_product::find($id);
-        $data->price = request('price');
-        $data . save();
+    {$products = Basket_product::find($id);
+        $products->quantity = request('quantity');
+        $products->save();
     }
 }

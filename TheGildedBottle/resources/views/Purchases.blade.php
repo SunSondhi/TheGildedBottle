@@ -35,10 +35,10 @@ if (Auth::check() && Auth::user()->role == '1') {
             @foreach ($products as $us)
             <div class="card2">
                 <div>
-                <a href="Product_details/{{$us->id}}"> <img src="{{ $us->image }}" alt=""></a>
+                <img src="{{ $us->image }}" alt="">
                 </div>
                 <div>
-                    <a href="Product_details/{{$us->id}}"> <h4>{{ $us->name }}</h4> </a>
+                 <h4>{{ $us->name }}</h4> </a>
         
                     <p><strong>Price: </strong> £{{ $us->price }}</p>
                     <?php
