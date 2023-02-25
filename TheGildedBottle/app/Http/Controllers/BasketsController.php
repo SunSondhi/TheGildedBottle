@@ -66,8 +66,9 @@ class BasketsController extends Controller
             $product->save();
             $data = Basket_product::find($bought->id);
             $data->delete();
-            return redirect()->route('Purchases')->with('message', "items bought");
-        });
+        }
+    );
+    return redirect()->route('Purchases')->with('message', "items bought");
     }
 
     function delete($id)
