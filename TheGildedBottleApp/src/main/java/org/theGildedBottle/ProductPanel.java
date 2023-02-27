@@ -10,25 +10,11 @@ public class ProductPanel extends JPanel  {
     protected JTextField textField;
     protected JButton submitButton;
 
-    private JLabel nameLabel;
-    private JTextField nameField;
-    private JLabel priceLabel;
-    private JTextField priceField;
-    private JLabel quantityLabel;
-    private JTextField quantityField;
-    private JLabel descriptionLabel;
+    private JLabel nameLabel, priceLabel, quantityLabel, descriptionLabel, productCatLabel;
+    private JLabel typeLabel, percentageLabel, flavourLabel, imageLabel;
+    private JTextField nameField, priceField, quantityField, productCatField;
+    private JTextField typeField, percentageField, flavourField, imageField;
     private JTextArea descriptionField;
-    private JLabel productCatLabel;
-    private JTextField productCatField;
-    private JLabel typeLabel;
-    private JTextField typeField;
-    private JLabel percentageLabel;
-    private JTextField percentageField;
-    private JLabel flavourLabel;
-    private JTextField flavourField;
-    private JLabel imageLabel;
-    private JTextField imageField;
-
     private JButton addButton;
     private Statement stmt;
 
