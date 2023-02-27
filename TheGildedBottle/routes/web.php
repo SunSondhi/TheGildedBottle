@@ -18,10 +18,16 @@ use App\Models\Basket;
 |
 */
 
+
+
 // the main page route
 Route::get('/', function () {
     return view("HomePage");
 })->name('HomePage');
+
+Route::get('/restricted/{age}', function ($age) {
+    return view('restricted')->with('age', $age);
+})->name('restricted.age');
 
 // products page route
 Route::get('/products',[App\Http\Controllers\ProductController::class, 'productList'], function () {
@@ -34,9 +40,9 @@ Route::get('/Product_details/{id}', [App\Http\Controllers\productController::cla
 }
 );
 
-Route::post('/Product_details/{id}', [App\Http\Controllers\productController::class, 'add_to_basket'], function(){
+Route::post('/Product_details', [App\Http\Controllers\productController::class, 'add_to_basket'], function(){
     return view("Product_details");
-});
+})->name('Product_details');
 
 Route::post('/products/{id}', [App\Http\Controllers\productController::class, 'add_to_basket'], function(){
     return view("Products");

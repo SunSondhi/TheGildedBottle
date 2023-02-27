@@ -8,6 +8,31 @@ import java.util.Scanner;
 public class DbCon {
 
     public static String queryInput;
+
+    private static Connection con;
+
+
+
+    public static Connection getConnection() {
+        // Connect to database if not already connected
+        if (con == null) {
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                con = DriverManager.getConnection(
+                        "jdbc:mysql://localhost:3306/thegildedbottle",
+                        "root",
+                        ""
+                );
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        // Return connection object
+        return con;
+    }
+
+
+
     public void setQueryInput(){
         //input from user for query
         Scanner myObj = new Scanner(System.in);
@@ -17,6 +42,9 @@ public class DbCon {
         System.out.println("Enter query");
         queryInput = myObj.nextLine();
     }
+
+
+
 
     public static void main(String[] args) throws SQLException {
         String userName = "root"; //username of the database
@@ -52,6 +80,8 @@ public class DbCon {
 //                }
 //                System.out.println(data);
 //            }
+//
+
             DbCon c = new DbCon();
             c.setQueryInput();
             //here instead is when we want to UPDATE, INSERT and DELETE, but they way i did it is to insert from terminal

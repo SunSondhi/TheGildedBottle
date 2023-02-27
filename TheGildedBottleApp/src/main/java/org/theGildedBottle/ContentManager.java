@@ -43,4 +43,7 @@ public class ContentManager implements ActionListener { //using the content mana
         contentPanel.add(new ProductPanel());
         contentPanel.revalidate();
     }
+
+    
+
 }

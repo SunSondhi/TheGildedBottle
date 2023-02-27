@@ -1,3 +1,4 @@
+@include('layouts/head')
 <!--footer-->
 <footer class="footer">
     <div id="links">

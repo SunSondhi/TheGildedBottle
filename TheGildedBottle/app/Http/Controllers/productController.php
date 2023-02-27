@@ -50,6 +50,7 @@ class productController extends Controller
         $basket -> user_id = Auth::id();
         $basket -> save();
         $product = New Basket_product();
+        $product->id = request('id');
         $product->name = request('name');
         $product->price = request('price');
         $product->quantity = request('quantity');

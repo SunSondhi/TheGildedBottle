@@ -1,6 +1,7 @@
 package org.theGildedBottle;
-import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
 public class LoginPanel extends JPanel{
     ContentManager cM;
