@@ -4,11 +4,11 @@ Group28 Team Project Term2
 This is an academi project for TeamProject Module
 
 This project is Developed by:
-Sunny Sondhi
-Josh
-Khush Chauhan
-Joel
-Kevin
+Sunny Sondhi,
+Josh,
+Khush Chauhan,
+Joel,
+Kevin,
 Philip
 
 
