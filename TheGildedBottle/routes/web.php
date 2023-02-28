@@ -35,16 +35,19 @@ Route::get('/products',[App\Http\Controllers\ProductController::class, 'productL
 })->name('Products');
 
 //Product details and add to basket prepopulated form
-Route::get('/Product_details/{id}', [App\Http\Controllers\productController::class, 'Product_details'], function(){
-    return view("Product_details");
-}
+Route::get(
+    '/Product_details/{id}',
+    [App\Http\Controllers\productController::class, 'Product_details'],
+    function () {
+        return view("Product_details");
+    }
 );
 
-Route::post('/Product_details', [App\Http\Controllers\productController::class, 'add_to_basket'], function(){
+Route::post('/Product_details/{id}', [App\Http\Controllers\productController::class, 'add_to_basket'], function () {
     return view("Product_details");
-})->name('Product_details');
+});
 
-Route::post('/products/{id}', [App\Http\Controllers\productController::class, 'add_to_basket'], function(){
+Route::post('/products/{id}', [App\Http\Controllers\productController::class, 'add_to_basket'], function () {
     return view("Products");
 })->name('add_to_basket');
 

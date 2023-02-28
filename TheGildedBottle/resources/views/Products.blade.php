@@ -49,31 +49,30 @@
     <div class="col">
         <div class="flex-container">
             @if (count($products) > 0)
-            <form action="{{ route('add_to_basket', ['id' => '$product->id']) }}" method="POST">
-                @csrf
-                @foreach ($products as $product)
-                <div class="card">
-                    <div class="card-image">
-                        <img src="{{ $product->image }}" alt="{{ $product->name }}">
-                    </div>
-                    <div class="card-info">
-                        <h4 class="card-title">{{ $product->name }}</h4>
-                        <p class="card-description">{{ $product->description }}</p>
-                        <p class="card-price"><strong>Price: </strong> £{{ $product->price }}</p>
-                        @if (Auth::check() && in_array(Auth::user()->role, ['1', '2']))
-                        <p class="card-quantity"><strong>Quantity: </strong> {{ $product->quantity }}</p>
-                        @endif
+            @csrf
+            @foreach ($products as $product)
+            <div class="card">
+                <div class="card-image">
+                    <a href="Product_details/{{$product->id}}"><img src="{{ $product->image }}" alt="{{ $product->name }}"></a>
+                </div>
+                <div class="card-info">
+                    <h4 class="card-title">{{ $product->name }}</h4>
+                    <p class="card-description">{{ $product->description }}</p>
+                    <p class="card-price"><strong>Price: </strong> £{{ $product->price }}</p>
+                    @if (Auth::check() && in_array(Auth::user()->role, ['1', '2']))
+                    <p class="card-quantity"><strong>Quantity: </strong> {{ $product->quantity }}</p>
+                    @endif
+                    <form action="{{ route('add_to_basket', ['id' => '$product->id']) }}" method="POST">@csrf
                         <input type="hidden" name="name" value="{{$product->name}}">
                         <input type="hidden" name="price" value="{{$product->price}}">
                         <input type="hidden" name="image" value="{{$product->image}}">
                         <input type="hidden" name="quantity" value=1>
 
-                        <button class="card-button" type="submit">Add to cart</button>
-
-                    </div>
+                    </form>
                 </div>
-                @endforeach
-            </form>
+            </div>
+            @endforeach
+
             @else
             <p>No products found.</p>
             @endif

@@ -98,7 +98,7 @@ public class ProductPanel extends JPanel  {
 
 
     }
-
+    
     private JButton queryBtn(){
         submitButton = new JButton("Insert into table");
         submitButton.setBounds(100,100,100,40);
