@@ -5,10 +5,12 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.sql.*;
 
-public class ProductPanel extends JPanel  {
+public class ProductPanel extends JPanel implements ActionListener {
     public DbCon Con =  new DbCon();
-    protected JTextField textField;
-    protected JButton submitButton;
+    private JButton submitButton;
+    private ContentManager cM;
+
+    private JScrollPane productList;
 
     private JLabel nameLabel, priceLabel, quantityLabel, descriptionLabel, productCatLabel;
     private JLabel typeLabel, percentageLabel, flavourLabel, imageLabel;
@@ -18,12 +20,13 @@ public class ProductPanel extends JPanel  {
     private JButton addButton;
     private Statement stmt;
 
-    public ProductPanel( ) {
+    public ProductPanel( ContentManager c ) {
         super();
-        this.setBackground(Color.red);
+        this.setBackground(ContentManager.BACKGROUND_COLOUR);
+        cM = c;
 
-        this.add(queryBtn());
-        submitButton.setVisible(true);
+        //this.add(queryBtn());
+        //submitButton.setVisible(true);
 
 
         nameLabel = new JLabel("Name:");
@@ -31,7 +34,7 @@ public class ProductPanel extends JPanel  {
         priceLabel = new JLabel("Price:");
         priceField = new JTextField(20);
         quantityLabel = new JLabel("Quantity:");
-        quantityField = new JTextField(20);
+        quantityField = new JTextField(5);
         descriptionLabel = new JLabel("description:");
         descriptionField = new JTextArea();
         productCatLabel = new JLabel("Product Category:");
@@ -69,9 +72,6 @@ public class ProductPanel extends JPanel  {
         this.add(addProductBtn());
         addButton.setVisible(true);
 
-
-
-
         try {
             Connection con = DbCon.getConnection();
             stmt = con.createStatement();
@@ -84,7 +84,7 @@ public class ProductPanel extends JPanel  {
 
 
     }
-
+/*
     private JButton queryBtn(){
         submitButton = new JButton("Insert into table");
         submitButton.setBounds(100,100,100,40);
@@ -96,44 +96,44 @@ public class ProductPanel extends JPanel  {
         });
         return submitButton;
     }
-
+*/
 
     private JButton addProductBtn(){
         addButton = new JButton("Add product");
-        addButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String name = nameField.getText();
-                double price = Double.parseDouble(priceField.getText());
-                int quantity = Integer.parseInt(quantityField.getText());
-                int percentage = Integer.parseInt(percentageField.getText());
-                String description = descriptionField.getText();
-                String productCAT = productCatField.getText();
-                String type = typeField.getText();
-                String flavour = flavourField.getText();
-                String image = imageField.getText();
-
-
-                try {
-                    String sql = "INSERT INTO products (name, price, quantity,percentage,description,productCat,type,flavour,image) VALUES ('" + name + "', " + price + ", " + quantity + "," + percentage + ","+description+","+productCAT+","+type+","+flavour + "," + image +")";
-                    stmt.executeUpdate(sql);
-                    // Clear input fields for next entry
-                    nameField.setText("");
-                    priceField.setText("");
-                    quantityField.setText("");
-                    percentageField.setText("");
-                    productCatField.setText("");
-                    typeField.setText("");
-                    flavourField.setText("");
-                    imageField.setText("");
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-            }
-        });
+        addButton.setActionCommand("Add product");
+        addButton.addActionListener(this);
         return addButton;
     }
-
-
+    @Override
+    public void actionPerformed (ActionEvent e) {
+        String command = e.getActionCommand();
+        if (command.equals("Add product")) {
+            String name = nameField.getText();
+            double price = Double.parseDouble(priceField.getText());
+            int quantity = Integer.parseInt(quantityField.getText());
+            int percentage = Integer.parseInt(percentageField.getText());
+            String description = descriptionField.getText();
+            String productCAT = productCatField.getText();
+            String type = typeField.getText();
+            String flavour = flavourField.getText();
+            String image = imageField.getText();
+            try {
+                String sql = "INSERT INTO products (name, price, quantity,percentage,description,productCat,type,flavour,image) VALUES ('" + name + "', " + price + ", " + quantity + "," + percentage + ","+description+","+productCAT+","+type+","+flavour + "," + image +")";
+                stmt.executeUpdate(sql);
+                // Clear input fields for next entry
+                nameField.setText("");
+                priceField.setText("");
+                quantityField.setText("");
+                percentageField.setText("");
+                productCatField.setText("");
+                typeField.setText("");
+                flavourField.setText("");
+                imageField.setText("");
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
 
 
 }

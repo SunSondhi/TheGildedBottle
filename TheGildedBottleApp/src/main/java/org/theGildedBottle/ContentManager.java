@@ -10,6 +10,9 @@ public class ContentManager implements ActionListener { //using the content mana
     JPanel currentPanel;
     CardLayout cL;
     JFrame window;
+    public static Dimension TEXT_FIELD_SIZE = new Dimension(300,30);
+    //public static Color TEXT_COLOUR = Color.white;
+    public static Color BACKGROUND_COLOUR = Color.gray;
 
     public ContentManager (@NotNull JFrame window) {
         cL = new CardLayout();
@@ -21,29 +24,24 @@ public class ContentManager implements ActionListener { //using the content mana
         contentPanel.add(currentPanel);
         window.setVisible(true);
     }
-    public ContentManager(@NotNull JFrame window, JPanel startPanel) {
-        cL = new CardLayout();
-        this.window = window;
-        contentPanel = new JPanel();
-        contentPanel.setLayout(cL);
-        currentPanel = startPanel;
-        window.add(contentPanel);
-        contentPanel.add(currentPanel);
-    }
 
+    /*
     public void ChangeScene(@NotNull JPanel nextPanel) {
         contentPanel.remove(currentPanel);
         currentPanel = nextPanel;
         contentPanel.add(currentPanel);
-    }
+    } */
 
-    @Override
+    @Override //this is going to be the sole action listener so all authentication will happen in here
     public void actionPerformed(ActionEvent e) {
+        String command = e.getActionCommand();
+        if (command.equals("Login")) {
+            // Authenticate, if authenticated then swap to Product panel, pass on user instance maybe?
         contentPanel.remove(currentPanel);
-        contentPanel.add(new ProductPanel());
+        currentPanel = new ProductPanel(this);
+        contentPanel.add(currentPanel);
         contentPanel.revalidate();
+        }
+
     }
-
-    
-
 }
