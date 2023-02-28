@@ -18,28 +18,44 @@
 
     <h1>List of all products</h1>
 
-    <h3>Product Category</h3>
-    <div class="filter-btn">
-        <form action="{{ route('products.filter.category', ['productCat' => 'Rum']) }}" method="get">
+    <h3 class="mb-4">Product Category</h3>
+    <div class="d-flex flex-wrap">
+        <form action="{{ route('products.filter.category', ['productCat' => 'Rum']) }}" method="get" class="mr-3 mb-3">
             <button type="submit" class="btn btn-primary">Rum</button>
         </form>
-        <form action="{{ route('products.filter.category', ['productCat' => 'Whiskey']) }}" method="get">
+        <form action="{{ route('products.filter.category', ['productCat' => 'Whiskey']) }}" method="get" class="mr-3 mb-3">
             <button type="submit" class="btn btn-primary">Whiskey</button>
         </form>
-        <form action="{{ route('products.filter.category', ['productCat' => 'Vodka']) }}" method="get">
+        <form action="{{ route('products.filter.category', ['productCat' => 'Vodka']) }}" method="get" class="mr-3 mb-3">
             <button type="submit" class="btn btn-primary">Vodka</button>
         </form>
-        <form action="{{ route('products.filter.category', ['productCat' => 'Gin']) }}" method="get">
+        <form action="{{ route('products.filter.category', ['productCat' => 'Gin']) }}" method="get" class="mr-3 mb-3">
             <button type="submit" class="btn btn-primary">Gin</button>
         </form>
-        <form action="{{ route('products.filter.price') }}" method="get">
-            <label for="min_price">Minimum price:</label>
-            <input type=" number" name="min_price" id="min_price">
-            <label for="max_price">Maximum price:</label>
-            <input type="number" name="max_price" id="max_price">
-            <button type="submit">Filter</button>
+        <form action="{{ route('products.filter.category', ['productCat' => 'Beer']) }}" method="get" class="mr-3 mb-3">
+            <button type="submit" class="btn btn-primary">Beer</button>
+        </form>
+        <form action="{{ route('products.filter.category', ['productCat' => 'Wines']) }}" method="get" class="mr-3 mb-3">
+            <button type="submit" class="btn btn-primary">Wines</button>
+        </form>
+        <form action="{{ route('products.filter.category', ['productCat' => 'Brandy']) }}" method="get" class="mr-3 mb-3">
+            <button type="submit" class="btn btn-primary">Brandy</button>
         </form>
     </div>
+    <div class="filter-form mt-4">
+        <form action="{{ route('products.filter.price') }}" method="get" class="form-inline">
+            <div class="form-group mr-3">
+                <label for="min_price" class="mr-2">Minimum price:</label>
+                <input type="number" class="form-control" name="min_price" id="min_price">
+            </div>
+            <div class="form-group mr-3">
+                <label for="max_price" class="mr-2">Maximum price:</label>
+                <input type="number" class="form-control" name="max_price" id="max_price">
+            </div>
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </form>
+    </div>
+
 
 
 

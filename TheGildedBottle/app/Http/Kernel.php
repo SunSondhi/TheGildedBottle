@@ -6,6 +6,10 @@ use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
 {
+    protected $commands = [
+        // ...
+        \Illuminate\Foundation\Console\SassCompileCommand::class,
+    ];
     /**
      * The application's global HTTP middleware stack.
      *

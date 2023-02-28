@@ -45,53 +45,53 @@
     <div class="row" style="padding:0%;margin:0%;">
         <div class="col">
             <div class="flex-container" style="padding:4%;">
-                
+
                 <div class=" profile-card-2">
-                    <a href="http://localhost/TheGildedBottle/TheGildedBottle/public/products/filter/Rum">
+                    <a href="{{url('products/filter/Brandy')}}">
                         <img src="{{url('images/brandy.jpg')}}" height="600px" width="auto">
                         <div class="profile-name">Brandy</div>
                     </a>
                 </div>
-                
-                
+
+
                 <div class="profile-card-2">
-                    <a href="http://localhost/TheGildedBottle/TheGildedBottle/public/products/filter/Whiskey">
+                    <a href="{{url('products/filter/Whiskey')}}">
                         <img src="{{url('images/jamesonIMG.jpg')}}" height="600px" width="auto">
                         <div class="profile-name">Whiskey</div>
                     </a>
                 </div>
-                
+
                 <div class="profile-card-2">
-                    <a href="http://localhost/TheGildedBottle/TheGildedBottle/public/products/filter/Whiskey">
+                    <a href="{{url('products/filter/Vodka')}}">
                         <img src="{{url('images/goose.jpg')}}" height="600px" width="auto">
                         <div class="profile-name">Vodka</div>
                     </a>
                 </div>
                 <div class="profile-card-2">
-                    <a href="http://localhost/TheGildedBottle/TheGildedBottle/public/products/filter/Rum">
+                    <a href="{{url('products/filter/Rum')}}">
                         <img src="{{url('images/rumIMG.jpg')}}" height="600px" width="auto">
                         <div class="profile-name">Rum</div>
                     </a>
                 </div>
                 <div class="profile-card-2">
-                    <a href="http://localhost/TheGildedBottle/TheGildedBottle/public/products/filter/Wines">
+                    <a href="{{url('products/filter/Wines')}}">
                         <img src="{{url('images/wine.jpg')}}" height="600px" width="auto">
                         <div class="profile-name">Wines</div>
                     </a>
                 </div>
                 <div class="profile-card-2">
-                    <a href="http://localhost/TheGildedBottle/TheGildedBottle/public/products/filter/Gin">
+                    <a href="{{url('products/filter/Gin')}}">
                         <img src="{{url('images/gin.jpg')}}" height="600px" width="auto">
                         <div class="profile-name">Gin</div>
                 </div>
                 <div class="profile-card-2">
-                    <a href="http://localhost/TheGildedBottle/TheGildedBottle/public/products/filter/Beers">
+                    <a href="{{url('products/filter/Beer')}}">
                         <img src="{{url('images/beer.jpg')}}" height="600px" width="auto">
                         <div class="profile-name">Beers</div>
                     </a>
                 </div>
                 <div class="profile-card-2">
-                    <a href="http://localhost/TheGildedBottle/TheGildedBottle/public/products/filter/Shots">
+                    <a href="{{url('products/filter/Shots')}}">
                         <img src="{{url('images/shots.jpg')}}" height="600px" width="auto">
                         <div class="profile-name">Shots</div>
                     </a>

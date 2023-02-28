@@ -13,12 +13,7 @@ class productController extends Controller
     public function productList(Request $request)
     {
         $products = Product::all();
-
-
-        
-
         return view('products', compact('products'));
-
     }
 
     public function filterByCategory($category)
@@ -43,22 +38,40 @@ class productController extends Controller
         return view('Products_details',['product' => $data]);
     }
 
-    function add_to_basket(){
+    function add_to_basket()
+    {
+        // Check if user is authenticated
+        if (Auth::check()) {
+            $user_id = Auth::id();
+        } else {
+            // User is not authenticated, store item in session
+            session()->push('basket', [
+                'id' => request('id'),
+                'name' => request('name'),
+                'price' => request('price'),
+                'quantity' => request('quantity'),
+                'image' => request('image')
+            ]);
+            return redirect()->route('login')->with('message', 'Please log in to proceed to checkout');
+        }
 
-        $basket = Baskets::firstOrNew(['user_id' => (Auth::id())]
-        );
-        $basket -> user_id = Auth::id();
-        $basket -> save();
-        $product = New Basket_product();
+        // User is authenticated, store item in database
+        $basket = Baskets::firstOrNew(['user_id' => $user_id]);
+        $basket->user_id = $user_id;
+        $basket->save();
+
+        $product = new Basket_product();
         $product->id = request('id');
         $product->name = request('name');
         $product->price = request('price');
         $product->quantity = request('quantity');
         $product->baskets_id = $basket->id;
         $product->image = request('image');
-        $product->save(); 
-        return redirect()->route('Basket')->with('message', 'product added to basket');
+        $product->save();
+
+        return redirect()->route('Basket')->with('message', 'Product added to basket');
     }
+
 
     public function addNewProducts(Request $r)
     {

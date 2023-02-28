@@ -10,21 +10,19 @@ class PurchasesController extends Controller
 {
     public function list()
     {
+        if (Auth::check()) {
+            $user = Auth::id();
 
+            //write a query to filter
+            $purchases = DB::table('purchases')->where('user_id', $user)->get();
 
-        $user = Auth::id();
-
-        //write a query to filter
-        $products = DB::table('purchases')
-
-            ->where('user_id', 'like', '%' . $user . '%')
-
-            ->get();
-
-        if (is_null($products)) {
-            return redirect()->back()->with('message', "No Data Found");
+            if ($purchases->isEmpty()) {
+                return redirect()->back()->with('message', "No Data Found");
+            } else {
+                return view('Purchases', compact('purchases'));
+            }
         } else {
-            return view('Purchases', compact('products'));
+            return redirect()->back()->with('message', "Please log in to view your purchases");
         }
     }
 }

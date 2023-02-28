@@ -13,8 +13,8 @@ public class ProductPanel extends JPanel implements ActionListener {
     private JScrollPane productList;
 
     private JLabel nameLabel, priceLabel, quantityLabel, descriptionLabel, productCatLabel;
-    private JLabel typeLabel, percentageLabel, flavourLabel, imageLabel;
-    private JTextField nameField, priceField, quantityField, productCatField;
+    private JLabel typeLabel, percentageLabel, flavourLabel, imageLabel, productsLabel;
+    private JTextField nameField, priceField, quantityField, productCatField, productsField;
     private JTextField typeField, percentageField, flavourField, imageField;
     private JTextArea descriptionField;
     private JButton addButton;
@@ -22,6 +22,7 @@ public class ProductPanel extends JPanel implements ActionListener {
 
     public ProductPanel( ContentManager c ) {
         super();
+
         this.setBackground(ContentManager.BACKGROUND_COLOUR);
         cM = c;
 
@@ -47,7 +48,8 @@ public class ProductPanel extends JPanel implements ActionListener {
         flavourField = new JTextField(20);
         imageLabel = new JLabel("image:");
         imageField = new JTextField(20);
-
+        productsLabel = new JLabel("image:");
+        productsField = new JTextField(20);
 
         setLayout(new FlowLayout());
         add(nameLabel);
@@ -68,7 +70,7 @@ public class ProductPanel extends JPanel implements ActionListener {
         add(flavourField);
         add(imageLabel);
         add(imageField);
-
+        add(productsField);
         this.add(addProductBtn());
         addButton.setVisible(true);
 
@@ -79,16 +81,13 @@ public class ProductPanel extends JPanel implements ActionListener {
             e.printStackTrace();
         }
 
-
+        this.fetchProducts();
         this.setVisible(true);
 
 
     }
-<<<<<<< HEAD
-    
-=======
-/*
->>>>>>> a12fa8790b6911b8a626dd57b9a4be42d7f5cd10
+
+
     private JButton queryBtn(){
         submitButton = new JButton("Insert into table");
         submitButton.setBounds(100,100,100,40);
@@ -100,7 +99,7 @@ public class ProductPanel extends JPanel implements ActionListener {
         });
         return submitButton;
     }
-*/
+
 
     private JButton addProductBtn(){
         addButton = new JButton("Add product");
@@ -138,6 +137,19 @@ public class ProductPanel extends JPanel implements ActionListener {
             }
         }
     }
+    public void fetchProducts () {
 
+        try {
+            String sql = "SELECT * FROM products;";
+            stmt.execute(sql);
+//            productsField.setText(response);
+            System.out.println(stmt);
+            // Clear input fields for next entry
+
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 
 }
