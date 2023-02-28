@@ -1,42 +1,61 @@
 package org.theGildedBottle;
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
 
 public class LoginPanel extends JPanel{
     ContentManager cM;
-    JTextField emailField;
-    JPasswordField passwordField;
+    JTextField email;
+    JLabel emailLabel, passwordLabel, sneakyBuffer;
+    JPasswordField password;
     JButton submitButton;
+    LayoutManager manager = new GridBagLayout();
+
+
     public LoginPanel(ContentManager c) {
         super();
         cM = c;
-        this.setBackground(Color.blue);
-        this.add(emailInput());
-        this.add(passwordInput());
+        sneakyBuffer = new JLabel("    ");
+        this.setBackground(ContentManager.BACKGROUND_COLOUR);
+        this.setLayout(manager);
+        this.add(EmailLabel()); // labels first so that they're to the left of the text boxes
+        this.add(Email());
+        this.add(PasswordLabel());
+        this.add(Password());
+        this.add(sneakyBuffer);
         this.add(SubmitButton());
-        emailField.setVisible(true);
-        passwordField.setVisible(true);
         submitButton.setVisible(true);
         this.setVisible(true);
     }
 
-
-    private JTextField emailInput() {
-        emailField = new JTextField("E-mail address");
-        return emailField;
+    private JTextField Email() {
+        email = new JTextField(10);
+        email.setLayout(manager);
+        email.setVisible(true);
+        return email;
     }
 
-    private JPasswordField passwordInput() {
-        passwordField = new JPasswordField("Password");
-        passwordField.setActionCommand("Submit");
-        passwordField.addActionListener(cM);
-        return passwordField;
+    private JLabel EmailLabel() {
+        emailLabel = new JLabel("    E-mail address  ");
+        emailLabel.setLabelFor(email);
+        return emailLabel;
     }
 
+    private JPasswordField Password() {
+        password = new JPasswordField(10);
+        password.setActionCommand("Login");
+        password.addActionListener(cM);
+        password.setVisible(true);
+        return password;
+    }
+
+    private JLabel PasswordLabel() {
+        passwordLabel = new JLabel("     Password  ");
+        passwordLabel.setLabelFor(password);
+        return passwordLabel;
+    }
     private JButton SubmitButton () {
-        submitButton = new JButton();
-        submitButton.setActionCommand("Submit");
+        submitButton = new JButton("Submit");
+        submitButton.setActionCommand("Login");
         submitButton.addActionListener(cM);
         return submitButton;
     }
