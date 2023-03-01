@@ -6,115 +6,82 @@ body {
     margin: 0px;
 }
 
-
-/* Dropdown Button */
-.dropbtn {
-    background-color: #04AA6D;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-}
-
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-    background-color: #ddd;
-}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {
-    background-color: #3e8e41;
-}
-
-
-
-
-
 /* nav CSS */
 
-.nav-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 120px;
-    background-color: rgb(0, 0, 0);
+.navbar {
+    background-color: #212121;
+    height: 80px;
 }
 
-
-.nav-container img {
-    height: 200px;
-    display: block;
+.nav-link {
+    border-radius: 5px;
+    background: #171717;
+    box-shadow: 0px 0px 3px 1px #00000088;
 }
 
-.nav-container #left {
-    margin: 0px;
-    padding: 0px;
-}
-
-.nav-container a,
-.filter-btn button {
-    display: inline-block;
-    margin-right: 20px;
-    letter-spacing: 2px;
-    border: 1px solid black;
-    border-radius: 4px !important;
-    color: white;
-    font-size: 18px;
-    padding: 18px 35px
-}
-
-.highlight-button:hover,
-.filter-btn button:hover {
+.nav-link:hover {
+    color: goldenrod;
     background-color: #000;
-    border: 1px solid #000;
-    color: #fff
+    border-radius: 10px;
+    opacity: 1;
 }
 
-.highlight-button i {
-    color: #000
+.nav-link::before {
+    opacity: 0;
+    background: linear-gradient(90deg, transparent, #ff2288, #387EF0, transparent);
+    transition: opacity 300ms;
+    animation: rotation_9018 3000ms infinite linear;
+    animation-play-state: paused;
 }
 
-.highlight-button:hover i {
-    color: #fff
+.nav-link:hover::before {
+    opacity: 1;
+    animation-play-state: running;
+}
+
+@keyframes rotation_9018 {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /* login side */
-.card mx-4 mx-md-5 shadow-5-strong {
-    margin-top: -100px;
-    background: hsla(0, 0%, 100%, 0.8);
-    backdrop-filter: blur(30px);
+
+/* button */
+.btn {
+    --hover-shadows: 16px 16px 33px #121212,
+        -16px -16px 33px #303030;
+    --accent: goldenrod;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    border: none;
+    border-radius: 1.1em;
+    background-color: #212121;
+    color: white;
+    padding: 1em 2em;
+    transition: box-shadow ease-in-out 0.3s,
+        background-color ease-in-out 0.1s,
+        letter-spacing ease-in-out 0.1s,
+        transform ease-in-out 0.1s;
+
 }
 
+.btn:hover {
+    box-shadow: var(--hover-shadows);
+}
 
+.btn:active {
+    box-shadow: var(--hover-shadows),
+        var(--accent) 0px 0px 30px 5px;
+    background-color: var(--accent);
+    transform: scale(0.95);
+}
+
+/* end button */
 
 /* homepage */
 
@@ -486,20 +453,10 @@ body {
 .row {
     display: flex;
     flex-wrap: wrap;
-    margin: 0 -15px;
+    margin: 0%;
+    width: fit-content;
 }
 
-.col {
-    flex: 1;
-    padding: 0 15px;
-}
-
-.flex-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    margin: 0 -15px;
-}
 
 .card {
     width: 30%;
@@ -632,7 +589,9 @@ body {
 
 
 .hero {
-    background-color: #000;
+    background-image: url('../images/homepageimg3.png');
+    background-repeat: no-repeat;
+    background-position: cover;
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -648,9 +607,14 @@ body {
 
 .hero::before {
     content: "";
+    display: block;
     position: absolute;
     top: 50%;
     left: 50%;
+    background: transparent;
+    z-index: 1;
+    pointer-events: none;
+    box-shadow: inset 0px 0px 200px rgba(255, 255, 255, 0.5);
 }
 
 
@@ -784,5 +748,5 @@ body {
 .filter-section .filter-form form button {
     margin-top: 0.5rem;
 }
-/* end of filtering css */
 
+/* end of filtering css */

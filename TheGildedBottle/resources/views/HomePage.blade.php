@@ -5,48 +5,44 @@
 <script src="{{ asset('js/animations.js') }}"></script>
 <script src="{{ asset('js/gsap.min.js') }}"></script>
 
-<body>
 
+<section class="hero">
 
+    <h1>The Gilded Bottle</h1>
+    <h2>Welcome to our Website</h2>
+    <p>Discover the latest products and services</p>
+    <a href="{{url('Products')}}" class="btn" style="color:aliceblue;">Discover Products</a>
 
-
-
-
-
-
-    <section class="hero">
-
-        <h1>The Gilded Bottle</h1>
-        <h2>Welcome to our Website</h2>
-        <p>Discover the latest products and services</p>
-        <a href="#" class="btn">Discover Products</a>
-
-        <div class="floating-object">
+    <!-- <div class="floating-object">
             <img src="{{url('images/jameson.png')}}" height="250px" />
-        </div>
-    </section>
+            <img src="{{url('images/morganspice.png')}}" height="250px" />
+
+        </div> -->
+
+</section>
 
 
-    <section class="parallax-section">
-        <div class="content">
-            <h1>Shop From our variety of products</h1>
-            <ul>
-                <li>Wines</li>
-                <li>Spirits</li>
-                <li>Bottle Beers</li>
-                <li>and More..</li>
-            </ul>
-        </div>
-        <img src="{{url('images/homePimg.jpg')}}" />
+<section class="parallax-section">
+    <div class="content">
+        <h1>Shop From our variety of products</h1>
+        <ul>
+            <li>Wines</li>
+            <li>Spirits</li>
+            <li>Bottle Beers</li>
+            <li>and More..</li>
+        </ul>
+    </div>
+    <img src="{{url('images/homePimg.jpg')}}" />
 
 
-    </section>
+</section>
 
-    <div class="row" style="padding:0%;margin:0%;">
-        <div class="col">
-            <div class="flex-container" style="padding:4%;">
+<div class="container">
+    <div class="row">
+        <div class="col md-4">
+            <div class="card-deck">
 
-                <div class=" profile-card-2">
+                <div class="profile-card-2">
                     <a href="{{url('products/filter/Brandy')}}">
                         <img src="{{url('images/brandy.jpg')}}" height="600px" width="auto">
                         <div class="profile-name">Brandy</div>
@@ -99,10 +95,9 @@
             </div>
         </div>
     </div>
+</div>
 
 
-
-</body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js">
     import {
