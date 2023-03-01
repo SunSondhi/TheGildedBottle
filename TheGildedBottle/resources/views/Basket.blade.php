@@ -28,7 +28,7 @@
                         </td>
                         <td>
                             <div class="d-flex align-items-center">
-                                <img src="{{ $us->image }}" alt="{{ $us->name }}" class="me-3" width="80">
+                                <img src="{{ url($product->image) }}" alt="{{ $us->name }}" class="me-3" width="80">
                                 <div>
                                     <h5 class="fw-bold mb-0">{{ $us->name }}</h5>
                                 </div>

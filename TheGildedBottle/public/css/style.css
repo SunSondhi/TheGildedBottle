@@ -731,3 +731,58 @@ body {
     display: flex;
     align-content: ;
 }
+
+
+
+
+/* filterin sys css */
+.filter-section {
+    margin-bottom: 1rem;
+}
+
+.filter-section h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.filter-section .d-flex {
+    margin-bottom: 1rem;
+}
+
+.filter-section form {
+    margin-right: 1rem;
+}
+
+.filter-section form button {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.filter-section form button:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+.filter-section .filter-form {
+    margin-top: 1rem;
+}
+
+.filter-section .filter-form form {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.filter-section .filter-form form .form-group {
+    margin-right: 1rem;
+}
+
+.filter-section .filter-form form label {
+    margin-right: 0.5rem;
+}
+
+.filter-section .filter-form form button {
+    margin-top: 0.5rem;
+}
+/* end of filtering css */
+
