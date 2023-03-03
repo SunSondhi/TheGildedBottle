@@ -1,10 +1,11 @@
 @section('title','| HomePage')
 @include('layouts/head')
-@include('layouts/nav')
+
+
 
 <script src="{{ asset('js/animations.js') }}"></script>
 <script src="{{ asset('js/gsap.min.js') }}"></script>
-
+@include('layouts/nav')
 
 <section class="hero">
 
@@ -29,74 +30,94 @@
             <li>Wines</li>
             <li>Spirits</li>
             <li>Bottle Beers</li>
-            <li>and More..</li>
+            <li>Shots such as Jagermeister</li>
         </ul>
     </div>
     <img src="{{url('images/homePimg.jpg')}}" />
-
-
 </section>
 
-<div class="container">
-    <div class="row">
-        <div class="col md-4">
-            <div class="card-deck">
 
-                <div class="profile-card-2">
-                    <a href="{{url('products/filter/Brandy')}}">
-                        <img src="{{url('images/brandy.jpg')}}" height="600px" width="auto">
-                        <div class="profile-name">Brandy</div>
-                    </a>
-                </div>
-
-
-                <div class="profile-card-2">
-                    <a href="{{url('products/filter/Whiskey')}}">
-                        <img src="{{url('images/jamesonIMG.jpg')}}" height="600px" width="auto">
-                        <div class="profile-name">Whiskey</div>
-                    </a>
-                </div>
-
-                <div class="profile-card-2">
-                    <a href="{{url('products/filter/Vodka')}}">
-                        <img src="{{url('images/goose.jpg')}}" height="600px" width="auto">
-                        <div class="profile-name">Vodka</div>
-                    </a>
-                </div>
-                <div class="profile-card-2">
-                    <a href="{{url('products/filter/Rum')}}">
-                        <img src="{{url('images/rumIMG.jpg')}}" height="600px" width="auto">
-                        <div class="profile-name">Rum</div>
-                    </a>
-                </div>
-                <div class="profile-card-2">
-                    <a href="{{url('products/filter/Wines')}}">
-                        <img src="{{url('images/wine.jpg')}}" height="600px" width="auto">
-                        <div class="profile-name">Wines</div>
-                    </a>
-                </div>
-                <div class="profile-card-2">
-                    <a href="{{url('products/filter/Gin')}}">
-                        <img src="{{url('images/gin.jpg')}}" height="600px" width="auto">
-                        <div class="profile-name">Gin</div>
-                </div>
-                <div class="profile-card-2">
-                    <a href="{{url('products/filter/Beer')}}">
-                        <img src="{{url('images/beer.jpg')}}" height="600px" width="auto">
-                        <div class="profile-name">Beers</div>
-                    </a>
-                </div>
-                <div class="profile-card-2">
-                    <a href="{{url('products/filter/Shots')}}">
-                        <img src="{{url('images/shots.jpg')}}" height="600px" width="auto">
-                        <div class="profile-name">Shots</div>
-                    </a>
-                </div>
-            </div>
-        </div>
+<div class="container-products-homepage">
+    <div class="profile-card-2">
+        <a href="{{url('products/filter/Brandy')}}">
+            <img src="{{url('images/brandy.jpg')}}" height="600px" width="auto">
+            <div class="profile-name">Brandy</div>
+        </a>
+    </div>
+    <div class="profile-card-2">
+        <a href="{{url('products/filter/Whiskey')}}">
+            <img src="{{url('images/jamesonIMG.jpg')}}" height="600px" width="auto">
+            <div class="profile-name">Whiskey</div>
+        </a>
+    </div>
+    <div class="profile-card-2">
+        <a href="{{url('products/filter/Vodka')}}">
+            <img src="{{url('images/goose.jpg')}}" height="600px" width="auto">
+            <div class="profile-name">Vodka</div>
+        </a>
+    </div>
+    <div class="profile-card-2">
+        <a href="{{url('products/filter/Rum')}}">
+            <img src="{{url('images/rumIMG.jpg')}}" height="600px" width="auto">
+            <div class="profile-name">Rum</div>
+        </a>
+    </div>
+    <div class="profile-card-2">
+        <a href="{{url('products/filter/Wines')}}">
+            <img src="{{url('images/wine.jpg')}}" height="600px" width="auto">
+            <div class="profile-name">Wines</div>
+        </a>
+    </div>
+    <div class="profile-card-2">
+        <a href="{{url('products/filter/Gin')}}">
+            <img src="{{url('images/gin.jpg')}}" height="600px" width="auto">
+            <div class="profile-name">Gin</div>
+        </a>
+    </div>
+    <div class="profile-card-2">
+        <a href="{{url('products/filter/Beer')}}">
+            <img src="{{url('images/beer.jpg')}}" height="600px" width="auto">
+            <div class="profile-name">Beers</div>
+        </a>
+    </div>
+    <div class="profile-card-2">
+        <a href="{{url('products/filter/Shots')}}">
+            <img src="{{url('images/shots.jpg')}}" height="600px" width="auto">
+            <div class="profile-name">Shots</div>
+        </a>
     </div>
 </div>
 
+
+
+
+
+@include('layouts/footer')
+
+<script>
+    const parallax = document.querySelector('.parallax-effect');
+    const image = parallax.querySelector('img');
+
+    parallax.addEventListener('mousemove', e => {
+        const rect = parallax.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const rotateX = (y - rect.height / 2) / 10;
+        const rotateY = (x - rect.width / 2) / 10;
+        image.style.setProperty('--rotateX', `${rotateX}deg`);
+        image.style.setProperty('--rotateY', `${rotateY}deg`);
+    });
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js">
+    $(window).on("scroll", function() {
+        if ($(window).scrollTop() > 100) {
+            $(".nav").css("background-color", "#212121");
+        } else {
+            $(".nav").css("background-color", "transparent");
+        }
+    });
+</script>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js">

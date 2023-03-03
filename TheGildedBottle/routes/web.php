@@ -64,6 +64,11 @@ Route::get('/purchases', [App\Http\Controllers\PurchasesController::class, 'List
 Route::post('/basket', [App\Http\Controllers\BasketsController::class, 'buy_all'], function(){
     return view("basket");
 })->name('Basket');
+
+Route::post('/updateAmount/{id}', [App\Http\Controllers\BasketsController::class, 'updateAmount'], function () {
+    return view("basket");
+})->name('updateAmount');
+
 Route::get('products/filter/{productCat}', [App\Http\Controllers\ProductController::class, 'filterByCategory'])->name('products.filter.category');
 
 Route::get('products/filter/{type}', [App\Http\Controllers\ProductController::class, 'filterByCategory'])->name('products.filter.type');

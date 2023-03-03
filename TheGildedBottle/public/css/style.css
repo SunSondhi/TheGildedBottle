@@ -11,6 +11,7 @@ body {
 .navbar {
     background-color: #212121;
     height: 80px;
+    position: absolute;
 }
 
 .nav-link {
@@ -427,53 +428,6 @@ body {
     }
 }
 
-/* .flex-container {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-
-.card {
-    padding:3%;
-    box-shadow:
-        4.3px 4.5px 7.2px rgba(0, 0, 0, 0.027),
-        11.8px 12.5px 19.9px rgba(0, 0, 0, 0.039),
-        28.3px 30.1px 47.9px rgba(0, 0, 0, 0.049),
-        94px 100px 159px rgba(0, 0, 0, 0.07);
-}
-
-
-.card img {
-    height: auto;
-    padding: 15%;
-    max-width: 100px;
-} */
-
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0%;
-    width: fit-content;
-}
-
-
-.card {
-    width: 30%;
-    margin: 0 0 30px;
-    background: #f5f5f5;
-    border-radius: 5px;
-    box-shadow:
-        4.3px 4.5px 7.2px rgba(0, 0, 0, 0.027),
-        11.8px 12.5px 19.9px rgba(0, 0, 0, 0.039),
-        28.3px 30.1px 47.9px rgba(0, 0, 0, 0.049),
-        94px 100px 159px rgba(0, 0, 0, 0.07);
-    transition: box-shadow 0.2s ease;
-    display: flex;
-    padding: 3%;
-    flex-direction: column;
-}
-
 .card:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
@@ -642,6 +596,7 @@ body {
     padding: 5%;
     position: absolute;
     right: 50%;
+    font-size: xx-large;
     color: #ddd;
     font-family: 'Montserrat', sans-serif;
 }
@@ -651,6 +606,15 @@ body {
     width: 50%;
     position: absolute;
     left: 50%;
+}
+
+.container-products-homepage {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
 }
 
 .profile-card-2 {
@@ -689,11 +653,6 @@ body {
 
 .profile-card-2:hover .profile-name {
     bottom: 80px;
-}
-
-.home-product-container {
-    display: flex;
-    align-content: ;
 }
 
 
@@ -750,3 +709,59 @@ body {
 }
 
 /* end of filtering css */
+
+
+
+.parallax-effect {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    perspective: 1000px;
+    overflow: hidden;
+}
+
+.parallax-effect img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    max-width: 100%;
+    max-height: 100%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.2s ease-out;
+}
+
+.parallax-effect:hover img {
+    transform: translate(-50%, -50%) rotateX(var(--rotateX)) rotateY(var(--rotateY));
+}
+
+/* footer */
+.page-footer {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.page-footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.page-footer a:hover {
+    color: #ccc;
+}
+
+.page-footer h2 {
+    font-weight: bold;
+}
+
+.page-footer ul li {
+    margin-bottom: 10px;
+}
+
+.page-footer p {
+    margin-bottom: 0;
+}
+
+.page-footer hr {
+    border-color: #555;
+}
+/* end footer */

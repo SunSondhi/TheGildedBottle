@@ -11,14 +11,14 @@
             <div class="card h-200">
                 <div class="card-body d-flex flex-column justify-content-between">
                     <div class="d-flex align-items-center mb-3">
-                        <img src="{{ url($product->image) }}" alt="{{ $purchase->name }}" class="img-fluid me-2">
+                        <img src="{{ url($purchase->image) }}" alt="{{ $purchase->name }}" class="img-fluid me-2" style="height:250px;width:auto;">
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
                         <div class="product-details">
                             <h3 class="mb-0">{{ $purchase->name }}</h3>
                             <p class="price mb-1">£{{ $purchase->price }}</p>
                             <p class="quantity mb-0"><strong>Quantity: </strong>{{ $purchase->quantity }}</p>
                         </div>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center">
                     </div>
                 </div>
             </div>
@@ -34,3 +34,5 @@
         @endforelse
     </div>
 </div>
+
+@include('layouts/footer')

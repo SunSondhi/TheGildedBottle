@@ -1,30 +1,56 @@
-@include('layouts/head')
-<!--footer-->
-<footer class="footer">
-    <div id="links">
-        <h2>My Links</h2>
-        <a id="foot-link" class="nav-link fa fa-facebook" href="https://www.Facebook.com/" id="facebook-logo"></a>
-        <a id="foot-link" class="nav-link fa fa-github" href="https://www.GitHub.com/" id="github-logo"></a>
-        <a id="foot-link" class="nav-link fa fa-linkedin" href="https://www.Linkedin.com/" id="linkedin-logo"></a>
-        <a id="foot-link" class="nav-link fa fa-twitter" href="https://www.Twitter.com/" id="twitter-logo"></a>
-    </div>
-    <div id="web-links">
-        <h2>Go to</h2>
-        <ul>
-            <li><a id="foot-link" class="nav-link" href="">MainPage</a></li>
-            <li><a id="foot-link" class="nav-link" href="">Home</a></li>
-            <li><a id="foot-link" class="nav-link" href="">Login</a></li>
-            <li><a id="foot-link" class="nav-link" href="">Register</a></li>
-        </ul>
-    </div>
-    <div id="cntc">
-        <h2>Contact Us</h2>
-        <a href="{{ route('Contactus') }}">Further Contact info &#8594;</a>
-    </div>
+<footer class="page-footer font-small bg-dark text-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Our Links</h2>
+                <a href="https://www.facebook.com/" class=" fa fa-facebook"></a>
+                <a href="https://github.com/" class="fa fa-github"></a>
+                <a href="https://www.linkedin.com/" class=" fa fa-linkedin"></a>
+                <a href="https://twitter.com/" class="fa fa-twitter"></a>
+            </div>
+            <div class="col-md-4">
+                <h2>Go to</h2>
+                <ul class="list-unstyled">
+                    <li><a href="">MainPage</a></li>
+                    <li><a href="">Home</a></li>
+                    <li><a href="">Login</a></li>
+                    <li><a href="">Register</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h2>Contact Us</h2>
+                <a href="{{ route('Contactus') }}">Further Contact info &#8594;</a>
+            </div>
 
-
-    <div id="copyright">
-        <p>Created by Group 28, The Gilded Bottle. © 2023</p>
-        <p>for further information contact me via email: <a href="mailto:210097072@aston.ac.uk">210097072@aston.ac.uk</a></p>
+            <div class="row">
+                <div class="parallax-effect">
+                    <img src="{{url('images\logo.png')}}" />
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-6">
+                <p>Created by Group 28, The Gilded Bottle. © 2023</p>
+            </div>
+            <div class="col-md-6">
+                <p>for further information contact me via email: <a href="mailto:210097072@aston.ac.uk">210097072@aston.ac.uk</a></p>
+            </div>
+        </div>
     </div>
 </footer>
+
+<script>
+    const parallax = document.querySelector('.parallax-effect');
+    const image = parallax.querySelector('img');
+
+    parallax.addEventListener('mousemove', e => {
+        const rect = parallax.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const rotateX = (y - rect.height / 2) / 10;
+        const rotateY = (x - rect.width / 2) / 10;
+        image.style.setProperty('--rotateX', `${rotateX}deg`);
+        image.style.setProperty('--rotateY', `${rotateY}deg`);
+    });
+</script>

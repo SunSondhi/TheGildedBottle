@@ -4,7 +4,7 @@
 
 <div class="container py-5">
     <h1 class="mb-5">Basket</h1>
-    @if (count($bs_products) > 0)
+    @if(count($bs_products) > 0)
     <form action="{{ url('basket') }}" method="POST">
         @csrf
         <div class="table-responsive">
@@ -28,7 +28,7 @@
                         </td>
                         <td>
                             <div class="d-flex align-items-center">
-                                <img src="{{ url($product->image) }}" alt="{{ $us->name }}" class="me-3" width="80">
+                                <img src="{{ url($us->image) }}" alt="{{ $us->name }}" class="me-3" width="80">
                                 <div>
                                     <h5 class="fw-bold mb-0">{{ $us->name }}</h5>
                                 </div>
@@ -37,9 +37,9 @@
                         <td>£{{ $us->price }}</td>
                         <td>
                             <div class="d-flex align-items-center">
-                                <button type="button" class="btn btn-sm btn-secondary border" onclick="updateQuantity({{ $us->id }}, -1)">-</button>
+                                <button type="button" class="btn btn-sm btn-secondary border" onclick="updateQuantity('<?php echo $us->id; ?>', -1);">-</button>
                                 <span class="mx-2">{{ $us->quantity }}</span>
-                                <button type="button" class="btn btn-sm btn-secondary border" onclick="updateQuantity({{ $us->id }}, 1)">+</button>
+                                <button type="button" class="btn btn-sm btn-secondary border" onclick="updateQuantity('<?php echo $us->id; ?>', 1)">+</button>
                             </div>
                         </td>
                         <td>£{{ $us->price * $us->quantity }}</td>
@@ -86,8 +86,10 @@
                 window.location.reload();
             }
         };
-        xhr.open('POST', '/update-basket-quantity/' + productId + '/' + change, true);
+        xhr.open('POST', '/updateAmount/' + productId + '/' + change, true);
         xhr.setRequestHeader('X-CSRF-TOKEN', token);
         xhr.send();
     }
 </script>
+
+@include('layouts/footer')
