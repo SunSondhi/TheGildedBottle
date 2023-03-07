@@ -49,7 +49,7 @@ public class DbCon {
     public static void main(String[] args) throws SQLException {
         String userName = "root"; //username of the database
         String password = ""; //password of the database
-        String url = "jdbc:mysql://localhost:3306/thegildedbottle"; //the url of the database
+        String url = "jdbc:mysql://localhost:3306/laravel"; //the url of the database
 
 
 
