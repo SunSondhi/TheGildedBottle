@@ -12,7 +12,7 @@
     <h1>The Gilded Bottle</h1>
     <h2>Welcome to our Website</h2>
     <p>Discover the latest products and services</p>
-    <a href="{{url('Products')}}" class="btn" style="color:aliceblue;">Discover Products</a>
+    <a href="{{url('products')}}" class="btn" style="color:aliceblue;">Discover Products</a>
 
     <!-- <div class="floating-object">
             <img src="{{url('images/jameson.png')}}" height="250px" />
