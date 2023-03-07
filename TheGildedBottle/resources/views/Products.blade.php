@@ -45,8 +45,6 @@
     </div>
 
 
-
-
 </div>
 <div class="container">
     <div class="row">
@@ -54,7 +52,8 @@
         @foreach ($products as $product)
         <div class="col-md-4">
             <div class="card-deck">
-                <a href="Product_details/{{$product->id}}"><img src="{{ url($product->image) }}" alt="{{ $product->name }}" class="card-img-top"></a>
+                <a href="{{url('Product_details')}}/{{($product->id)}}">
+                    <img src="{{ url($product->image) }}" alt="{{ $product->name }}" class="card-img-top"></a>
                 <div class="card-body">
                     <h4 class="card-title">{{ $product->name }}</h4>
                     <p class="card-text"><strong>Price: </strong> £{{ $product->price }}</p>
