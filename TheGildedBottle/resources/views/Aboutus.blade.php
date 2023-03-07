@@ -36,9 +36,9 @@
         </div>
         <div class="col-md-2">
             <div class="card">
-                <img src="{{url('images/icon.png')}}" class="card-img-top" alt="Team Member 3">
+                <img src="{{url('images/khush.jpg')}}" class="card-img-top" alt="Team Member 3">
                 <div class="card-body">
-                    <h5 class="card-title">Khush Chouahan</h5>
+                    <h5 class="card-title">Khush Chauhan</h5>
                     <p class="card-text">Co-leader</p>
                     <p>Roles:</p>
                     <li>Helper Programmer Java Application</li>
