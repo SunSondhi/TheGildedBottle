@@ -45,13 +45,35 @@ class productController extends Controller
             $user_id = Auth::id();
         } else {
             // User is not authenticated, store item in session
-            session()->push('basket', [
-                'id' => request('id'),
-                'name' => request('name'),
-                'price' => request('price'),
-                'quantity' => request('quantity'),
-                'image' => request('image')
-            ]);
+            $basket = session()->get('basket', []);
+
+            $item_id = request('id');
+            $item_quantity = request('quantity');
+
+            $item_found = false;
+            // Check if item already exists in basket
+            foreach ($basket as $index => $item) {
+                if ($item['id'] === $item_id) {
+                    // If item exists, increase quantity and update basket
+                    $basket[$index]['quantity'] += $item_quantity;
+                    $item_found = true;
+                    break;
+                }
+            }
+
+            if (!$item_found) {
+                // If item doesn't exist, add it to basket
+                array_push($basket, [
+                    'id' => $item_id,
+                    'name' => request('name'),
+                    'price' => request('price'),
+                    'quantity' => $item_quantity,
+                    'image' => request('image')
+                ]);
+            }
+
+            session()->put('basket', $basket);
+
             return redirect()->route('login')->with('message', 'Please log in to proceed to checkout');
         }
 
@@ -60,17 +82,32 @@ class productController extends Controller
         $basket->user_id = $user_id;
         $basket->save();
 
-        $product = new Basket_product();
-        $product->id = request('id');
-        $product->name = request('name');
-        $product->price = request('price');
-        $product->quantity = request('quantity');
-        $product->baskets_id = $basket->id;
-        $product->image = request('image');
-        $product->save();
+        $item_id = request('id');
+        $item_quantity = request('quantity');
+
+        $existing_item = Basket_product::where('baskets_id', $basket->id)
+            ->where('id', $item_id)
+            ->first();
+
+        if ($existing_item) {
+            // If item exists, increase quantity and update basket
+            $existing_item->quantity += $item_quantity;
+            $existing_item->save();
+        } else {
+            // If item doesn't exist, add it to basket
+            $product = new Basket_product();
+            $product->id = $item_id;
+            $product->name = request('name');
+            $product->price = request('price');
+            $product->quantity = $item_quantity;
+            $product->baskets_id = $basket->id;
+            $product->image = request('image');
+            $product->save();
+        }
 
         return redirect()->route('Basket')->with('message', 'Product added to basket');
     }
+
 
 
     public function addNewProducts(Request $r)
