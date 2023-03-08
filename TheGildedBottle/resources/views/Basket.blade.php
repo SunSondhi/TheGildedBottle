@@ -5,8 +5,6 @@
 <div class="container py-5">
     <h1 class="mb-5">Basket</h1>
     @if(count($bs_products) > 0)
-    <form action="{{ url('basket') }}" method="POST">
-        @csrf
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
@@ -57,7 +55,10 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                    <a href="{{ url('remove-from-basket/'.$us->id) }}" class="btn btn-danger">Remove</a>
+                                    <form action="{{ route('remove_btn', ['id' => $us->id]) }}" method="POST">@csrf
+                                        <button type="submit" class="btn btn-primary">remove</button>
+                                    </form>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -67,6 +68,8 @@
             </table>
         </div>
         <div class="d-flex justify-content-end">
+        <form action="{{ url('basket') }}" method="POST">
+        @csrf
             <button type="submit" class="btn btn-primary">Purchase</button>
         </div>
     </form>

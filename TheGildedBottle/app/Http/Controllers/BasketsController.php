@@ -71,14 +71,14 @@ class BasketsController extends Controller
     return redirect()->route('Purchases')->with('message', "items bought");
     }
 
-    function delete($id)
+    function remove_btn($id)
     {
         $data = Basket_product::find($id);
         $data->delete();
-        return redirect('/');
+        return redirect()->route('Basket');
     }
 
-    function buy($id)
+    function buy_btn($id)
     {
         $data = Basket_product::find($id);
         $product = new Purchases();

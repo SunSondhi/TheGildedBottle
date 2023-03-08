@@ -57,6 +57,9 @@ Route::get('/basket', [App\Http\Controllers\BasketsController::class, 'List'], f
     return view("Basket");
 })->name('Basket');
 
+Route::post('/basket/{id}', [App\Http\Controllers\BasketsController::class, 'remove_btn'], function () {
+    return view("basket");
+})->name('remove_btn');
 
 Route::get('/purchases', [App\Http\Controllers\PurchasesController::class, 'List'], function () {
     return view("Purchases");
