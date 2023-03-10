@@ -46,6 +46,10 @@
 
 
 </div>
+<form method="get">
+                <input type="text" class="form-control" name="search_entry" id="search_entry" placeholder="Search..." >
+                <button>search</button>
+            </form>
 <div class="container">
     <div class="row">
         @if (count($products) > 0)

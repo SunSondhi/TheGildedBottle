@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Baskets;
 use App\Models\Purchases;
+use App\Models\Product;
+
 use App\Models\Basket_product;
 use Illuminate\Support\Facades\DB;
 
@@ -56,7 +58,11 @@ class BasketsController extends Controller
 
             ->get();
 
+
+
         $products->each(function ($bought, $each) {
+            $in_stock = Product::find($bought->name);
+            $current = $in_stock->stock;
             $product = new Purchases();
             $product->name = $bought->name;
             $product->price = $bought->price;
@@ -64,6 +70,8 @@ class BasketsController extends Controller
             $product->quantity = $bought->quantity;
             $product->user_id = Auth::id();
             $product->save();
+            $in_stock->stock = $current - $bought->quantity;
+            $in_stock->save();
             $data = Basket_product::find($bought->id);
             $data->delete();
         }
