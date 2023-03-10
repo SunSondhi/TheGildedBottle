@@ -38,6 +38,16 @@ class productController extends Controller
         return view('Products_details',['product' => $data]);
     }
 
+    public function product_search(Request $request){
+        $search_entry = $request['search_entry'] ?? "";
+        if ($search_entry !=""){
+        $products = Product::where('name','LIKE','%'.$search_entry.'%')->get();
+        }else{
+            $products = Product::all();
+        }
+        return view('products', compact('products'));
+    }
+
     function add_to_basket()
     {
         // Check if user is authenticated

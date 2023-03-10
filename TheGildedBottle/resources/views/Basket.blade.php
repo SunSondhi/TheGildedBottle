@@ -89,7 +89,7 @@
                 window.location.reload();
             }
         };
-        xhr.open('POST', '/updateAmount/' + productId + '/' + change, true);
+        xhr.open('POST', '{{ route('updateAmount', ['id' =>' +productId +']) }}' + change, true);
         xhr.setRequestHeader('X-CSRF-TOKEN', token);
         xhr.send();
     }
