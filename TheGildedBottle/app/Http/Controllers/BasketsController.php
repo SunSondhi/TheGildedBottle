@@ -61,8 +61,7 @@ class BasketsController extends Controller
 
 
         $products->each(function ($bought, $each) {
-            $in_stock = Product::find($bought->name);
-            $current = $in_stock->stock;
+            $data = $bought->name; 
             $product = new Purchases();
             $product->name = $bought->name;
             $product->price = $bought->price;
@@ -70,6 +69,8 @@ class BasketsController extends Controller
             $product->quantity = $bought->quantity;
             $product->user_id = Auth::id();
             $product->save();
+            $in_stock = Product::whereName($data)->first();
+            $current = $in_stock->stock;
             $in_stock->stock = $current - $bought->quantity;
             $in_stock->save();
             $data = Basket_product::find($bought->id);
