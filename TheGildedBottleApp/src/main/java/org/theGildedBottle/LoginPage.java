@@ -3,13 +3,7 @@ package org.theGildedBottle;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.sql.*;
-import org.mindrot.jbcrypt.BCrypt;
-
-import static org.theGildedBottle.DbCon.con;
 
 public class LoginPage {
     private JTextField emailField;
@@ -34,18 +28,19 @@ public class LoginPage {
 
                 try {
                     con = DbCon.getConnection();
-                    String sql = "SELECT * FROM users WHERE email = ?";
+                    String sql = "SELECT * FROM app_user WHERE email = ?";
                     PreparedStatement stmt = con.prepareStatement(sql);
                     stmt.setString(1, userEmail);
                     ResultSet result = stmt.executeQuery();
 
                     if (result.next()) {
-                        String storedHash = result.getString("password");
+                        String storedPassword = result.getString("password");
 
                         // Check if the password matches the stored hash
-                        if (BCrypt.checkpw(password, storedHash)) {
+                        if (password.equals(storedPassword)) {
                             // Password is correct, log in the user
-                            System.out.println("Logged in successfully");
+                            loginButton.addActionListener(cM);
+                            loginButton.setActionCommand("Homepage");
                         } else {
                             // Password is incorrect, show error message
                             System.out.println("Incorrect password");
@@ -57,14 +52,6 @@ public class LoginPage {
 
                 } catch (Exception ex) {
                     ex.printStackTrace();
-                } finally {
-                    try {
-                        if (con != null) {
-                            con.close(); // Close the connection
-                        }
-                    } catch (SQLException ex) {
-                        ex.printStackTrace();
-                    }
                 }
             }
         });

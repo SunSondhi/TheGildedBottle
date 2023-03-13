@@ -1,12 +1,14 @@
 package org.theGildedBottle;
 
-import com.sun.source.doctree.BlockTagTree;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.sql.Statement;
+
+import static org.theGildedBottle.DbCon.con;
 
 public class ProductPage {
     public JPanel productsPanel;
@@ -32,6 +34,7 @@ public class ProductPage {
     private JLabel descriptionLabel;
     private JPanel p1;
     private JButton logoutButton;
+    private JButton gotToHomepageButton;
 
     private Statement stmt;
     public DbCon Con =  new DbCon();
@@ -56,14 +59,28 @@ public class ProductPage {
             String flavour = flavourField.getText();
             String image = imageField.getText();
             try {
-                String sql = "INSERT INTO products (name, price, quantity,percentage,description,productCat,type,flavour,image) VALUES ('" + name + "', " + price + ", " + quantity + "," + percentage + ","+description+","+productCAT+","+type+","+flavour + "," + image +")";
-                stmt.executeUpdate(sql);
+                String sql = "INSERT INTO products (name, price, quantity, percentage, description, productCat, type, flavour, image) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                PreparedStatement statement = con.prepareStatement(sql);
+                statement.setString(1, name);
+                statement.setDouble(2, price);
+                statement.setInt(3, quantity);
+                statement.setInt(4, percentage);
+                statement.setString(5, description);
+                statement.setString(6, productCAT);
+                statement.setString(7, type);
+                statement.setString(8, flavour);
+                statement.setString(9, image);
+                statement.executeUpdate();
 
-            } catch (Exception ex) {
+            } catch (SQLException ex) {
                 ex.printStackTrace();
             }
         }
     });
+
+
+
+
     clearButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -80,5 +97,9 @@ public class ProductPage {
     });
     logoutButton.addActionListener(cM);
     logoutButton.setActionCommand("Logout");
+
+        gotToHomepageButton.addActionListener(cM);
+        gotToHomepageButton.setActionCommand("Homepage");
+
     }
 }
