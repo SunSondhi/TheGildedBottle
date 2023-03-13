@@ -30,6 +30,7 @@
                             <div>
                                 <h5 class="fw-bold mb-0">{{ $us->name }}</h5>
                             </div>
+<<<<<<< HEAD
                         </div>
                     </td>
                     <td>£{{ $us->price }}</td>
@@ -49,6 +50,28 @@
                             <div class="modal-header">
                                 <h5 class="modal-title" id="removeModalLabel{{ $us->id }}">Remove Product</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+=======
+                        </td>
+                        <td>£{{ $us->price }}</td>
+                        <td>
+                            <div class="d-flex align-items-center">
+                            <form action="{{ route('products.update.quantity') }}" method="GET">
+                                <select id="qty-select" name="qty">
+                                    <option value="" selected disabled hidden>{{ $us->quantity }}</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                </select>
+                                <button type="submit">Submit</button>
+                                <input type='hidden' name='pid' value="{{ $us->id }}"></input>
+                            </form>
+>>>>>>> 693bc15d642977e8c56c2eb7d30ed1af9655fe3c
                             </div>
                             <div class="modal-body">
                                 Are you sure you want to remove {{ $us->name }} from your basket?

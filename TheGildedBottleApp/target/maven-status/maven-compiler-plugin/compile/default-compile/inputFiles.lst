@@ -2,7 +2,11 @@ C:\xampp\htdocs\TheGildedBottle\TheGildedBottleApp\src\main\java\org\theGildedBo
 C:\xampp\htdocs\TheGildedBottle\TheGildedBottleApp\src\main\java\org\theGildedBottle\ContentManager.java
 C:\xampp\htdocs\TheGildedBottle\TheGildedBottleApp\src\main\java\org\theGildedBottle\Main.java
 C:\xampp\htdocs\TheGildedBottle\TheGildedBottleApp\src\main\java\org\theGildedBottle\MainFrame.java
+<<<<<<< HEAD
 C:\xampp\htdocs\TheGildedBottle\TheGildedBottleApp\src\main\java\org\theGildedBottle\CheckInventory.java
 C:\xampp\htdocs\TheGildedBottle\TheGildedBottleApp\src\main\java\org\theGildedBottle\DbCon.java
 C:\xampp\htdocs\TheGildedBottle\TheGildedBottleApp\src\main\java\org\theGildedBottle\HomePage.java
+=======
+C:\xampp\htdocs\TheGildedBottle\TheGildedBottleApp\src\main\java\org\theGildedBottle\DbCon.java
+>>>>>>> 693bc15d642977e8c56c2eb7d30ed1af9655fe3c
 C:\xampp\htdocs\TheGildedBottle\TheGildedBottleApp\src\main\java\org\theGildedBottle\ProductPage.java
