@@ -51,7 +51,7 @@ Route::post('/products/{id}', [App\Http\Controllers\productController::class, 'a
     return view("Products");
 })->name('add_to_basket');
 
-
+Route::get('/products/update/quantity', [App\Http\Controllers\ProductController::class, 'updateQuantity'])->name('products.update.quantity');
 
 Route::get('/basket', [App\Http\Controllers\BasketsController::class, 'List'], function () {
     return view("Basket");
@@ -146,4 +146,3 @@ Route::prefix('employee')->middleware(['auth', 'isEmployee'])->group(function ()
         return view("Products");
     })->name('employee.Products');
 });
-

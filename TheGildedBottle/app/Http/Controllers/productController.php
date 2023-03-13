@@ -23,7 +23,23 @@ class productController extends Controller
         
         return view('products', compact('products'));
     }
-
+    // http://localhost/TheGildedBottle/TheGildedBottle/public/products/update/quantity?pid=3&qty=4
+    public function updateQuantity(Request $request)
+    {
+    
+        $productID = $request->input('pid'); 
+        $chosenQuantity = $request->input('qty');
+    
+        $availableQuantity = Product::query('products')->where('id', $productID)->select('quantity')->first()->quantity;
+        if ($chosenQuantity > $availableQuantity){
+            return redirect()->route('Basket');
+        }
+    
+        Basket_product::query('basket_products')->where('id', $productID)->update(['quantity' => $chosenQuantity]);
+    
+    
+        return redirect()->route('Basket')->with('message', 'Successfully Updated Quantity');
+    }
     
     public function filterByPrice(Request $request)
     {    

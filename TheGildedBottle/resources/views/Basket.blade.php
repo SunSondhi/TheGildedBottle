@@ -35,9 +35,22 @@
                         <td>£{{ $us->price }}</td>
                         <td>
                             <div class="d-flex align-items-center">
-                                <button type="button" class="btn btn-sm btn-secondary border" onclick="updateQuantity('<?php echo $us->id; ?>', -1);">-</button>
-                                <span class="mx-2">{{ $us->quantity }}</span>
-                                <button type="button" class="btn btn-sm btn-secondary border" onclick="updateQuantity('<?php echo $us->id; ?>', 1)">+</button>
+                            <form action="{{ route('products.update.quantity') }}" method="GET">
+                                <select id="qty-select" name="qty">
+                                    <option value="" selected disabled hidden>{{ $us->quantity }}</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                </select>
+                                <button type="submit">Submit</button>
+                                <input type='hidden' name='pid' value="{{ $us->id }}"></input>
+                            </form>
                             </div>
                         </td>
                         <td>£{{ $us->price * $us->quantity }}</td>
