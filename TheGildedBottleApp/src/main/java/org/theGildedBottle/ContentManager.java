@@ -1,4 +1,5 @@
 package org.theGildedBottle;
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 import java.awt.*;
@@ -23,8 +24,10 @@ public class ContentManager implements ActionListener {
         String command = e.getActionCommand();
         if (command.equals("Login")) {
             // Authenticate, if authenticated then swap to Product panel, pass on user instance maybe?
+
             window.setContentPane(new ProductPage(this).productsPanel);
             window.revalidate();
+
         }
         if (command.equals("Logout")) {
             window.setContentPane(new LoginPage(this).loginPage);
