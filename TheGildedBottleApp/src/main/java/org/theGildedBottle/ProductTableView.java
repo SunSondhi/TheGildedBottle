@@ -6,9 +6,9 @@ import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 
 public class ProductTableView {
-    private JTable table1;
+    protected JTable table1;
     protected JPanel ProductTableView;
-    private JButton goHomepageButton;
+    protected JButton goHomepageButton;
 
     private Statement stmt;
 
@@ -17,7 +17,7 @@ public class ProductTableView {
 
 
         try{
-            String[] columnNames = {"ID", "Name", "Price", "Quantity"};
+            String[] columnNames = {"ID", "Name", "Price", "Stock"};
             DefaultTableModel model = new DefaultTableModel(columnNames, 0);
             Connection con = DbCon.getConnection();
             // load data from the ResultSet into the model
@@ -28,8 +28,8 @@ public class ProductTableView {
                 int id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
                 double price = resultSet.getDouble("price");
-                int quantity = resultSet.getInt("quantity");
-                Object[] row = {id, name, price, quantity};
+                int stock = resultSet.getInt("stock");
+                Object[] row = {id, name, price, stock};
                 model.addRow(row);
             }
             table1.setModel(model);

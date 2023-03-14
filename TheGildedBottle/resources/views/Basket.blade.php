@@ -30,31 +30,11 @@
                             <div>
                                 <h5 class="fw-bold mb-0">{{ $us->name }}</h5>
                             </div>
-<<<<<<< HEAD
                         </div>
                     </td>
                     <td>£{{ $us->price }}</td>
                     <td>
                         <div class="d-flex align-items-center">
-                            <button type="button" class="btn btn-sm btn-secondary border" onclick="updateQuantity('<?php echo $us->id; ?>', -1);">-</button>
-                            <span class="mx-2">{{ $us->quantity }}</span>
-                            <button type="button" class="btn btn-sm btn-secondary border" onclick="updateQuantity('<?php echo $us->id; ?>', 1)">+</button>
-                        </div>
-                    </td>
-                    <td>£{{ $us->price * $us->quantity }}</td>
-                </tr>
-                <!-- Remove Modal -->
-                <div class="modal fade" id="removeModal{{ $us->id }}" tabindex="-1" aria-labelledby="removeModalLabel{{ $us->id }}" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="removeModalLabel{{ $us->id }}">Remove Product</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-=======
-                        </td>
-                        <td>£{{ $us->price }}</td>
-                        <td>
-                            <div class="d-flex align-items-center">
                             <form action="{{ route('products.update.quantity') }}" method="GET">
                                 <select id="qty-select" name="qty">
                                     <option value="" selected disabled hidden>{{ $us->quantity }}</option>
@@ -71,7 +51,17 @@
                                 <button type="submit">Submit</button>
                                 <input type='hidden' name='pid' value="{{ $us->id }}"></input>
                             </form>
->>>>>>> 693bc15d642977e8c56c2eb7d30ed1af9655fe3c
+                        </div>
+                    </td>
+                    <td>£{{ $us->price * $us->quantity }}</td>
+                </tr>
+                <!-- Remove Modal -->
+                <div class="modal fade" id="removeModal{{ $us->id }}" tabindex="-1" aria-labelledby="removeModalLabel{{ $us->id }}" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="removeModalLabel{{ $us->id }}">Remove Product</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 Are you sure you want to remove {{ $us->name }} from your basket?
@@ -112,7 +102,7 @@
                 window.location.reload();
             }
         };
-        xhr.open('POST', '{{ route('updateAmount', ['id' =>' +productId +']) }}' + change, true);
+        xhr.open('POST', '{{ route("products.update.quantity", ["bs_products" => "id"]) }}' + change, true);
         xhr.setRequestHeader('X-CSRF-TOKEN', token);
         xhr.send();
     }

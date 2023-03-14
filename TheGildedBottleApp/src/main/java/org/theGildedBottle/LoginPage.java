@@ -8,7 +8,7 @@ import java.sql.*;
 public class LoginPage {
     private JTextField emailField;
     private JPasswordField passwordField;
-    private JButton loginButton;
+    public JButton loginButton;
     private JLabel emailLabel;
     private JLabel passwordLabel;
     public JPanel loginPage;
@@ -18,7 +18,7 @@ public class LoginPage {
 
     public LoginPage(ContentManager cM) {
 
-        loginPage.setBackground(ContentManager.BACKGROUND_COLOUR);
+
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

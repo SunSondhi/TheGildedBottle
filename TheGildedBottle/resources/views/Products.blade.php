@@ -62,7 +62,7 @@
                     <h4 class="card-title">{{ $product->name }}</h4>
                     <p class="card-text"><strong>Price: </strong> £{{ $product->price }}</p>
                     @if (Auth::check() && in_array(Auth::user()->role, ['1', '2']))
-                    <p class="card-text"><strong>Quantity: </strong> {{ $product->quantity }}</p>
+                    <p class="card-text"><strong>Stock: </strong> {{ $product->stock }}</p>
                     @endif
                     <form action="{{ route('add_to_basket', ['id' => $product->id]) }}" method="POST">
                         <input type="hidden" name="name" value="{{$product->name}}">

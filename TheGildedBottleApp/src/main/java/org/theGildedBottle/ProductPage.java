@@ -27,7 +27,7 @@ public class ProductPage {
     private JLabel flavourLabel;
     private JTextField imageField;
     private JLabel imageLabel;
-    private JButton addProductButton;
+    JButton addProductButton;
     private JButton clearButton;
     private JLabel nameLabel;
     private JTextArea descriptionArea;
@@ -35,6 +35,7 @@ public class ProductPage {
     private JPanel p1;
     private JButton logoutButton;
     private JButton gotToHomepageButton;
+    private JTextField stockField;
 
     private Statement stmt;
     public DbCon Con =  new DbCon();
@@ -52,24 +53,26 @@ public class ProductPage {
             String name = nameField.getText();
             double price = Double.parseDouble(priceField.getText());
             int quantity = Integer.parseInt(quantityField.getText());
-            int percentage = Integer.parseInt(percentageField.getText());
+            float percentage = Integer.parseInt(percentageField.getText());
             String description = descriptionArea.getText();
             String productCAT = categoryField.getText();
             String type = typeField.getText();
             String flavour = flavourField.getText();
             String image = imageField.getText();
+            int stock = Integer.parseInt(stockField.getText());
             try {
-                String sql = "INSERT INTO products (name, price, quantity, percentage, description, productCat, type, flavour, image) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                String sql = "INSERT INTO products (name, price, quantity, percentage, description, productCat, type, flavour, image,stock) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
                 PreparedStatement statement = con.prepareStatement(sql);
                 statement.setString(1, name);
                 statement.setDouble(2, price);
                 statement.setInt(3, quantity);
-                statement.setInt(4, percentage);
+                statement.setInt(4, (int) percentage);
                 statement.setString(5, description);
                 statement.setString(6, productCAT);
                 statement.setString(7, type);
                 statement.setString(8, flavour);
                 statement.setString(9, image);
+                statement.setString(10, String.valueOf(stock));
                 statement.executeUpdate();
 
             } catch (SQLException ex) {

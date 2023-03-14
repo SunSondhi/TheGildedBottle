@@ -16,12 +16,12 @@
           <text value="Add Product"/>
         </properties>
       </component>
-      <component id="c584a" class="javax.swing.JButton" binding="deleteProductButton">
+      <component id="c584a" class="javax.swing.JButton" binding="UpdateStockButton">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Delete Product"/>
+          <text value="Update Stocks Level"/>
         </properties>
       </component>
       <component id="dd30a" class="javax.swing.JButton" binding="tableviewbutton">

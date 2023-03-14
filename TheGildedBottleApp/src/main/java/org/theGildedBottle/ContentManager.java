@@ -25,7 +25,6 @@ public class ContentManager implements ActionListener {
         String command = e.getActionCommand();
         if (command.equals("ProductsPage")) {
             // Authenticate, if authenticated then swap to Product panel, pass on user instance maybe?
-
             window.setContentPane(new ProductPage(this).productsPanel);
             window.revalidate();
 
@@ -48,6 +47,11 @@ public class ContentManager implements ActionListener {
 
         if(command.equals("PurchasesList")){
             window.setContentPane(new PurchasesTableView(this).PurchasesTableView);
+            window.revalidate();
+        }
+
+        if(command.equals("UpdateStock")){
+            window.setContentPane(new UpdateStockView(this).UpdateStockview);
             window.revalidate();
         }
     }
