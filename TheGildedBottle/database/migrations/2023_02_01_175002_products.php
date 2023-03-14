@@ -25,7 +25,7 @@ return new class extends Migration
             $table->enum('productCat',['Rum', 'Whiskey', 'Gin', 'Brandy','Vodka','Wines']);
             $table->string('flavour');
             $table->integer('percentage');
-            $table->integer('stock')->nullable();
+            $table->integer('stock');
             $table->timestamps();
         });
     }
