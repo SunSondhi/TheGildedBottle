@@ -36,7 +36,7 @@
                     <td>
                         <div class="d-flex align-items-center">
                             <form action="{{ route('products.update.quantity') }}" method="GET">
-                                <select id="qty-select" name="qty">
+                                <select id="qty-select" name="qty" onchange="this.form.submit()">
                                     <option value="" selected disabled hidden>{{ $us->quantity }}</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -48,7 +48,6 @@
                                     <option value="8">8</option>
                                     <option value="9">9</option>
                                 </select>
-                                <button type="submit">Submit</button>
                                 <input type='hidden' name='pid' value="{{ $us->id }}"></input>
                             </form>
                         </div>
@@ -92,20 +91,5 @@
     </div>
     @endif
 </div>
-
-<script>
-    function updateQuantity(productId, change) {
-        const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-        const xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                window.location.reload();
-            }
-        };
-        xhr.open('POST', '{{ route("products.update.quantity", ["bs_products" => "id"]) }}' + change, true);
-        xhr.setRequestHeader('X-CSRF-TOKEN', token);
-        xhr.send();
-    }
-</script>
 
 @include('layouts/footer')

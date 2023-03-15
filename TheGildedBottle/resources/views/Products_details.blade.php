@@ -11,11 +11,29 @@
         <div class="col-md-6">
             <p>{{ $product->description }}</p>
             <p class="h2">£{{ $product->price }}</p>
+            <?php
+            if ($product->stock >= 5) { ?>
+                <p class="card-text"><strong>Stock: </strong> {{ $product->stock }}</p>
+            <?php
+            } elseif ($product->stock < 5 && $product->stock > 0) { ?>
+                <div class="alert alert-warning" role="alert">
+                    <p class="card-text"><strong>Stock: </strong> {{ $product->stock }} </p>
+                </div>
+            <?php
+            } else { ?>
+                <div class="alert alert-danger" role="alert">
+                    <p class="card-text"><strong>Stock: </strong> {{ $product->stock }} Out of stock</p>
+                </div>
+            <?php
+            }
+            ?>
             <form action="{{$product->id}}" method="POST" class="my-5">
                 @csrf
                 <input type="hidden" name="name" value="{{$product->name}}">
                 <input type="hidden" name="price" value="{{$product->price}}">
                 <input type="hidden" name="image" value="{{$product->image}}">
+
+                @if($product->stock >= 5)
                 <div class="form-group">
                     <label for="quantity" class="h4">Please Select Amount:</label>
                     <select class="form-control input_num" name="quantity" id="quantity">
@@ -31,7 +49,10 @@
                         <option>10</option>
                     </select>
                 </div>
-                <button type="submit" class="btn btn-primary">Add to Basket</button>
+                <button type="submit" class="btn btn-primary btn-sm mt-2">Add to Basket</button>
+                @else
+                <button type="submit" class="disabled btn btn-primary btn-sm mt-2">Add to Basket</button>
+                @endif
             </form>
         </div>
     </div>

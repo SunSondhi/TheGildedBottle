@@ -47,9 +47,9 @@
 
 </div>
 <form method="get">
-                <input type="text" class="form-control" name="search_entry" id="search_entry" placeholder="Search..." >
-                <button>search</button>
-            </form>
+    <input type="text" class="form-control" name="search_entry" id="search_entry" placeholder="Search...">
+    <button>search</button>
+</form>
 <div class="container">
     <div class="row">
         @if (count($products) > 0)
@@ -61,14 +61,33 @@
                 <div class="card-body">
                     <h4 class="card-title">{{ $product->name }}</h4>
                     <p class="card-text"><strong>Price: </strong> £{{ $product->price }}</p>
-                   
-                    <p class="card-text"><strong>Stock: </strong> {{ $product->stock }}</p>
+                    <?php
+                    if ($product->stock >= 5) { ?>
+                        <p class="card-text"><strong>Stock: </strong> {{ $product->stock }}</p>
+                    <?php
+                    } elseif ($product->stock < 5 && $product->stock > 0) { ?>
+                        <div class="alert alert-warning" role="alert">
+                            <p class="card-text"><strong>Stock: </strong> {{ $product->stock }} </p>
+                        </div>
+                    <?php
+                    } else { ?>
+                        <div class="alert alert-danger" role="alert">
+                            <p class="card-text"><strong>Stock: </strong> {{ $product->stock }} Out of stock</p>
+                        </div>
+                    <?php
+                    }
+                    ?>
+
                     <form action="{{ route('add_to_basket', ['id' => $product->id]) }}" method="POST">
                         <input type="hidden" name="name" value="{{$product->name}}">
                         <input type="hidden" name="price" value="{{$product->price}}">
                         <input type="hidden" name="image" value="{{$product->image}}">
                         <input type="hidden" name="quantity" value=1>
+                        @if($product->stock >= 5)
                         <button type="submit" class="btn btn-primary btn-sm mt-2">Add to Basket</button>
+                        @else
+                        <button type="submit" class="disabled btn btn-primary btn-sm mt-2">Add to Basket</button>
+                        @endif
                         @csrf
                     </form>
                 </div>

@@ -32,7 +32,7 @@ public class PurchasesTableView {
                 Object[] row = {id, name,user_id, price, quantity};
                 model.addRow(row);
             }
-            table1.setModel(model);
+            this.table1.setModel(model);
 
         }catch(SQLException E){
             E.printStackTrace();

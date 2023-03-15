@@ -33,8 +33,8 @@ public class ProductPage {
     private JTextArea descriptionArea;
     private JLabel descriptionLabel;
     private JPanel p1;
-    private JButton logoutButton;
-    private JButton gotToHomepageButton;
+    JButton logoutButton;
+    JButton gotToHomepageButton;
     private JTextField stockField;
 
     private Statement stmt;
@@ -84,7 +84,7 @@ public class ProductPage {
 
 
 
-    clearButton.addActionListener(new ActionListener() {
+    this.clearButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
             nameField.setText("");
@@ -98,11 +98,11 @@ public class ProductPage {
             descriptionArea.setText("");
         }
     });
-    logoutButton.addActionListener(cM);
-    logoutButton.setActionCommand("Logout");
+    this.logoutButton.addActionListener(cM);
+    this.logoutButton.setActionCommand("Logout");
 
-        gotToHomepageButton.addActionListener(cM);
-        gotToHomepageButton.setActionCommand("Homepage");
+        this.gotToHomepageButton.addActionListener(cM);
+        this.gotToHomepageButton.setActionCommand("Homepage");
 
     }
 }

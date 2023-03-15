@@ -43,7 +43,8 @@
           </grid>
         </constraints>
         <properties>
-          <text value="Login"/>
+          <actionCommand value="Homepage"/>
+          <text value="&amp;Login"/>
         </properties>
       </component>
       <vspacer id="ebec0">
@@ -78,4 +79,7 @@
       </component>
     </children>
   </grid>
+  <inspectionSuppressions>
+    <suppress inspection="I18nForm"/>
+  </inspectionSuppressions>
 </form>

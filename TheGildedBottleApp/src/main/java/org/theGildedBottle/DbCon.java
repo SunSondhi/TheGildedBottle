@@ -1,109 +1,47 @@
 package org.theGildedBottle;
 
+import com.jcraft.jsch.JSch;
+import com.jcraft.jsch.JSchException;
+import com.jcraft.jsch.Session;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Scanner;
-
 
 public class DbCon {
 
-    public static String queryInput;
-
-    protected static Connection con;
-
-
+    protected static Connection con=null;
+    static Session session = null;
 
     public static Connection getConnection() {
         // Connect to database if not already connected
-        if (con == null) {
+        try {
+            session = new JSch().getSession("u-210097072", "cs2410-web01pvm.aston.ac.uk", 22);
+            session.setPassword("xJC9YOv8bHrTadNW");
+            session.setConfig("StrictHostKeyChecking", "no");
+            session.connect();
+
+            // Forward local port to the database server
+            int assignedPort = session.setPortForwardingL(3307, "localhost", 3306);
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 con = DriverManager.getConnection(
-                        "jdbc:mysql://localhost:3306/thegildedbottle",
-                        "root",
-                        ""
+                        "jdbc:mysql://localhost:" + assignedPort + "/u_210097072_thegildedbottle",
+                        "u-210097072",
+                        "fUrtsPkGskwLxRU"
                 );
-            } catch (Exception e) {
-                e.printStackTrace();
+
+            }catch (SQLException  E){
+                E.printStackTrace();
             }
+
+            System.out.println(session.isConnected());
+
+
+        } catch (JSchException | ClassNotFoundException e) {
+            e.printStackTrace();
         }
-        // Return connection object
         return con;
     }
-
-
-
-    public void setQueryInput(){
-        //input from user for query
-        Scanner myObj = new Scanner(System.in);
-
-
-        // Enter query and press Enter
-        System.out.println("Enter query");
-        queryInput = myObj.nextLine();
-    }
-
-
-
-
-    public static void main(String[] args) throws SQLException {
-        String userName = "root"; //username of the database
-        String password = ""; //password of the database
-        String url = "jdbc:mysql://localhost:3306/thegildedbottle"; //the url of the database
-
-
-
-
-
-        String query = queryInput; // simple query
-
-//        this try catches if there is no driver meaning no connections
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-//      this is for sql connections
-        try {
-
-            Connection conn = DriverManager.getConnection(url, userName, password); //connecting
-
-            Statement statement = conn.createStatement(); //creating a statement
-
-            //when using statement.execute query we only retrieve results
-//            ResultSet result = statement.executeQuery(query); //execute the query and deliver as result
-//
-//            while (result.next()) {
-//                ArrayList<String> data = new ArrayList<String>();
-//                for (int i = 1; i < 8; i++) {
-//                    data.add(result.getString(i));
-//                }
-//                System.out.println(data);
-//            }
-//
-
-            DbCon c = new DbCon();
-            c.setQueryInput();
-            //here instead is when we want to UPDATE, INSERT and DELETE, but they way i did it is to insert from terminal
-            int result = statement.executeUpdate(queryInput);
-
-            if (result > 0)
-                System.out.println("successfully inserted");
-
-            else
-                System.out.println(
-                        "unsucessful insertion ");
-
-            conn.close(); //always close the connection to the DB
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-
-    }
-
 
 }

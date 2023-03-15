@@ -46,7 +46,7 @@ public class UpdateStockView {
         }
 
 
-        decrease.addActionListener(new ActionListener() {
+        this.decrease.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -80,7 +80,7 @@ public class UpdateStockView {
         });
 
 
-        increase.addActionListener(new ActionListener() {
+        this.increase.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
