@@ -30,24 +30,24 @@ Route::get('/restricted/{age}', function ($age) {
 })->name('restricted.age');
 
 // products page route
-Route::get('/products',[App\Http\Controllers\ProductController::class, 'productList'], function () {
+Route::get('/products', [App\Http\Controllers\ProductController::class, 'productList'], function () {
     return view("Products");
 })->name('Products');
 
 //Product details and add to basket prepopulated form
 Route::get(
     '/Product_details/{id}',
-    [App\Http\Controllers\productController::class, 'Product_details'],
+    [App\Http\Controllers\ProductController::class, 'Product_details'],
     function () {
         return view("Product_details");
     }
 );
 
-Route::post('/Product_details/{id}', [App\Http\Controllers\productController::class, 'add_to_basket'], function () {
+Route::post('/Product_details/{id}', [App\Http\Controllers\ProductController::class, 'add_to_basket'], function () {
     return view("Product_details");
 });
 
-Route::post('/products/{id}', [App\Http\Controllers\productController::class, 'add_to_basket'], function () {
+Route::post('/products/{id}', [App\Http\Controllers\ProductController::class, 'add_to_basket'], function () {
     return view("Products");
 })->name('add_to_basket');
 
@@ -64,7 +64,7 @@ Route::post('/basket/{id}', [App\Http\Controllers\BasketsController::class, 'rem
 Route::get('/purchases', [App\Http\Controllers\PurchasesController::class, 'List'], function () {
     return view("Purchases");
 })->name('Purchases');
-Route::post('/basket', [App\Http\Controllers\BasketsController::class, 'buy_all'], function(){
+Route::post('/basket', [App\Http\Controllers\BasketsController::class, 'buy_all'], function () {
     return view("basket");
 })->name('Basket');
 
@@ -87,7 +87,7 @@ Route::get('/aboutus', function () {
 // Basket page route
 
 // Contact us page route
-Route::get('/contacus', [App\Http\Controllers\contactUsController::class, 'showForm'],function () {
+Route::get('/contacus', [App\Http\Controllers\contactUsController::class, 'showForm'], function () {
     return view("Contactus");
 })->name('Contactus');
 Route::post('/contacus', [App\Http\Controllers\contactUsController::class, 'sendForm'], function () {
@@ -101,7 +101,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 // admin routes 
-Route::prefix('admin')->middleware(['auth', 'AdminSystem'])->group(function (){
+Route::prefix('admin')->middleware(['auth', 'AdminSystem'])->group(function () {
 
     Route::get('/adminhome', [App\Http\Controllers\HomeController::class, 'adminhome'])->name('admin.adminhome');
     Route::get('/adminhome', [App\Http\Controllers\Controller::class, 'search'])->name('admin.adminhome');

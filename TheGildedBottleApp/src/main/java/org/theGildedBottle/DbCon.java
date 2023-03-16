@@ -22,7 +22,7 @@ public class DbCon {
             session.connect();
 
             // Forward local port to the database server
-            int assignedPort = session.setPortForwardingL(3307, "localhost", 3306);
+            int assignedPort = session.setPortForwardingL(0, "localhost", 3306);
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 con = DriverManager.getConnection(

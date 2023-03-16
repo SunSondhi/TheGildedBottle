@@ -13,7 +13,7 @@ class productController extends Controller
     public function productList(Request $request)
     {
         $products = Product::all();
-        return view('products', compact('products'));
+        return view('Products', compact('products'));
     }
 
     public function filterByCategory($category)
@@ -21,7 +21,7 @@ class productController extends Controller
 
         $products = Product::query()->where('productCat', $category)->get();
         
-        return view('products', compact('products'));
+        return view('Products', compact('products'));
     }
     // http://localhost/TheGildedBottle/TheGildedBottle/public/products/update/quantity?pid=3&qty=4
     public function updateQuantity(Request $request)
@@ -46,7 +46,7 @@ class productController extends Controller
         $minPrice = $request->input('min_price', 0); 
         $maxPrice = $request->input('max_price', 50);
         $products = Product::whereBetween('price', [$minPrice, $maxPrice])->get();
-        return view('products', compact('products'));
+        return view('Products', compact('products'));
     }
     
     function product_details($id){
@@ -61,7 +61,7 @@ class productController extends Controller
         }else{
             $products = Product::all();
         }
-        return view('products', compact('products'));
+        return view('Products', compact('products'));
     }
 
     function add_to_basket()
