@@ -147,6 +147,7 @@ class productController extends Controller
         $newProduct->type = $r->type;
         $newProduct->productCat = $r->productCat;
         $newProduct->flavour = $r->flavour;
+        $newProduct->stock = $r->stock;
         $newProduct->percentage = $r->percentage;
         $newProduct->save();
         return redirect()->route('admin.adminhome');

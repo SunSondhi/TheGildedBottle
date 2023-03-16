@@ -77,6 +77,15 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="description">Stock:</label>
+                            <input id="stock" type="text" class="form-control @error('type') is-invalid @enderror" name="stock" value="{{ old('stock') }}" required>
+                            @error('type')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
                             <label for="description">Description</label>
                             <textarea id="description" class="form-control @error('type') is-invalid @enderror" name="description" value="{{ old('description') }}" required></textarea>
                             @error('type')

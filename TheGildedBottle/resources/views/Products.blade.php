@@ -57,7 +57,7 @@
         <div class="col-md-4">
             <div class="card-deck">
                 <a href="{{url('Product_details')}}/{{($product->id)}}">
-                    <img src="{{ url($product->image) }}" alt="{{ $product->name }}" class="card-img-top"></a>
+                    <img src="{{ url($product->image) }}" alt="{{ $product->name }}" class="card-img-top" style="width: auto;height:300px;"></a>
                 <div class="card-body">
                     <h4 class="card-title">{{ $product->name }}</h4>
                     <p class="card-text"><strong>Price: </strong> £{{ $product->price }}</p>
