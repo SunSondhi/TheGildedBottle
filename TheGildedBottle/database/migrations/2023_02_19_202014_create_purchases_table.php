@@ -20,6 +20,7 @@ return new class extends Migration
             $table->double('price');
             $table->string('image');
             $table->integer('quantity');
+            $table->boolean('in_progress')->default(False);
             $table->timestamps();
         });
     }
