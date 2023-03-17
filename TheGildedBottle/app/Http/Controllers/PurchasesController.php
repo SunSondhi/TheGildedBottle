@@ -14,7 +14,7 @@ class PurchasesController extends Controller
             $user = Auth::id();
 
             //write a query to filter
-            $purchases = DB::table('purchases')->where('user_id', $user)->orWhere('in_progress', False)->get();
+            $purchases = DB::table('purchases')->where('user_id', $user)->get();
 
             if ($purchases->isEmpty()) {
                 return redirect()->back()->with('message', "No Data Found");
