@@ -13,5 +13,6 @@ class Purchases extends Model
         'price',
         'user',
         'image',
-        'quantity'];
+        'quantity',
+        'in_progress'];
 }
