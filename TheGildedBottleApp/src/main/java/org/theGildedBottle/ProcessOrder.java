@@ -19,7 +19,6 @@ public class ProcessOrder {
     private JButton cancelButton;
     private JButton processButton;
 
-    private int orderID;
 
     public ProcessOrder(ContentManager cM){
         refreshTable();
@@ -27,12 +26,17 @@ public class ProcessOrder {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
+                    String orderID = String.valueOf(orderSelect.getSelectedItem());
                     Connection con = DbCon.getConnection();
-                    String sql = "UPDATE purchases SET in_progress = 2 WHERE id = ?";
-                    PreparedStatement stmt = con.prepareStatement(sql);
-                    stmt.setInt(1, orderID);
-
+                    PreparedStatement stmt = con.prepareStatement("UPDATE purchases SET in_progress = 2 WHERE id = ?");
+                    stmt.setInt(1, Integer.parseInt(orderID));
                     stmt.executeUpdate();
+
+                    int newStock = getStock(Integer.parseInt(orderID));
+                    String name = getOrder(Integer.parseInt(orderID));
+                    PreparedStatement stmt2 = con.prepareStatement("UPDATE products SET stock = stock+" + newStock + " WHERE name = ?");
+                    stmt2.setString(1, name);
+                    stmt2.executeUpdate();
                     refreshTable();
 
                 }catch (SQLException ex) {
@@ -45,10 +49,21 @@ public class ProcessOrder {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
+                    String orderID = String.valueOf(orderSelect.getSelectedItem());
                     Connection con = DbCon.getConnection();
                     String sql = "UPDATE purchases SET in_progress = 1 WHERE id = ?";
                     PreparedStatement stmt = con.prepareStatement(sql);
-                    stmt.setInt(1, orderID);
+
+                    int State = getOrderState(Integer.parseInt(orderID));
+                    int newStock = getStock(Integer.parseInt(orderID));
+                    String name = getOrder(Integer.parseInt(orderID));
+                    if (State == 2){
+                        PreparedStatement stmt2 = con.prepareStatement("UPDATE products SET stock = stock-" + newStock + " WHERE name = ?");
+                        stmt2.setString(1, name);
+                        stmt2.executeUpdate();
+                    }
+
+                    stmt.setInt(1,Integer.parseInt(orderID));
                     stmt.executeUpdate();
                     refreshTable();
                 }catch (SQLException ex) {
@@ -75,7 +90,6 @@ public class ProcessOrder {
             while (resultSet.next()) {
                 System.out.println(resultSet);
                 int id = resultSet.getInt("id");
-                orderID = id;
                 String name = resultSet.getString("name");
                 double price = resultSet.getDouble("price");
                 int user = resultSet.getInt("user_id");
@@ -105,4 +119,62 @@ public class ProcessOrder {
     }
 
 
-}
+    public int getStock(int orderID){
+        try{
+            Connection con = DbCon.getConnection();
+            PreparedStatement stmt = con.prepareStatement("SELECT * FROM purchases");
+            ResultSet resultSet = stmt.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                if (orderID == id){
+                    int quantity = resultSet.getInt("quantity");
+                    return quantity;
+                }
+
+            }
+            return 0;
+        }catch(SQLException E){
+            E.printStackTrace();
+        }
+        return 0;
+    };
+    public String getOrder(int orderID){
+        try{
+            Connection con = DbCon.getConnection();
+            PreparedStatement stmt = con.prepareStatement("SELECT * FROM purchases");
+            ResultSet resultSet = stmt.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                if (orderID == id){
+                    return resultSet.getString("name");
+                }
+
+            }
+            return "NONE";
+        }catch(SQLException E){
+            E.printStackTrace();
+        }
+        return "NONE";
+    };
+
+    public int getOrderState(int orderID){
+        try{
+            Connection con = DbCon.getConnection();
+            PreparedStatement stmt = con.prepareStatement("SELECT * FROM purchases");
+            ResultSet resultSet = stmt.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                if (orderID == id){
+                    return resultSet.getInt("in_progress");
+                }
+
+            }
+            return 0;
+        }catch(SQLException E){
+            E.printStackTrace();
+        }
+        return 0;
+    }
+};
+
+
