@@ -9,6 +9,8 @@ public class HomePage {
     JButton TableViewButton;
     JButton viewPurchasesButton;
 
+    JButton processOrdersButton;
+
 
     public HomePage(ContentManager cM) {
 //go to add product page
@@ -23,5 +25,8 @@ public class HomePage {
 //        go to purchases table
         this.viewPurchasesButton.addActionListener(cM);
         this.viewPurchasesButton.setActionCommand("PurchasesList");
+
+        this.processOrdersButton.addActionListener(cM);
+        this.processOrdersButton.setActionCommand("ProcessOrder");
     }
 }

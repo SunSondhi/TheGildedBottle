@@ -54,5 +54,10 @@ public class ContentManager implements ActionListener {
             window.setContentPane(new UpdateStockView(this).UpdateStockview);
             window.revalidate();
         }
+
+        if(command.equals("ProcessOrder")){
+            window.setContentPane(new ProcessOrder(this).ProcessOrder);
+            window.revalidate();
+        }
     }
 }
