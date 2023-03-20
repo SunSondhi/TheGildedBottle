@@ -2,16 +2,24 @@
 @include('layouts/head')
 @include('layouts/nav')
 
-<div class="main-content">
+<h1>List of all products</h1>
 
-    <h1>List of all products</h1>
-
+<div class="">
     <h3 class="mb-4">Product Category</h3>
-    <div class="d-flex flex-wrap">
-        <form action="{{ route('products.filter.category', ['productCat' => 'Rum']) }}" method="get" class="mr-3 mb-3">
+
+
+</div>
+
+
+
+
+<div class="sidebar" style="">
+    <div class="container">
+        <h3 class="mb-4">Product Category</h3>
+        <form action="{{ route('products.filter.category', ['productCat' => 'Rum']) }}" method="get">
             <button type="submit" class="btn btn-primary">Rum</button>
         </form>
-        <form action="{{ route('products.filter.category', ['productCat' => 'Whiskey']) }}" method="get" class="mr-3 mb-3">
+        <form action="{{ route('products.filter.category', ['productCat' => 'Whiskey']) }}" method="get" >
             <button type="submit" class="btn btn-primary">Whiskey</button>
         </form>
         <form action="{{ route('products.filter.category', ['productCat' => 'Vodka']) }}" method="get" class="mr-3 mb-3">
@@ -29,27 +37,32 @@
         <form action="{{ route('products.filter.category', ['productCat' => 'Brandy']) }}" method="get" class="mr-3 mb-3">
             <button type="submit" class="btn btn-primary">Brandy</button>
         </form>
-    </div>
-    <div class="filter-form mt-4">
-        <form action="{{ route('products.filter.price') }}" method="get" class="form-inline">
-            <div class="form-group mr-3">
-                <label for="min_price" class="mr-2">Minimum price:</label>
-                <input type="number" class="form-control" name="min_price" id="min_price">
-            </div>
-            <div class="form-group mr-3">
-                <label for="max_price" class="mr-2">Maximum price:</label>
-                <input type="number" class="form-control" name="max_price" id="max_price">
-            </div>
-            <button type="submit" class="btn btn-primary">Filter</button>
+        <div class="filter-form mt-4">
+            <form action="{{ route('products.filter.price') }}" method="get" class="form-inline">
+                <div class="form-group mr-3">
+                    <label for="min_price" class="mr-2">Minimum price:</label>
+                    <input type="number" class="form-control" name="min_price" id="min_price">
+                </div>
+                <div class="form-group mr-3">
+                    <label for="max_price" class="mr-2">Maximum price:</label>
+                    <input type="number" class="form-control" name="max_price" id="max_price">
+                </div>
+                <button type="submit" class="btn btn-primary">Filter</button>
+            </form>
+        </div>
+
+        <form method="get">
+            <input type="text" class="form-control" name="search_entry" id="search_entry" placeholder="Search...">
+            <button>search</button>
         </form>
+
     </div>
-
-
 </div>
-<form method="get">
-    <input type="text" class="form-control" name="search_entry" id="search_entry" placeholder="Search...">
-    <button>search</button>
-</form>
+
+
+
+
+
 <div class="container">
     <div class="row">
         @if (count($products) > 0)
