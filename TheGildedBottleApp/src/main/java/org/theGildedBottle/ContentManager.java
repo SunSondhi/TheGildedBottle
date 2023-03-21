@@ -1,11 +1,13 @@
 package org.theGildedBottle;
 
+import com.itextpdf.text.DocumentException;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 
 public class ContentManager implements ActionListener {
     JFrame window;
@@ -58,6 +60,12 @@ public class ContentManager implements ActionListener {
         if(command.equals("ProcessOrder")){
             window.setContentPane(new ProcessOrder(this).ProcessOrder);
             window.revalidate();
+        }
+
+        if(command.equals("PDF")) {
+            try {
+                new ReportGenerator();
+            } catch (FileNotFoundException | DocumentException ex) {throw new RuntimeException();}
         }
     }
 }
