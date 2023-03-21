@@ -50,8 +50,12 @@
                         </form>
                     </div>
 
+<<<<<<< HEAD
                     <form method="get">
                         <h5>Search By Name</h5>
+=======
+                    <form method="get" action="{{route('products')}}">
+>>>>>>> a6f5e2437df5cdd6b13a3570b2df586495d450b9
                         <input type="text" class="form-control" name="search_entry" id="search_entry" placeholder="Search...">
                         <button type="submit" class="btn btn-success">search</button>
                     </form>
