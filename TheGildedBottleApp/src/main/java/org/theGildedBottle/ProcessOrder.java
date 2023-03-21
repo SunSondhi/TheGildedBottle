@@ -60,6 +60,7 @@ public class ProcessOrder {
                     if (State == 2){
                         PreparedStatement stmt2 = con.prepareStatement("UPDATE products SET stock = stock-" + newStock + " WHERE name = ?");
                         stmt2.setString(1, name);
+
                         stmt2.executeUpdate();
                     }
 
