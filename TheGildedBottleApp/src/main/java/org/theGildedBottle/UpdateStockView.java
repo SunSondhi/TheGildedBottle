@@ -22,7 +22,6 @@ public class UpdateStockView {
     JButton goToHomepageButton;
 
     private JLabel stockLabel;
-    private String name;
     private Statement stmt;
 
     public UpdateStockView(ContentManager cM) {
@@ -36,7 +35,7 @@ public class UpdateStockView {
             PreparedStatement stmt = con.prepareStatement(sql);
             ResultSet resultSet = stmt.executeQuery();
             while (resultSet.next()) {
-                name = resultSet.getString("name");
+                String name = resultSet.getString("name");
                 chooseName.addItem(name);
                 int stockLevel = resultSet.getInt("stock");
                 stockLabel.setText(String.valueOf(stockLevel));
@@ -44,12 +43,21 @@ public class UpdateStockView {
         }catch (SQLException E){
             E.printStackTrace();
         }
+        setStock();
 
+        chooseName.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setStock();
 
-        this.decrease.addActionListener(new ActionListener() {
+            }
+        });
+
+        decrease.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
+                    String name = String.valueOf(chooseName.getSelectedItem());
                     Connection con = DbCon.getConnection();
                     String sql = "UPDATE products SET stock = stock-1 WHERE name = ?";
                     PreparedStatement stmt = con.prepareStatement(sql);
@@ -80,10 +88,11 @@ public class UpdateStockView {
         });
 
 
-        this.increase.addActionListener(new ActionListener() {
+        increase.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
+                    String name = String.valueOf(chooseName.getSelectedItem());
                     Connection con = DbCon.getConnection();
                     String sql = "UPDATE products SET stock = stock+1 WHERE name = ?";
                     PreparedStatement stmt = con.prepareStatement(sql);
@@ -98,6 +107,7 @@ public class UpdateStockView {
                     int stockLevel = 0;
                     while (rs.next()) {
                         stockLevel = rs.getInt("stock");
+                        stockLabel.setText(String.valueOf(stockLevel));
                     }
                     if (stockLevel <= 5) {
                         // Show alert message and send email
@@ -113,7 +123,28 @@ public class UpdateStockView {
 
 
     }
+    public void setStock(){
+        try{
+            String x = String.valueOf(chooseName.getSelectedItem());
+            Connection con = DbCon.getConnection();
+            // load data from the ResultSet into the model
 
+            PreparedStatement stmt = con.prepareStatement("SELECT * FROM products");
+            ResultSet resultSet = stmt.executeQuery();
+            while (resultSet.next()) {
+
+                if (resultSet.getString("name").toString().contains(x.toString())){
+
+                    int stockLevel = resultSet.getInt("stock");
+                    System.out.println(x + resultSet.getString("name").toString() + " " + stockLevel);
+                    stockLabel.setText(String.valueOf(stockLevel));
+                }
+
+            }
+        }catch (SQLException E){
+            E.printStackTrace();
+        }
+    }
     private int getStockLevel(String itemName) throws SQLException {
         Connection con = DbCon.getConnection();
         String sql = "SELECT stock FROM products WHERE name = ?";
@@ -123,6 +154,7 @@ public class UpdateStockView {
         int stockLevel = 0;
         if (resultSet.next()) {
             stockLevel = resultSet.getInt("stock");
+            stockLabel.setText(String.valueOf(stockLevel));
         }
         return stockLevel;
     }
