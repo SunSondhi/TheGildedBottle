@@ -128,6 +128,7 @@
 
 <script>
     function openTab(evt, modeName) {
+
         // Declare all variables
         var i, tabcontent, tablinks;
 
@@ -146,5 +147,7 @@
         // Show the current tab and add an "active" class to the button that opened the tab
         document.getElementById(modeName).style.display = "block";
         evt.currentTarget.className += " active";
+
+        window.location.reload();
     }
 </script>
