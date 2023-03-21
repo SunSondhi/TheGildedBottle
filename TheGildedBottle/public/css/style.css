@@ -48,6 +48,7 @@ body {
     position:relative;
 }
 
+
 .container {
     padding: 20px;
 }
@@ -65,9 +66,6 @@ body {
     margin-right: 20px;
 }
 
-.btn-primary {
-    margin-right: 10px;
-}
 
 input[type="text"] {
     width: 100%;
@@ -86,34 +84,12 @@ input[type="text"] {
 
 /* login side */
 
-/* button */
-.btn {
-    --hover-shadows: 16px 16px 33px #121212,
-        -16px -16px 33px #303030;
-    --accent: goldenrod;
-    font-weight: bold;
-    letter-spacing: 0.1em;
-    border: none;
-    border-radius: 1.1em;
-    background-color: #212121;
-    color: white;
-    padding: 1em 2em;
-    transition: box-shadow ease-in-out 0.3s,
-        background-color ease-in-out 0.1s,
-        letter-spacing ease-in-out 0.1s,
-        transform ease-in-out 0.1s;
+/* start btns */
 
-}
-
-.btn:hover {
-    box-shadow: var(--hover-shadows);
-}
-
-.btn:active {
-    box-shadow: var(--hover-shadows),
-        var(--accent) 0px 0px 30px 5px;
-    background-color: var(--accent);
-    transform: scale(0.95);
+.btn-outline-dark{
+    background-color: #000;   
+    color:white;
+    width: 100%;
 }
 
 /* end button */

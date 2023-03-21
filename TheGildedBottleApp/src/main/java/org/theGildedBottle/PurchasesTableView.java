@@ -5,9 +5,9 @@ import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 
 public class PurchasesTableView {
-    private JTable table1;
-    protected JPanel PurchasesTableView;
-    private JButton goToHomepageButton;
+    JTable table1;
+    JPanel PurchasesTableView;
+    JButton goToHomepageButton;
 
 
 
@@ -32,7 +32,7 @@ public class PurchasesTableView {
                 Object[] row = {id, name,user_id, price, quantity};
                 model.addRow(row);
             }
-            this.table1.setModel(model);
+            table1.setModel(model);
 
         }catch(SQLException E){
             E.printStackTrace();

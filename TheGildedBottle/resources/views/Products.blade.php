@@ -2,35 +2,39 @@
 @include('layouts/head')
 @include('layouts/nav')
 
-<h3 class="mb-4">Product Category</h3>
+
 <div class="container" style="background-color:#F5F5F5;">
     <div class="row">
         <div class="col-md-4">
             <div class="sidebar">
                 <div class="container">
-                    <form action="{{ route('products.filter.category', ['productCat' => 'Rum']) }}" method="get">
-                        <button type="submit" class="btn btn-primary">Rum</button>
-                    </form>
-                    <form action="{{ route('products.filter.category', ['productCat' => 'Whiskey']) }}" method="get">
-                        <button type="submit" class="btn btn-primary">Whiskey</button>
-                    </form>
-                    <form action="{{ route('products.filter.category', ['productCat' => 'Vodka']) }}" method="get" class="mr-3 mb-3">
-                        <button type="submit" class="btn btn-primary">Vodka</button>
-                    </form>
-                    <form action="{{ route('products.filter.category', ['productCat' => 'Gin']) }}" method="get" class="mr-3 mb-3">
-                        <button type="submit" class="btn btn-primary">Gin</button>
-                    </form>
-                    <form action="{{ route('products.filter.category', ['productCat' => 'Beer']) }}" method="get" class="mr-3 mb-3">
-                        <button type="submit" class="btn btn-primary">Beer</button>
-                    </form>
-                    <form action="{{ route('products.filter.category', ['productCat' => 'Wines']) }}" method="get" class="mr-3 mb-3">
-                        <button type="submit" class="btn btn-primary">Wines</button>
-                    </form>
-                    <form action="{{ route('products.filter.category', ['productCat' => 'Brandy']) }}" method="get" class="mr-3 mb-3">
-                        <button type="submit" class="btn btn-primary">Brandy</button>
-                    </form>
+                    <h5>Search by Product Category</h5>
+                    <div class="row">
+                        <form action="{{ route('products.filter.category', ['productCat' => 'Rum']) }}" method="get">
+                            <button type="submit" class="btn btn-outline-dark">Rum</button>
+                        </form>
+                        <form action="{{ route('products.filter.category', ['productCat' => 'Whiskey']) }}" method="get">
+                            <button type="submit" class="btn btn-outline-dark">Whiskey</button>
+                        </form>
+                        <form action="{{ route('products.filter.category', ['productCat' => 'Vodka']) }}" method="get">
+                            <button type="submit" class="btn btn-outline-dark">Vodka</button>
+                        </form>
+                        <form action="{{ route('products.filter.category', ['productCat' => 'Gin']) }}" method="get">
+                            <button type="submit" class="btn btn-outline-dark">Gin</button>
+                        </form>
+                        <form action="{{ route('products.filter.category', ['productCat' => 'Beer']) }}" method="get">
+                            <button type="submit" class="btn btn-outline-dark">Beer</button>
+                        </form>
+                        <form action="{{ route('products.filter.category', ['productCat' => 'Wines']) }}" method="get">
+                            <button type="submit" class="btn btn-outline-dark">Wines</button>
+                        </form>
+                        <form action="{{ route('products.filter.category', ['productCat' => 'Brandy']) }}" method="get">
+                            <button type="submit" class="btn btn-outline-dark">Brandy</button>
+                        </form>
+                    </div>
 
                     <div class="filter-form mt-4">
+                        <h5>Search by Price range</h5>
                         <form action="{{ route('products.filter.price') }}" method="get" class="form-inline">
                             <div class="form-group mr-3">
                                 <label for="min_price" class="mr-2">Minimum price:</label>
@@ -40,13 +44,16 @@
                                 <label for="max_price" class="mr-2">Maximum price:</label>
                                 <input type="number" class="form-control" name="max_price" id="max_price">
                             </div>
-                            <button type="submit" class="btn btn-primary">Filter</button>
+                            <div class="form-group mr-3">
+                                <button type="submit" class="btn btn-secondary">Go</button>
+                            </div>
                         </form>
                     </div>
 
                     <form method="get">
+                        <h5>Search By Name</h5>
                         <input type="text" class="form-control" name="search_entry" id="search_entry" placeholder="Search...">
-                        <button type="submit" class="btn btn-primary">search</button>
+                        <button type="submit" class="btn btn-success">search</button>
                     </form>
                 </div>
             </div>
@@ -98,7 +105,10 @@
                 </div>
                 @endforeach
                 @else
-                <p>No products found.</p>
+                <div class="alert alert-warning" role="alert" style="width: 500px;">
+                    <h4>No products found.</h4>
+                </div>
+
                 @endif
             </div>
         </div>

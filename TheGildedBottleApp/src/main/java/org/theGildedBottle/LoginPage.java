@@ -15,8 +15,8 @@ public class LoginPage {
     private Statement stmt;
 
     public LoginPage(ContentManager cM) {
-        this.loginButton.addActionListener(cM);
-        this.loginButton.setActionCommand("Homepage");
+        loginButton.addActionListener(cM);
+        loginButton.setActionCommand("Homepage");
 
     }
 }

@@ -35,7 +35,7 @@ use Illuminate\Support\Facades\Auth;
                     <?php if (Auth::check() && Auth::user()->role == '1') { ?>
                         <a class="nav-link me-2" href="{{ route('admin.Products') }}">Products</a>
                     <?php } else { ?>
-                        <a class="nav-link me-2" href="{{ route('Products') }}">Products</a>
+                        <a class="nav-link me-2" href="{{ route('products') }}">Products</a>
                     <?php } ?>
                 </li>
                 <li class="nav-item">

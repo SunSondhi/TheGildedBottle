@@ -32,7 +32,7 @@ Route::get('/restricted/{age}', function ($age) {
 // products page route
 Route::get('/products', [App\Http\Controllers\ProductController::class, 'productList'], function () {
     return view("Products");
-})->name('Products');
+})->name('products');
 
 //Product details and add to basket prepopulated form
 Route::get(

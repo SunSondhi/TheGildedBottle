@@ -15,9 +15,9 @@ public class ProcessOrder {
     protected JPanel ProcessOrder;
     protected JTable table2;
     protected JButton goHomepageButton;
-    private JComboBox orderSelect;
-    private JButton cancelButton;
-    private JButton processButton;
+    JComboBox orderSelect;
+    JButton cancelButton;
+    JButton processButton;
 
 
     public ProcessOrder(ContentManager cM){
@@ -35,6 +35,7 @@ public class ProcessOrder {
                     int newStock = getStock(Integer.parseInt(orderID));
                     String name = getOrder(Integer.parseInt(orderID));
                     PreparedStatement stmt2 = con.prepareStatement("UPDATE products SET stock = stock+" + newStock + " WHERE name = ?");
+                    
                     stmt2.setString(1, name);
                     stmt2.executeUpdate();
                     refreshTable();

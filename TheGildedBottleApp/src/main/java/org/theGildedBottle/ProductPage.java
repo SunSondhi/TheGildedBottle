@@ -27,8 +27,8 @@ public class ProductPage {
     private JLabel flavourLabel;
     private JTextField imageField;
     private JLabel imageLabel;
-    JButton addProductButton;
-    private JButton clearButton;
+    public JButton addProductButton;
+    JButton clearButton;
     private JLabel nameLabel;
     private JTextArea descriptionArea;
     private JLabel descriptionLabel;

@@ -87,7 +87,7 @@
     </form>
     @else
     <div class="alert alert-info" role="alert">
-        There are currently no products in your basket. <a href="{{ route('Products') }}">Discover more here</a>.
+        There are currently no products in your basket. <a href="{{ route('products') }}">Discover more here</a>.
     </div>
     @endif
 </div>

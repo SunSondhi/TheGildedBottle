@@ -14,19 +14,19 @@ public class HomePage {
 
     public HomePage(ContentManager cM) {
 //go to add product page
-        this.addProductButton.addActionListener(cM);
-        this.addProductButton.setActionCommand("ProductsPage");
+        addProductButton.addActionListener(cM);
+        addProductButton.setActionCommand("ProductsPage");
 //        go to delete product page
-        this.UpdateStockButton.addActionListener(cM);
-        this.UpdateStockButton.setActionCommand("UpdateStock");
+        UpdateStockButton.addActionListener(cM);
+        UpdateStockButton.setActionCommand("UpdateStock");
 //        go to table view
-        this.TableViewButton.addActionListener(cM);
-        this.TableViewButton.setActionCommand("ProductList");
+        TableViewButton.addActionListener(cM);
+        TableViewButton.setActionCommand("ProductList");
 //        go to purchases table
-        this.viewPurchasesButton.addActionListener(cM);
-        this.viewPurchasesButton.setActionCommand("PurchasesList");
+        viewPurchasesButton.addActionListener(cM);
+        viewPurchasesButton.setActionCommand("PurchasesList");
 
-        this.processOrdersButton.addActionListener(cM);
-        this.processOrdersButton.setActionCommand("ProcessOrder");
+        processOrdersButton.addActionListener(cM);
+        processOrdersButton.setActionCommand("ProcessOrder");
     }
 }

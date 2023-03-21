@@ -19,7 +19,7 @@ public class UpdateStockView {
     JTextField currentStock;
     JButton decrease;
     JButton increase;
-    JButton goToHomepageButton;
+    public JButton goToHomepageButton;
 
     private JLabel stockLabel;
     private Statement stmt;

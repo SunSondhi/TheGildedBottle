@@ -6,9 +6,9 @@ import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 
 public class ProductTableView {
-    protected JTable table1;
-    protected JPanel ProductTableView;
-    protected JButton goHomepageButton;
+    JTable table1;
+    JPanel ProductTableView;
+    JButton goHomepageButton;
 
     private Statement stmt;
 
@@ -32,7 +32,7 @@ public class ProductTableView {
                 Object[] row = {id, name, price, stock};
                 model.addRow(row);
             }
-            this.table1.setModel(model);
+            table1.setModel(model);
 
         }catch(SQLException E){
             E.printStackTrace();

@@ -6,8 +6,6 @@
 
 <div class="container-fluid py-5">
     <div class="row">
-
-
         <!-- Main Content -->
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
             <div class="d-flex justify-content-between align-items-center py-4">
@@ -35,8 +33,12 @@
                 </table>
             </div>
         </main>
-
     </div>
+</div>
+
+
+<div class="container">
+    
 </div>
 
 @endsection
