@@ -44,7 +44,7 @@
                         </form>
                     </div>
 
-                    <form method="get">
+                    <form method="get" action="{{route('products')}}">
                         <input type="text" class="form-control" name="search_entry" id="search_entry" placeholder="Search...">
                         <button type="submit" class="btn btn-primary">search</button>
                     </form>

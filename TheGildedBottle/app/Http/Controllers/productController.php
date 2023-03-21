@@ -55,9 +55,9 @@ class productController extends Controller
     }
 
     public function product_search(Request $request){
-        $search_entry = $request['search_entry'] ?? "";
+        $search_entry = $request->input('search_entry'); 
         if ($search_entry !=""){
-        $products = Product::where('name','LIKE','%'.$search_entry.'%')->get();
+            $products = Product::where('name','LIKE','%'.$search_entry.'%')->get();
         }else{
             $products = Product::all();
         }

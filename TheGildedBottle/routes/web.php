@@ -78,7 +78,7 @@ Route::get('products/filter/{type}', [App\Http\Controllers\ProductController::cl
 
 Route::get('products/filter/', [App\Http\Controllers\ProductController::class, 'filterByPrice'])->name('products.filter.price');
 
-Route::get('products', [App\Http\Controllers\ProductController::class, 'product_search'])->name('Products');
+Route::get('products', [App\Http\Controllers\ProductController::class, 'product_search'])->name('products');
 
 
 Route::get('/aboutus', function () {
