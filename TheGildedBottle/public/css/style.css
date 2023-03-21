@@ -43,9 +43,35 @@ body {
 
 .sidebar {
     height: fit-content;
-    width: 200px;
-    position: sticky;
+    width: 300px;
     background-color: #DCDCDC;
+    position:relative;
+}
+
+.container {
+    padding: 20px;
+}
+
+.filter-form {
+    margin-top: 20px;
+}
+
+.form-inline {
+    display: flex;
+    align-items: center;
+}
+
+.form-group {
+    margin-right: 20px;
+}
+
+.btn-primary {
+    margin-right: 10px;
+}
+
+input[type="text"] {
+    width: 100%;
+    margin-top: 10px;
 }
 
 @keyframes rotation_9018 {
