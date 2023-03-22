@@ -35,7 +35,7 @@ public class ProcessOrder {
                     int newStock = getStock(Integer.parseInt(orderID));
                     String name = getOrder(Integer.parseInt(orderID));
                     PreparedStatement stmt2 = con.prepareStatement("UPDATE products SET stock = stock+" + newStock + " WHERE name = ?");
-                    
+
                     stmt2.setString(1, name);
                     stmt2.executeUpdate();
                     refreshTable();

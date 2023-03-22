@@ -118,6 +118,27 @@ input[type="text"] {
 
 
 /* products page */
+.product-image-container {
+    position: relative;
+    width: 350px;
+    height: auto;
+    overflow: hidden;
+}
+
+.product-image-container img {
+    width: 100%;
+    height: 100%;
+}
+
+.product-image-container .magnifier {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 0%;
+    background-size: 600px 600px;
+    cursor: zoom-in;
+    /* or use a magnifying glass icon */
+}
 
 .product-content {
     border: 2px solid #dfe5e9;

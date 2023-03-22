@@ -99,6 +99,12 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
+Route::post('/products/{product}/comments', [App\Http\Controllers\CommentController::class, 'store'])->name('products.comments.store');
+Route::post('/products/{product}/reviews', [App\Http\Controllers\ReviewController::class, 'store'])->name('products.reviews.store');
+
+
+
+
 
 // admin routes 
 Route::prefix('admin')->middleware(['auth', 'AdminSystem'])->group(function () {
@@ -138,6 +144,13 @@ Route::prefix('admin')->middleware(['auth', 'AdminSystem'])->group(function () {
     Route::get('/register', function () {
         return view('register');
     })->name('admin.register');
+    
+    Route::get('/bar-chart', [App\Http\Controllers\ChartController::class, "index"])->name('sales-chart');
+    Route::get('/bar-chart-data', [App\Http\Controllers\ChartController::class, "getData"])->name('bar-chart-data');
+    Route::get('/bar-chart-data2', [App\Http\Controllers\ChartController::class, "getData2"])->name('bar-chart-data2');
+    Route::get('/scatter-plot-data', [App\Http\Controllers\ChartController::class, "scatterPlot"])->name('scatter-plot-data');
+
+
 });
 
 // employee routes 

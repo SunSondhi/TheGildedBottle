@@ -21,6 +21,12 @@
              </a>
          </li>
          <li class="nav-item">
+             <a href="{{ route('sales-chart') }}">
+                 <button class="btn btn-outline-dark"><i class="bi bi-bar-chart-line-fill me-2"></i>
+                     View Analytics</button>
+             </a>
+         </li>
+         <li class="nav-item">
              <a href="#">
                  <button class="btn btn-outline-dark"><i class="bi bi-box-seam me-2"></i>
                      Manage Inventory</button>
