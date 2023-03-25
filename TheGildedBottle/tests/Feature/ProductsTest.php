@@ -13,10 +13,19 @@ class ProductsTest extends TestCase
      *
      * @return void
      */
-    public function test_example()
+    public function search_test()
     {
-        $response = $this->get('/');
+        $response = $this->get('/products?search_entry=');
 
         $response->assertStatus(200);
+        $response->assertDontSee(__(key:'no products found'));
+    }
+
+    public function search_test()
+    {
+        $response = $this->get('/products?search_entry=');
+
+        $response->assertStatus(200);
+        $response->assertDontSee(__(key:'no products found'))
     }
 }
