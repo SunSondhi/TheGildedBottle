@@ -150,7 +150,6 @@ public class ProcessOrder {
                 if (orderID == id){
                     return resultSet.getString("name");
                 }
-
             }
             return "NONE";
         }catch(SQLException E){

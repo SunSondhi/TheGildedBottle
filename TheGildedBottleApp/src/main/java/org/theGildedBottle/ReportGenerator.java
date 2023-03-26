@@ -53,6 +53,8 @@ public class ReportGenerator {
             head.setBorderWidth(1);
             head.setPhrase(new Phrase(columnTitle));
             table.addCell(head);
+            table.setSpacingBefore(50f);
+            table.setSpacingAfter(15f);
         } );
         try {
             Connection con = DbCon.getConnection();
@@ -92,6 +94,8 @@ public class ReportGenerator {
             head.setBorderWidth(1);
             head.setPhrase(new Phrase(columnTitle));
             table.addCell(head);
+            table.setSpacingBefore(10f);
+            table.setSpacingAfter(15f);
         });
         try {
             Connection con = DbCon.getConnection();
