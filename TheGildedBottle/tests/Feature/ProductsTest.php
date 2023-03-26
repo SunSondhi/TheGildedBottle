@@ -13,7 +13,7 @@ class ProductsTest extends TestCase
      *
      * @return void
      */
-    public function search_test()
+    public function test_products()
     {
         $response = $this->get('/products?search_entry=');
 
@@ -21,11 +21,11 @@ class ProductsTest extends TestCase
         $response->assertDontSee(__(key:'no products found'));
     }
 
-    public function search_test()
+    public function test_search()
     {
         $response = $this->get('/products?search_entry=');
 
         $response->assertStatus(200);
-        $response->assertDontSee(__(key:'no products found'))
+        $response->assertDontSee(__(key:'no products found'));
     }
 }

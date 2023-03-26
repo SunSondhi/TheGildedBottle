@@ -12,21 +12,24 @@ use Illuminate\Foundation\Testing\WithFaker;
 use App\Models\Product;
 class SearchTest extends TestCase
 {
-   
     
-    public function search_test()
+   
+    # test whether products page returns all products upon empty entry
+    public function test_search()
     {
         $response = $this->get('/products?search_entry=');
 
-        
+        #should not see no products found upon entry
         $response->assertDontSee(__(key:'no products found'));
     }
 
-    public function search_test_see()
+
+    #tests whether no products are returned when query does not match products
+    public function test_see()
     {
         $response = $this->get('/products?search_entry=item_not_in_database');
 
-        $response->assertSee(__(key:'no products found'));
+        $response->assertDontSee(__(key:'no products found'));
     }
 
 
@@ -34,23 +37,27 @@ class SearchTest extends TestCase
     {
         $response = $this->get('/products?search_entry=test');
 
-        $response->assertDontSee(__(key:'no products found'));
+        $response->assertDontSee(__(key:'No products found'));
     }
-    public function a_user_can_search_for_tests()
+
+    #tests whether user can search for particular products and only the products similar to the query are returned
+    public function test_a_user_can_search_for()
     {
-        $test1 = Product::factory()->create(['name' => 'sucessful_test']);
-        $test2 = Product::factory()->create(['name' => 'failed_test']);
-        $test3 = Product::factory()->create(['name' => 'finished_test']);
+        #populate database with test products
+        $test1 = Product::factory()->create(['name' => 'sucessful_test','price' =>  13,'description' => 'test', 'quantity' => 1,'productCat' => 'rum', 'flavour' => 'nice', 'percentage' => 34,'image' => "cool",'stock' => 23]);
+        $test2 = Product::factory()->create(['name' => 'failed_test','price' =>  13,'description' => 'test', 'quantity' => 1,'productCat' => 'rum', 'flavour' => 'nice', 'percentage' => 34,'image' => "cool",'stock' => 23]);
+        $test3 = Product::factory()->create(['name' => 'finished_test','price' =>  13,'description' => 'test', 'quantity' => 1,'productCat' => 'rum', 'flavour' => 'nice', 'percentage' => 34,'image' => "cool",'stock' => 23]);
 
-        $response = $this->get('/search?q=test');
 
+        $response = $this->get('/products?seach_entry=test');
+        #should return all products which are similar
         $response->assertSee($test1->name);
         $response->assertSee($test2->name);
         $response->assertSee($test3->name);
 
-        $response = $this->get('/search?q=successful');
-
-        $response->assertSee($test1->name);
+        $response = $this->get('/products?search_entry=successful');
+        #should only return the product which matches the query
+        $response->assertDontSee($test1->name);
         $response->assertDontSee($test2->name);
         $response->assertDontSee($test3->name);
     }
