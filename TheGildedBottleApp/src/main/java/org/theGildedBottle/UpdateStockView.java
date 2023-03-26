@@ -17,11 +17,12 @@ public class UpdateStockView {
     JPanel UpdateStockview;
     JComboBox chooseName;
     JTextField currentStock;
-    JButton decrease;
-    JButton increase;
     public JButton goToHomepageButton;
 
     private JLabel stockLabel;
+    private JTextField stockField;
+    private JLabel stockChangeLabel;
+    private JButton submitButton;
     private Statement stmt;
 
     public UpdateStockView(ContentManager cM) {
@@ -49,52 +50,15 @@ public class UpdateStockView {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setStock();
-
             }
         });
-
-        decrease.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    String name = String.valueOf(chooseName.getSelectedItem());
-                    Connection con = DbCon.getConnection();
-                    String sql = "UPDATE products SET stock = stock-1 WHERE name = ?";
-                    PreparedStatement stmt = con.prepareStatement(sql);
-                    stmt.setString(1, name);
-                    stmt.executeUpdate();
-                    int stockLevel = getStockLevel(name);
-                    if (stockLevel <= 0) {
-                        // Show popup alert
-                        JOptionPane.showMessageDialog(UpdateStockview, "Item is out of stock!");
-
-                        // Send email alert
-                        String subject = "Inventory Alert: " + name + " is out of stock!";
-                        String message = "Dear User,\n\n" + name + " is out of stock. Please restock as soon as possible.\n\nBest regards,\nYour Inventory Management System";
-                        sendEmail(subject, message);
-                    } else if (stockLevel < 10) {
-                        // Show popup alert
-                        JOptionPane.showMessageDialog(UpdateStockview, "Item stock is low: " + stockLevel + " left!");
-
-                        // Send email alert
-                        String subject = "Inventory Alert: " + name + " stock is low!";
-                        String message = "Dear User,\n\n" + name + " stock is low: " + stockLevel + " left. Please restock soon.\n\nBest regards,\nYour Inventory Management System";
-                        sendEmail(subject, message);
-                    }
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                }
-            }
-        });
-
-
-        increase.addActionListener(new ActionListener() {
+        submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
                     String name = String.valueOf(chooseName.getSelectedItem());
                     Connection con = DbCon.getConnection();
-                    String sql = "UPDATE products SET stock = stock+1 WHERE name = ?";
+                    String sql = "UPDATE products SET stock = " + stockField.getText() + " WHERE name = ?";
                     PreparedStatement stmt = con.prepareStatement(sql);
                     stmt.setString(1, name);
                     stmt.executeUpdate();
@@ -120,7 +84,6 @@ public class UpdateStockView {
                 }
             }
         });
-
 
     }
     public void setStock(){

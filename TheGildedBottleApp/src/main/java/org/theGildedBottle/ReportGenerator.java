@@ -32,9 +32,11 @@ public class ReportGenerator {
             Font bodyFont = FontFactory.getFont(FontFactory.COURIER, 11, BaseColor.BLACK);
             PdfPTable purchaseTable = new PdfPTable(6);
             PdfPTable stockTable = new PdfPTable(3);
-            document.add(new Chunk("The Gilded Bottle sales", headerFont));
+            document.add(new Chunk("The Gilded Bottle sales \n ", headerFont));
+            document.add(new Chunk("Purchases to date", bodyFont));
             MakePurchaseTable(purchaseTable);
             document.add(purchaseTable);
+            document.add(new Chunk("Current stock levels",bodyFont));
             MakeStockTable(stockTable);
             document.add(stockTable);
             document.close();
@@ -53,7 +55,6 @@ public class ReportGenerator {
             head.setBorderWidth(1);
             head.setPhrase(new Phrase(columnTitle));
             table.addCell(head);
-            table.setSpacingBefore(50f);
             table.setSpacingAfter(15f);
         } );
         try {
