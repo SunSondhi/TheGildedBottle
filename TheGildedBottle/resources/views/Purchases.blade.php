@@ -1,77 +1,73 @@
-@section('title','| Products')
+@section('title', '| Purchase History')
 @include('layouts/head')
 @include('layouts/nav')
 
 <div class="container py-5">
-    <h1 class="mb-5">Purchase History</h1>
+    <h1 class="text-center mb-5" style="font-family: Georgia, 'Times New Roman', Times, serif;">Your Purchase History</h1>
 
 
+<div class="tab">
+    <button class="tablinks" onclick="openTab(event, 'Mode1')">In Process</button>
+    <button class="tablinks" onclick="openTab(event, 'Mode2')">Cancelled</button>
+    <button class="tablinks" onclick="openTab(event, 'Mode3')">Completed</button>
+</div>
 
-
-    <div class="tab">
-        <button class="tablinks" onclick="openTab(event, 'Mode1')">In Process</button>
-        <button class="tablinks" onclick="openTab(event, 'Mode2')">Cancelled</button>
-        <button class="tablinks" onclick="openTab(event, 'Mode3')">Purchase Completed</button>
-    </div>
-
-    <!-- Tab content -->
-    <div id="Mode1" class="tabcontent">
-        <div style="height: 500px; overflow-y: auto;">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Image</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Process</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($purchases as $purchase)
-                    @if (($purchase->in_progress) == 0)
-                    <tr>
-                        <td><img src="{{ url($purchase->image) }}" alt="{{ $purchase->name }}" style="width:auto; height:200px;"></td>
-                        <td>{{ $purchase->name }}</td>
-                        <td>£{{ $purchase->price }}</td>
-                        <td>{{ $purchase->quantity }}</td>
-                        <td>@if (($purchase->in_progress) == 0)
-                            <div class="alert alert-warning" role="alert">
-                                <h3>Item is in process</h3>
-                                <p>Please wait for an operator to complete the purchase.</p>
-                            </div>
-                            @endif
-                        </td>
-                    </tr>
+<!-- Tab content -->
+<div id="Mode1" class="tabcontent">
+    <div class="table-responsive" style="height: 500px;">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col" class="text-center">Image</th>
+                    <th scope="col" class="text-center">Name</th>
+                    <th scope="col" class="text-center">Price</th>
+                    <th scope="col" class="text-center">Quantity</th>
+                    <th scope="col" class="text-center">Process</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($purchases as $purchase)
+                    @if ($purchase->in_progress == 0)
+                        <tr>
+                            <td class="align-middle text-center"><img src="{{ url($purchase->image) }}" alt="{{ $purchase->name }}" style="max-width: 150px; max-height: 150px;"></td>
+                            <td class="align-middle">{{ $purchase->name }}</td>
+                            <td class="align-middle text-center">£{{ $purchase->price }}</td>
+                            <td class="align-middle text-center">{{ $purchase->quantity }}</td>
+                            <td class="align-middle text-center">
+                                <div class="alert alert-warning" role="alert">
+                                    <h3>Item is in process</h3>
+                                    <p>Please wait for an operator to complete the purchase.</p>
+                                </div>
+                            </td>
+                        </tr>
                     @endif
-                    @endforeach
-
-                </tbody>
-            </table>
-        </div>
+                @endforeach
+            </tbody>
+        </table>
     </div>
+</div>
 
-    <div id="Mode2" class="tabcontent">
-        <div style="height: 500px; overflow-y: auto;">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Image</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Process</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($purchases as $purchase)
-                    @if (($purchase->in_progress) == 2)
-                    <tr>
-                        <td><img src="{{ url($purchase->image) }}" alt="{{ $purchase->name }}" style="width:auto; height:200px;"></td>
-                        <td>{{ $purchase->name }}</td>
-                        <td>£{{ $purchase->price }}</td>
-                        <td>{{ $purchase->quantity }}</td>
-                        <td>
+<div id="Mode2" class="tabcontent">
+    <div class="table-responsive" style="height: 500px;">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col" class="text-center">Image</th>
+                    <th scope="col" class="text-center">Name</th>
+                    <th scope="col" class="text-center">Price</th>
+                    <th scope="col" class="text-center">Quantity</th>
+                    <th scope="col" class="text-center">Process</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($purchases as $purchase)
+                    @if ($purchase->in_progress == 2)
+                        <tr>
+                            <td class="align-middle text-center"><img src="{{ url($purchase->image) }}" alt="{{ $purchase->name }}" style="max-width: 150px; max-height: 150px;"></td>
+                            <td class="align-middle">{{ $purchase->name }}</td>
+                            <td class="align-middle text-center">£{{ $purchase->price }}</td>
+                            <td class="align-middle text-center">{{ $purchase->quantity }}</td>
+                            <td class
                             @if (($purchase->in_progress) == 2)
                             <div class="alert alert-danger" role="alert">
                                 <h3>Item is Cancelled</h3>
@@ -87,9 +83,11 @@
         </div>
     </div>
 
+
     <div id="Mode3" class="tabcontent">
-        <div style="height: 500px; overflow-y: auto;">
-            <table class="table">
+    <div class="table-responsive" style="height: 500px;">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
                 <thead>
                     <tr>
                         <th scope="col">Image</th>
@@ -104,9 +102,11 @@
                     @if (($purchase->in_progress) == 1)
                     <tr>
                         <td><img src="{{ url($purchase->image) }}" alt="{{ $purchase->name }}" style="width:auto; height:200px;"></td>
-                        <td>{{ $purchase->name }}</td>
-                        <td>£{{ $purchase->price }}</td>
-                        <td>{{ $purchase->quantity }}</td>
+                        <td class="align-middle text-center"><img src="{{ url($purchase->image) }}" alt="{{ $purchase->name }}" style="max-width: 150px; max-height: 150px;"></td>
+                            <td class="align-middle">{{ $purchase->name }}</td>
+                            <td class="align-middle text-center">£{{ $purchase->price }}</td>
+                            <td class="align-middle text-center">{{ $purchase->quantity }}</td>
+                            <td class>
                         <td>@if (($purchase->in_progress) == 1)
                             <div class="alert alert-success" role="alert">
                                 <h3>Item is Processed and ready to be distpatched</h3>
