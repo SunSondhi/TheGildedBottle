@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 body {
     margin: 0px;
 }
@@ -9,35 +5,34 @@ body {
 /* nav CSS */
 
 .navbar {
-    background-color: #212121;
-    height: 80px;
+    background-color: #080808;
+    height: 140px;
     position: absolute;
+    color: white;
 }
 
 .nav-link {
-    border-radius: 5px;
-    background: #171717;
-    box-shadow: 0px 0px 3px 1px #00000088;
+    color: white;
+    border-width: 1px;
+    border-style: solid;
+    border-color: transparent;
+    border-bottom: 0px;
+    border-top: 0px;
 }
 
-.nav-link:hover {
-    color: goldenrod;
-    background-color: #000;
-    border-radius: 10px;
-    opacity: 1;
+.nav-item a:hover {
+    color: #ce9207;
+    border-color: #555;
+    border-radius: 0;
+    border-width: 1px;
+    border-style: solid;
+    border-bottom: 0px;
+    border-top: 0px;
 }
 
-.nav-link::before {
-    opacity: 0;
-    background: linear-gradient(90deg, transparent, #ff2288, #387EF0, transparent);
-    transition: opacity 300ms;
-    animation: rotation_9018 3000ms infinite linear;
-    animation-play-state: paused;
-}
-
-.nav-link:hover::before {
-    opacity: 1;
-    animation-play-state: running;
+.nav-item a {
+    font-size: 17px;
+    color: white;
 }
 
 
@@ -45,7 +40,7 @@ body {
     height: fit-content;
     width: 300px;
     background-color: #DCDCDC;
-    position:relative;
+    position: relative;
 }
 
 
@@ -86,9 +81,9 @@ input[type="text"] {
 
 /* start btns */
 
-.btn-outline-dark{
-    background-color: #000;   
-    color:white;
+.btn-outline-dark {
+    background-color: #000;
+    color: white;
     width: 100%;
 }
 
@@ -576,7 +571,7 @@ input[type="text"] {
 .hero {
     background-image: url('../images/homepageimg3.png');
     background-repeat: no-repeat;
-    background-position: cover;
+    background-size: cover;
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -591,6 +586,35 @@ input[type="text"] {
 }
 
 .hero::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: transparent;
+    z-index: 1;
+    pointer-events: none;
+    box-shadow: inset 0px 0px 200px rgba(255, 255, 255, 0.5);
+}
+
+.hero2 {
+    background-image: url('../images/gildedbottle2.png');
+    background-repeat: no-repeat;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 1000px;
+    position: relative;
+    width: auto;
+}
+
+.hero2 h1 {
+    font-size: 70px;
+}
+
+.hero2::before {
     content: "";
     display: block;
     position: absolute;
@@ -769,10 +793,11 @@ input[type="text"] {
 .page-footer {
     padding-top: 4rem;
     padding-bottom: 4rem;
+    background-color: #000;
 }
 
 .page-footer a {
-    color: #fff;
+    color: #926c15;
     text-decoration: none;
 }
 
@@ -782,6 +807,7 @@ input[type="text"] {
 
 .page-footer h2 {
     font-weight: bold;
+    color: white;
 }
 
 .page-footer ul li {

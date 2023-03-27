@@ -63,7 +63,7 @@
         </div>
 
         <div class="col-md-8">
-    <div class="row">
+    <div class="row" style="margin-top:2%; margin-left:-20%; margin-right:2%;">
         @if (count($products) > 0)
         @foreach ($products as $product)
         <div class="col-md-4 mb-3">

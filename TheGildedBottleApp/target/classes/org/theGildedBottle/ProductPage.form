@@ -217,20 +217,12 @@
               </grid>
             </constraints>
           </hspacer>
-          <component id="1f50a" class="javax.swing.JButton" binding="logoutButton">
-            <constraints>
-              <grid row="12" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="Log Out"/>
-            </properties>
-          </component>
           <component id="2945" class="javax.swing.JButton" binding="gotToHomepageButton" default-binding="true">
             <constraints>
               <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value=" Got to Homepage"/>
+              <text value=" Back"/>
             </properties>
           </component>
           <component id="da78e" class="javax.swing.JLabel">
