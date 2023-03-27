@@ -185,6 +185,46 @@
 
 
 <script>
+    function getCookie(name) {
+        var dc = document.cookie;
+        var prefix = name + "=";
+        var begin = dc.indexOf("; " + prefix);
+        if (begin == -1) {
+            begin = dc.indexOf(prefix);
+            if (begin != 0) return null;
+        }
+        else
+        {
+            begin += 2;
+            var end = document.cookie.indexOf(";", begin);
+            if (end == -1) {
+            end = dc.length;
+            }
+        }
+        return decodeURI(dc.substring(begin + prefix.length, end));
+    } 
+
+    if (getCookie("age_verified") == null){
+        let dobString = prompt("Age Verification Required!\nPlease Enter Your DOB In This Format: YYYY-MM-DD ");
+        if (dobString == null) {
+            alert("You Did Not Complete The Age Verification Test.");
+            document.location.href = "https://210097072.cs2410-web01pvm.aston.ac.uk/thegildedbottleGit/TheGildedBottle/TheGildedBottle/public/404"    
+        }
+        let dob = new Date(dobString);
+        let today = new Date();
+        let age = today.getFullYear() - dob.getFullYear();
+        let monthDiff = today.getMonth() - dob.getMonth();
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+            age--;
+        }
+        if (age => 21) {
+            alert("Unfortunetly You Did Not Pass The Age Verification Test.");
+            document.location.href = "https://210097072.cs2410-web01pvm.aston.ac.uk/thegildedbottleGit/TheGildedBottle/TheGildedBottle/public/404"
+        }
+        document.cookie = "age_verified=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/";
+    }
+
+    
     $(document).ready(function() {
         $('.floating-object').hover(function() {
             $(this).css('animation-play-state', 'paused');

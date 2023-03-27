@@ -53,7 +53,6 @@ class productController extends Controller
         $data = Product::find($id);
         return view('Products_details',['product' => $data]);
     }
-
     public function product_search(Request $request){
         $search_entry = $request->input('search_entry'); 
         if ($search_entry !=""){
