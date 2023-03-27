@@ -11,6 +11,7 @@ public class HomePage {
 
     JButton processOrdersButton;
     private JButton pdfButton;
+    private JButton logoutButton;
 
 
     public HomePage(ContentManager cM) {
@@ -32,5 +33,8 @@ public class HomePage {
 //        generate pdf
         this.pdfButton.addActionListener(cM);
         this.pdfButton.setActionCommand("PDF");
+
+        this.logoutButton.addActionListener(cM);
+        this.logoutButton.setActionCommand("Logout");
     }
 }

@@ -13,7 +13,7 @@ public class ProcessOrder {
 
     public JPanel ProductTableView;
     protected JPanel ProcessOrder;
-    protected JTable table2;
+    public JTable table2;
     protected JButton goHomepageButton;
     JComboBox orderSelect;
     JButton cancelButton;
