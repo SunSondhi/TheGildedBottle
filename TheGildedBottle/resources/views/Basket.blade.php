@@ -10,10 +10,10 @@
             <thead>
                 <tr>
                     <th scope="col"></th>
-                    <th scope="col">Product</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Total</th>
+                    <th scope="col" style="color:gold">Product</th>
+                    <th scope="col" style="color:gold">Price</th>
+                    <th scope="col" style="color:gold">Quantity</th>
+                    <th scope="col" style="color:gold">Total</th>
                 </tr>
             </thead>
             <tbody>
@@ -26,13 +26,13 @@
                     </td>
                     <td>
                         <div class="d-flex align-items-center">
-                            <img src="{{ url($us->image) }}" alt="{{ $us->name }}" class="me-3" width="80">
+                            <img src="{{ url($us->image) }}" alt="{{ $us->name }}"style="color:gold" class="me-3" width="80">
                             <div>
-                                <h5 class="fw-bold mb-0">{{ $us->name }}</h5>
+                                <h5 class="fw-bold mb-0" style="color:gold">{{ $us->name }}</h5>
                             </div>
                         </div>
                     </td>
-                    <td>£{{ $us->price }}</td>
+                    <td style="color:gold">£{{ $us->price }}</td>
                     <td>
                         <div class="d-flex align-items-center">
                             <form action="{{ route('products.update.quantity') }}" method="GET">
@@ -52,17 +52,17 @@
                             </form>
                         </div>
                     </td>
-                    <td>£{{ $us->price * $us->quantity }}</td>
+                    <td style="color:gold">>£{{ $us->price * $us->quantity }}</td>
                 </tr>
                 <!-- Remove Modal -->
                 <div class="modal fade" id="removeModal{{ $us->id }}" tabindex="-1" aria-labelledby="removeModalLabel{{ $us->id }}" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="removeModalLabel{{ $us->id }}">Remove Product</h5>
+                                <h5 class="modal-title" id="removeModalLabel{{ $us->id }}" style="color:black">>Remove Product</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="modal-body">
+                            <div class="modal-body" style="color:black">
                                 Are you sure you want to remove {{ $us->name }} from your basket?
                             </div>
                             <div class="modal-footer">
