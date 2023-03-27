@@ -220,7 +220,9 @@
         if (age <= 21) {
             alert("Unfortunetly You Did Not Pass The Age Verification Test.");
             document.location.href = "https://210097072.cs2410-web01pvm.aston.ac.uk/thegildedbottleGit/TheGildedBottle/TheGildedBottle/public/404"
-        } else{document.cookie = "age_verified=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/";}
+        } else{
+            document.cookie = "age_verified=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/";
+        }
         
     }
 
