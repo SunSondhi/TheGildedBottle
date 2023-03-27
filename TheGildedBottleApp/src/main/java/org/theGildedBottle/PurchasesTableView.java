@@ -16,7 +16,7 @@ public class PurchasesTableView {
 
 
         try{
-            String[] columnNames = {"ID", "Name","User ID", "Price", "Quantity"};
+            String[] columnNames = {"ID", "Name","User ID", "Price", "Quantity", "Ordered at:"};
             DefaultTableModel model = new DefaultTableModel(columnNames, 0);
             Connection con = DbCon.getConnection();
             // load data from the ResultSet into the model
@@ -29,7 +29,8 @@ public class PurchasesTableView {
                 int user_id = resultSet.getInt("user_id");
                 double price = resultSet.getDouble("price");
                 int quantity = resultSet.getInt("quantity");
-                Object[] row = {id, name,user_id, price, quantity};
+                Timestamp ts = resultSet.getTimestamp("created_at");
+                Object[] row = {id, name,user_id, price, quantity, ts};
                 model.addRow(row);
             }
             table1.setModel(model);

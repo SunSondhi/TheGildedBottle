@@ -44,10 +44,6 @@ public class ReportGenerator {
         catch (FileNotFoundException | DocumentException f) {f.printStackTrace();}
     }
 
-    public static void main(String[] args) throws DocumentException, FileNotFoundException {
-        ReportGenerator test = new ReportGenerator();
-    }
-
     private void MakePurchaseTable(PdfPTable table) {
         Stream.of("ID", "item name", "UserID", "price", "quantity", "order time").forEach(columnTitle -> {
             PdfPCell head = new PdfPCell();
@@ -107,7 +103,6 @@ public class ReportGenerator {
                 int id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
                 int stock = resultSet.getInt("stock");
-
                 PdfPCell c = new PdfPCell();
                 c.setBackgroundColor((stock < lowStockThreshold) ? dangerColour : (stock < warningStockThreshold) ? warningColour : cellColour);
                 c.setBorderWidth(1);

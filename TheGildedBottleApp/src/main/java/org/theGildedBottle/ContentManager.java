@@ -11,8 +11,6 @@ import java.io.FileNotFoundException;
 
 public class ContentManager implements ActionListener {
     JFrame window;
-    public static Dimension TEXT_FIELD_SIZE = new Dimension(300,30);
-    //public static Color TEXT_COLOUR = Color.white;
     public static Color BACKGROUND_COLOUR = Color.darkGray;
 
     public ContentManager (@NotNull JFrame window) {
