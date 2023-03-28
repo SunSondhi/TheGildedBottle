@@ -95,19 +95,7 @@
                                 <p class="card-text" style="margin-bottom: 0;">Out of stock</p>
                             </div>
                         <?php } ?>
-                        <form action="{{$product->id}}" method="POST" class="my-5">
-                @csrf
-                <input type="hidden" name="name" value="{{$product->name}}">
-                <input type="hidden" name="price" value="{{$product->price}}">
-                <input type="hidden" name="image" value="{{$product->image}}">
-                @if($product->stock >= 1)
-                <input type="hidden" name="image" value= 1>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-sm mt-2">Add to Basket</button>
-                @else
-                    <button type="submit" class="disabled btn btn-primary btn-sm mt-2">Add to Basket</button>
-                @endif
-            </form>
+                        
                     </div>
                 </div>
             </a>
