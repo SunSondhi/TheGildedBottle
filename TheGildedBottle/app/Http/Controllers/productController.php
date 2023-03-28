@@ -113,7 +113,7 @@ class productController extends Controller
         $existing_item = Basket_product::where('baskets_id', $basket->id)
             ->where('id', $item_id)
             ->first();
-
+        $user = Auth::user();
         if ($existing_item) {
             // If item exists, increase quantity and update basket
             $existing_item->quantity += $item_quantity;
@@ -123,9 +123,14 @@ class productController extends Controller
             $product = new Basket_product();
             $product->id = $item_id;
             $product->name = request('name');
-            $product->price = request('price');
+            $price = request('price');
             $product->quantity = $item_quantity;
             $product->baskets_id = $basket->id;
+            if ($user->role == 3){
+            $product->price = ($price)*0.85;
+            }else{
+            $products->price = $price;
+            }
             $product->image = request('image');
             $product->save();
         }
