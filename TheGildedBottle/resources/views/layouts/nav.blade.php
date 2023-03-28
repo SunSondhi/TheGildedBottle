@@ -73,7 +73,7 @@ use Illuminate\Support\Facades\Auth;
         @if (Auth::check())
         <div class="nav-item d-flex justify-content-end align-items-center">
             <?php if (Auth::check() && Auth::user()->role == '1') { ?>
-                <a href="{{ route('admin.adminhome') }}" style="padding:8px;"  class="nav-link me-2 ">Admin Home</a>
+                <a href="{{ route('admin.adminhome') }}" style="padding:8px;" class="nav-link me-2 ">Admin Home</a>
             <?php } else { ?>
                 <a href="{{ route('home') }}" style="padding:8px;" class="nav-link me-2 ">{{ Auth::user()->name }}</a>
             <?php } ?>
@@ -81,14 +81,16 @@ use Illuminate\Support\Facades\Auth;
             <a class="nav-link me-2 " style="padding:8px;" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 {{ __('Logout') }}
             </a>
-            <?php if (Auth::check() && Auth::user()->role == '3') { ?>
-                <a href="{{ route('Congratulations') }}" style="color:black;background-color:gold;"  class="btn btn-primary me-2"> your membership</a>
+            <?php if (Auth::check() && Auth::user()->membership_role == '3') { ?>
+                <a href="{{ route('Congratulations') }}" style="color:black;background-color:gold;" class="btn btn-primary me-2"> your membership</a>
             <?php } else { ?>
-            <a class="btn btn-primary me-2" style="color:black;background-color:gold;"href="{{ route('Membership') }}">
-                become a Gilded Member
-                
-            </a>
+                <a class="btn btn-primary me-2" style="color:black;background-color:gold;" href="{{ route('Membership') }}">
+                    become a Gilded Member
+
+                </a>
+
             <?php } ?>
+
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                 @csrf
             </form>

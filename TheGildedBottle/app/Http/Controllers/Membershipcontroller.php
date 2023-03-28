@@ -17,7 +17,7 @@ class Membershipcontroller extends Controller
     {
         $user = Auth::user();
 
-        $user->role = 3;
+        $user->membership_role = 3;
         $user->save();
         return redirect()->route('Congratulations')->with('message', "items bought");
     }
@@ -26,7 +26,7 @@ class Membershipcontroller extends Controller
     {
         $user = Auth::user();
 
-        $user->role = 0;
+        $user->membership_role = 0;
         $user->save();
         return redirect()->route('Cancellation')->with('message', "subscription cancelled");
     }
