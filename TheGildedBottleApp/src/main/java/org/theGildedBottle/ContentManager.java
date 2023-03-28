@@ -19,6 +19,10 @@ public class ContentManager implements ActionListener {
         window.revalidate();
     }
 
+    public void Login() {
+        window.setContentPane(new HomePage(this).homePage);
+        window.revalidate();
+    }
 
     @Override //this is going to be the sole action listener so all authentication will happen in here
     public void actionPerformed(ActionEvent e) {

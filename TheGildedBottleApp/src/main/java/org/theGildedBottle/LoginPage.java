@@ -66,8 +66,7 @@ public class LoginPage {
                     return;
                 }
                 System.out.println("logged in");
-                loginButton.addActionListener(cM);
-                loginButton.setActionCommand("Homepage");
+                cM.Login();
 
             } catch (SQLException i) {
                i.printStackTrace();
