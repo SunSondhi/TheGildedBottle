@@ -25,12 +25,14 @@
         </div>
         <div class="col-md-2">
             <div class="card">
-                <img src="{{url('images/icon.png')}}" class="card-img-top" alt="Team Member 2">
+                <img src="{{url('images/XENOCRACY-dark.png')}}" class="card-img-top" alt="Team Member 2">
                 <div class="card-body">
                     <h5 class="card-title">Josh Needham</h5>
                     <p class="card-text">Co-leader</p>
                     <p>Roles:</p>
                     <li>Lead Programmer Java Application</li>
+                    <li>Source control moderator</li>
+                    <li>Distribution moderator (Java App)</li>
                 </div>
             </div>
         </div>
