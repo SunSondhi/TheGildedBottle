@@ -12,6 +12,7 @@ public class HomePage {
     JButton processOrdersButton;
     private JButton pdfButton;
     private JButton logoutButton;
+    private JButton searchProductButton;
 
 
     public HomePage(ContentManager cM) {
@@ -34,7 +35,12 @@ public class HomePage {
         this.pdfButton.addActionListener(cM);
         this.pdfButton.setActionCommand("PDF");
 
+        this.searchProductButton.addActionListener(cM);
+        this.searchProductButton.setActionCommand("SearchProd");
+
         this.logoutButton.addActionListener(cM);
         this.logoutButton.setActionCommand("Logout");
+
+
     }
 }

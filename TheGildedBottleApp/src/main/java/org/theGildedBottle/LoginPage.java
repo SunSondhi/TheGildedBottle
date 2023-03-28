@@ -23,7 +23,7 @@ public class LoginPage {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-            Connection connection = null;
+
             PreparedStatement checkLoginCredentials = null;
             ResultSet resultSet = null;
 

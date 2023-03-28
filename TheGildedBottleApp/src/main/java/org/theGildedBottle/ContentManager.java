@@ -60,6 +60,11 @@ public class ContentManager implements ActionListener {
             window.revalidate();
         }
 
+        if(command.equals("SearchProd")){
+            window.setContentPane(new SearchProduct(this).searchProduct);
+            window.revalidate();
+        }
+
         if(command.equals("PDF")) {
             try {
                 new ReportGenerator();
