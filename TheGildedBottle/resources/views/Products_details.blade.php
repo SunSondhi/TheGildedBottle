@@ -12,11 +12,20 @@
         </div>
         <div class="col-md-6">
             <p>{{ $product->description }}</p>
-            <p class="h2">£{{ $product->price }}</p>
+            <?php if (Auth::check() && Auth::user()->role == '3') { ?>
+                            <p class="card-text" style="font-size: 1.1rem; margin-bottom: 0;">
+                             Price: <span style="text-decoration: line-through; color: gold;">£{{ $product->price }}</span> 
+                                <span style="color: gold ; font-weight: bold; font-size: 1.2rem;">15% Off Gilded discount</span>
+                                new price: £{{ number_format($product->price * 0.85, 2) }}
+                            </p>
+                        <?php } else { ?>
+                            <p class="card-text" style="font-size: 1.1rem; margin-bottom: 0;">Price: £{{ $product->price }}</p>
+                            <?php } ?>
             @if ($product->stock >= 5)
                 <p class="card-text"><strong>Stock:</strong> {{ $product->stock }}</p>
             @elseif ($product->stock > 0)
                 <div class="alert alert-warning" role="alert">
+               
                     <p class="card-text"><strong>Stock:</strong> {{ $product->stock }}</p>
                 </div>
             @else

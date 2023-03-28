@@ -92,9 +92,6 @@
 </div>
 <br><br>
 
-<div class="jumbotron jumbotron-fluid text-center">
-    <div class="container">
-        <h1>About Us</h1>
 
 
 @endsection

@@ -71,8 +71,15 @@
                         <div class="card" style="border: 1px solid #ccc; border-radius: 10px; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);">
                             <img src="{{ url($product->image) }}" alt="{{ $product->name }}" class="card-img-top" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px 10px 0 0;">
                             <div class="card-body" style="padding: 1rem;">
-                                <h4 class="card-title" style="font-size: 1.2rem; font-weight: bold; margin-bottom: 0;">{{ $product->name }}</h4>
-
+                            <?php if (Auth::check() && Auth::user()->role == '3') { ?>
+                            <p class="card-text" style="font-size: 1.1rem; margin-bottom: 0;">
+                             Price: <span style="text-decoration: line-through; color: gold;">£{{ $product->price }}</span> 
+                                <span style="color: gold ; font-weight: bold; font-size: 1.2rem;">15% Off Gilded discount</span>
+                                new price: £{{ number_format($product->price * 0.85, 2) }}
+                            </p>
+                        <?php } else { ?>
+                            <p class="card-text" style="font-size: 1.1rem; margin-bottom: 0;">Price: £{{ $product->price }}</p>
+                            <?php } ?>
                                 <?php
                                 if ($product->stock >= 5) { ?>
                                     <p class="card-text" style="font-size: 0.9rem; margin-bottom: 0;">Stock: {{ $product->stock }}</p>
