@@ -72,7 +72,15 @@
                     <img src="{{ url($product->image) }}" alt="{{ $product->name }}" class="card-img-top" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px 10px 0 0;">
                     <div class="card-body" style="padding: 1rem;">
                         <h4 class="card-title" style="font-size: 1.2rem; font-weight: bold; margin-bottom: 0;">{{ $product->name }}</h4>
-                        <p class="card-text" style="font-size: 1.1rem; margin-bottom: 0;">Price: £{{ $product->price }}</p>
+                        <?php if (Auth::check() && Auth::user()->role == '3') { ?>
+                            <p class="card-text" style="font-size: 1.1rem; margin-bottom: 0;">
+                             Price: <span style="text-decoration: line-through; color: gold; border-bottom: 2px solid gold;">£{{ $product->price }}</span> 
+                                <span style="color: gold ; font-weight: bold; font-size: 1.2rem;">15% Off Gilded discount</span>
+                                new price: £{{ number_format($product->price * 0.85, 2) }}
+                            </p>
+                        <?php } else { ?>
+                            <p class="card-text" style="font-size: 1.1rem; margin-bottom: 0;">Price: £{{ $product->price }}</p>
+                            <?php } ?>
                         <?php
                         if ($product->stock >= 5) { ?>
                             <p class="card-text" style="font-size: 0.9rem; margin-bottom: 0;">Stock: {{ $product->stock }}</p>
@@ -87,6 +95,19 @@
                                 <p class="card-text" style="margin-bottom: 0;">Out of stock</p>
                             </div>
                         <?php } ?>
+                        <form action="{{$product->id}}" method="POST" class="my-5">
+                @csrf
+                <input type="hidden" name="name" value="{{$product->name}}">
+                <input type="hidden" name="price" value="{{$product->price}}">
+                <input type="hidden" name="image" value="{{$product->image}}">
+                @if($product->stock >= 1)
+                <input type="hidden" name="image" value= 1>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-sm mt-2">Add to Basket</button>
+                @else
+                    <button type="submit" class="disabled btn btn-primary btn-sm mt-2">Add to Basket</button>
+                @endif
+            </form>
                     </div>
                 </div>
             </a>

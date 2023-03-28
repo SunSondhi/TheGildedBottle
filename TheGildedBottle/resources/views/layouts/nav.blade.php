@@ -81,6 +81,14 @@ use Illuminate\Support\Facades\Auth;
             <a class="btn btn-primary me-2" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 {{ __('Logout') }}
             </a>
+            <?php if (Auth::check() && Auth::user()->role == '3') { ?>
+                <a href="{{ route('Congratulations') }}" style="color:black;background-color:gold;"  class="btn btn-primary me-2"> your membership</a>
+            <?php } else { ?>
+            <a class="btn btn-primary me-2" style="color:black;background-color:gold;"href="{{ route('Membership') }}">
+                become a Gilded Member
+                
+            </a>
+            <?php } ?>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                 @csrf
             </form>

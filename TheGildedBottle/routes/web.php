@@ -80,7 +80,25 @@ Route::get('products/filter/', [App\Http\Controllers\ProductController::class, '
 
 Route::get('products', [App\Http\Controllers\ProductController::class, 'product_search'])->name('products');
 
+Route::get('/membership', function () {
+    return view("Membership");
+})->name('Membership');
+Route::get('/congratulations', function () {
+    return view("Congratulations");
+})->name('Congratulations');
 
+Route::get('/cancellation', function () {
+    return view("Cancellation");
+})->name('Cancellation');
+
+
+Route::post('/membership', [App\Http\Controllers\MembershipController::class, 'subscribe'], function () {
+    return view("Membership");
+})->name('subscribe');
+
+Route::post('/congratulations', [App\Http\Controllers\MembershipController::class, 'cancellation'], function () {
+    return view("Congratulations");
+})->name('cancellation');
 Route::get('/aboutus', function () {
     return view("Aboutus");
 })->name('Aboutus');
