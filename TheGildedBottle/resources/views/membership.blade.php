@@ -80,9 +80,10 @@
                         <li>Personalized birthday gift</li>
                     </ul>
                 </div>
-                <form action="{{ route('subscribe')}}" method="POST">@csrf
-                                    <button type="submit" class="btn btn-primary">join now</button>
-                            </form>
+                <div class="card-footer">
+                    <h4>$100/year</h4>
+                    <form action="{{ route('subscribe')}}" method="POST">@csrf
+                                    <button type="submit" class="btn btn-primary">join now</
 
                             </div>
                         </div>
