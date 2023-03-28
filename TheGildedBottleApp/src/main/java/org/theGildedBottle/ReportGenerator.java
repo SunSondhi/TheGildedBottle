@@ -33,17 +33,20 @@ public class ReportGenerator {
             PdfPTable purchaseTable = new PdfPTable(6);
             PdfPTable stockTable = new PdfPTable(3);
             document.add(new Chunk("The Gilded Bottle sales \n ", headerFont));
-            document.add(new Chunk("Purchases to date", bodyFont));
+            document.newPage();
+            document.add(new Chunk("        Purchases to date", bodyFont));
             MakePurchaseTable(purchaseTable);
             document.add(purchaseTable);
-            document.add(new Chunk("Current stock levels",bodyFont));
+            document.add(new Chunk("        Current stock levels",bodyFont));
             MakeStockTable(stockTable);
             document.add(stockTable);
             document.close();
         }
         catch (FileNotFoundException | DocumentException f) {f.printStackTrace();}
     }
-
+public static void main(String[] args) throws DocumentException, FileNotFoundException {
+    new ReportGenerator();
+}
     private void MakePurchaseTable(PdfPTable table) {
         Stream.of("ID", "item name", "UserID", "price", "quantity", "order time").forEach(columnTitle -> {
             PdfPCell head = new PdfPCell();
