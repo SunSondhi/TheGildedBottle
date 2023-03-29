@@ -1,7 +1,6 @@
-
 # TheGildedBottle
 
-![Image thegildedbottle](https://github.com/SunSondhi/TheGildedBottle/blob/main/TheGildedBottle/public/images/logo.png)
+<a href="https://210097072.cs2410-web01pvm.aston.ac.uk/thegildedbottleGit/TheGildedBottle/TheGildedBottle/public/" margin="auto"><p align="center"><img src="https://github.com/SunSondhi/TheGildedBottle/blob/main/TheGildedBottle/public/images/logo.png" alt="Logo" width="450" height="450"></p></a>
 
 ## Welcome 🍻 
 Welcome to TheGildedBottle a versatile web application created to enhance your purchasing experience of alcohol through us. 
@@ -48,3 +47,5 @@ The web application also uses an Stock inventory System made in java.
 - [@Josh-XENO](https://github.com/Josh-XENOCRACY)
 - [@JoelDucram](https://github.com/JoeBoss12)
 - [@KhushChauhan](https://github.com/KhushC-03)
+
+ 
