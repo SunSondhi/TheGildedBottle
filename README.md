@@ -9,14 +9,28 @@ If you are an admin, you have a total different view of the website which can ac
 
 The web application also uses an Stock inventory System made in java.
 
-## Demo Website
+## Get Started
 
-[TheGildedBottle](https://210097072.cs2410-web01pvm.aston.ac.uk/thegildedbottleGit/TheGildedBottle/TheGildedBottle/public/)
+To get started please follow these links
+
+- ### Demo Website
+
+    [TheGildedBottle](https://210097072.cs2410-web01pvm.aston.ac.uk/thegildedbottleGit/TheGildedBottle/TheGildedBottle/public/)
 
 
-## Demo Stock Inventory App
+* ### Demo Stock Inventory App
 
-- link to app
+    link to app
+
+* ### Developed with
+
+    <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" alt="Logo" width="auto" height="80">
+
+    <img src="https://logos-download.com/wp-content/uploads/2016/10/Java_logo.png" alt="Logo" width="auto" height="80">
+
+    <img src="https://cdn.freebiesupply.com/logos/large/2x/php-1-logo-png-transparent.png" alt="Logo" width="auto" height="80">
+    <img src="https://seeklogo.com/images/B/bootstrap-5-logo-85A1F11F4F-seeklogo.com.png" alt="Logo" width="auto" height="80">
+    <img src="https://cdn.freebiesupply.com/logos/large/2x/css-3-logo-png-transparent.png"  alt="Logo" width="auto" height="80">
 
 ## Features
 
