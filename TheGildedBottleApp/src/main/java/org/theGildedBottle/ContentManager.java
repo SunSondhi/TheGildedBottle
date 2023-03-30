@@ -15,20 +15,19 @@ public class ContentManager implements ActionListener {
 
     public ContentManager (@NotNull JFrame window) {
         this.window = window;
-        window.setContentPane(new LoginPage(this).loginPage);
+        window.setContentPane(new LoginPage(this).loginPage); //Opens application to the login page
         window.revalidate();
     }
 
-    public void Login() {
+    public void Login() { //Specific case as authentication is done in the login page for code readability
         window.setContentPane(new HomePage(this).homePage);
         window.revalidate();
     }
 
-    @Override //this is going to be the sole action listener so all authentication will happen in here
+    @Override //this is going to be the sole action listener for controlling the GUI
     public void actionPerformed(ActionEvent e) {
-        String command = e.getActionCommand();
+        String command = e.getActionCommand(); //Grabbing String from ActionEvent to compare for GUI commands
         if (command.equals("ProductsPage")) {
-            // Authenticate, if authenticated then swap to Product panel, pass on user instance maybe?
             window.setContentPane(new ProductPage(this).productsPanel);
             window.revalidate();
 

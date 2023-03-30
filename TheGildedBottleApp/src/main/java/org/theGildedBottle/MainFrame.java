@@ -20,7 +20,7 @@ public class MainFrame extends JFrame {
 
     DbCon Con =  new DbCon();
 
-    public MainFrame(String title) throws UnsupportedLookAndFeelException, ParseException {
+    public MainFrame(String title) throws UnsupportedLookAndFeelException, ParseException { //creating the window with params
         super(title);
         UIManager.setLookAndFeel(new FlatDarkLaf());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
