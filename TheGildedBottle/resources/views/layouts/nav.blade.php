@@ -12,11 +12,11 @@ use Illuminate\Support\Facades\Auth;
 
 
 
-<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+<nav class="navbar navbar-expand-lg sticky-top">
 
     <div class="container-fluid">
 
-        <a class="navbar-brand" href="{{ route('HomePage') }}">The Gilded Bottle</a>
+        <a class="navbar-brand" href="{{ route('HomePage') }}"><img src="{{url('images\logo.png')}}" height="100px" /></a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -35,7 +35,7 @@ use Illuminate\Support\Facades\Auth;
                     <?php if (Auth::check() && Auth::user()->role == '1') { ?>
                         <a class="nav-link me-2" href="{{ route('admin.Products') }}">Products</a>
                     <?php } else { ?>
-                        <a class="nav-link me-2" href="{{ route('Products') }}">Products</a>
+                        <a class="nav-link me-2" href="{{ route('products') }}">Products</a>
                     <?php } ?>
                 </li>
                 <li class="nav-item">
@@ -68,26 +68,39 @@ use Illuminate\Support\Facades\Auth;
             </ul>
         </div>
 
-        <div class="d-flex justify-content-end align-items-center">
-            <?php if (Auth::check() && Auth::user()->role == '1') { ?>
-                <a href="{{ route('admin.adminhome') }}" class="btn btn-primary me-2">Admin Home</a>
-            <?php } else { ?>
-                <a href="{{ route('home') }}" class="btn btn-primary me-2">Home</a>
-            <?php } ?>
-        </div>
+
 
         @if (Auth::check())
-        <div>
-            <a class="btn btn-primary me-2" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+        <div class="nav-item d-flex justify-content-end align-items-center">
+            <?php if (Auth::check() && Auth::user()->role == '1') { ?>
+                <a href="{{ route('admin.adminhome') }}" style="padding:8px;" class="nav-link me-2 ">Admin Home</a>
+            <?php } else { ?>
+                <a href="{{ route('home') }}" style="padding:8px;" class="nav-link me-2 ">{{ Auth::user()->name }}</a>
+            <?php } ?>
+
+            <a class="nav-link me-2 " style="padding:8px;" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 {{ __('Logout') }}
             </a>
+            <?php if (Auth::check() && Auth::user()->membership_role == '3') { ?>
+                <a href="{{ route('Congratulations') }}" style="color:black;background-color:gold;" class="btn btn-primary me-2"> your membership</a>
+            <?php } else { ?>
+                <a class="btn btn-primary me-2" style="color:black;background-color:gold;" href="{{ route('Membership') }}">
+                    become a Gilded Member
+
+                </a>
+
+            <?php } ?>
+
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                 @csrf
             </form>
         </div>
         @else
-        <a class="btn btn-primary me-2" href="{{ route('login') }}">{{ __('Login') }}</a>
-        <a class="btn btn-primary me-2" href="{{ route('register') }}">{{ __('Register') }}</a>
+        <div class="nav-item d-flex justify-content-end align-items-center">
+            <a class="nav-link me-2 " style="padding:8px;" href="{{ route('login') }}">{{ __('Login') }}</a>
+            <a class="nav-link me-2" style="padding:8px;" href="{{ route('register') }}">{{ __('Register') }}</a>
+        </div>
+
         @endif
     </div>
 

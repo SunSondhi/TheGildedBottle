@@ -1,43 +1,63 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 body {
     margin: 0px;
+    scroll-behavior: smooth;
 }
+
 
 /* nav CSS */
 
 .navbar {
-    background-color: #212121;
-    height: 80px;
+    background-color: #080808;
+    height: 140px;
     position: absolute;
+    color: white;
 }
 
 .nav-link {
-    border-radius: 5px;
-    background: #171717;
-    box-shadow: 0px 0px 3px 1px #00000088;
+    color: white;
 }
 
-.nav-link:hover {
-    color: goldenrod;
-    background-color: #000;
-    border-radius: 10px;
-    opacity: 1;
+.nav-item a:hover {
+
+    color: #ffc107;
+    border: none;
 }
 
-.nav-link::before {
-    opacity: 0;
-    background: linear-gradient(90deg, transparent, #ff2288, #387EF0, transparent);
-    transition: opacity 300ms;
-    animation: rotation_9018 3000ms infinite linear;
-    animation-play-state: paused;
+.nav-item a {
+    font-size: 17px;
+    color: white;
 }
 
-.nav-link:hover::before {
-    opacity: 1;
-    animation-play-state: running;
+
+.sidebar {
+    height: fit-content;
+    width: 300px;
+    background-color: #DCDCDC;
+    position: relative;
+}
+
+
+.container {
+    padding: 20px;
+}
+
+.filter-form {
+    margin-top: 20px;
+}
+
+.form-inline {
+    display: flex;
+    align-items: center;
+}
+
+.form-group {
+    margin-right: 20px;
+}
+
+
+input[type="text"] {
+    width: 100%;
+    margin-top: 10px;
 }
 
 @keyframes rotation_9018 {
@@ -52,34 +72,12 @@ body {
 
 /* login side */
 
-/* button */
-.btn {
-    --hover-shadows: 16px 16px 33px #121212,
-        -16px -16px 33px #303030;
-    --accent: goldenrod;
-    font-weight: bold;
-    letter-spacing: 0.1em;
-    border: none;
-    border-radius: 1.1em;
-    background-color: #212121;
+/* start btns */
+
+.btn-outline-dark {
+    background-color: #000;
     color: white;
-    padding: 1em 2em;
-    transition: box-shadow ease-in-out 0.3s,
-        background-color ease-in-out 0.1s,
-        letter-spacing ease-in-out 0.1s,
-        transform ease-in-out 0.1s;
-
-}
-
-.btn:hover {
-    box-shadow: var(--hover-shadows);
-}
-
-.btn:active {
-    box-shadow: var(--hover-shadows),
-        var(--accent) 0px 0px 30px 5px;
-    background-color: var(--accent);
-    transform: scale(0.95);
+    width: 100%;
 }
 
 /* end button */
@@ -108,6 +106,27 @@ body {
 
 
 /* products page */
+.product-image-container {
+    position: relative;
+    width: 350px;
+    height: auto;
+    overflow: hidden;
+}
+
+.product-image-container img {
+    width: 100%;
+    height: 100%;
+}
+
+.product-image-container .magnifier {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 0%;
+    background-size: 600px 600px;
+    cursor: zoom-in;
+    /* or use a magnifying glass icon */
+}
 
 .product-content {
     border: 2px solid #dfe5e9;
@@ -545,7 +564,7 @@ body {
 .hero {
     background-image: url('../images/homepageimg3.png');
     background-repeat: no-repeat;
-    background-position: cover;
+    background-size: cover;
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -560,6 +579,35 @@ body {
 }
 
 .hero::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: transparent;
+    z-index: 1;
+    pointer-events: none;
+    box-shadow: inset 0px 0px 200px rgba(255, 255, 255, 0.5);
+}
+
+.hero2 {
+    background-image: url('../images/gildedbottle2.png');
+    background-repeat: no-repeat;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 1000px;
+    position: relative;
+    width: auto;
+}
+
+.hero2 h1 {
+    font-size: 70px;
+}
+
+.hero2::before {
     content: "";
     display: block;
     position: absolute;
@@ -738,19 +786,23 @@ body {
 .page-footer {
     padding-top: 4rem;
     padding-bottom: 4rem;
+    background-color: #000;
 }
 
 .page-footer a {
-    color: #fff;
+    padding-left: 5px;
+    color: #ffffff;
     text-decoration: none;
 }
 
 .page-footer a:hover {
-    color: #ccc;
+    color: #ffc107;
 }
 
 .page-footer h2 {
+    font-size: 33px;
     font-weight: bold;
+    color: #ffc107;
 }
 
 .page-footer ul li {
@@ -764,4 +816,40 @@ body {
 .page-footer hr {
     border-color: #555;
 }
+
 /* end footer */
+
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px12px;
+    border-top: none;
+}

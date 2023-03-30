@@ -17,12 +17,12 @@ public class UpdateStockView {
     JPanel UpdateStockview;
     JComboBox chooseName;
     JTextField currentStock;
-    JButton decrease;
-    JButton increase;
-    JButton goToHomepageButton;
+    public JButton goToHomepageButton;
 
     private JLabel stockLabel;
-    private String name;
+    private JTextField stockField;
+    private JLabel stockChangeLabel;
+    private JButton submitButton;
     private Statement stmt;
 
     public UpdateStockView(ContentManager cM) {
@@ -36,7 +36,7 @@ public class UpdateStockView {
             PreparedStatement stmt = con.prepareStatement(sql);
             ResultSet resultSet = stmt.executeQuery();
             while (resultSet.next()) {
-                name = resultSet.getString("name");
+                String name = resultSet.getString("name");
                 chooseName.addItem(name);
                 int stockLevel = resultSet.getInt("stock");
                 stockLabel.setText(String.valueOf(stockLevel));
@@ -44,48 +44,21 @@ public class UpdateStockView {
         }catch (SQLException E){
             E.printStackTrace();
         }
+        setStock();
 
-
-        this.decrease.addActionListener(new ActionListener() {
+        chooseName.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    Connection con = DbCon.getConnection();
-                    String sql = "UPDATE products SET stock = stock-1 WHERE name = ?";
-                    PreparedStatement stmt = con.prepareStatement(sql);
-                    stmt.setString(1, name);
-                    stmt.executeUpdate();
-                    int stockLevel = getStockLevel(name);
-                    if (stockLevel <= 0) {
-                        // Show popup alert
-                        JOptionPane.showMessageDialog(UpdateStockview, "Item is out of stock!");
-
-                        // Send email alert
-                        String subject = "Inventory Alert: " + name + " is out of stock!";
-                        String message = "Dear User,\n\n" + name + " is out of stock. Please restock as soon as possible.\n\nBest regards,\nYour Inventory Management System";
-                        sendEmail(subject, message);
-                    } else if (stockLevel < 10) {
-                        // Show popup alert
-                        JOptionPane.showMessageDialog(UpdateStockview, "Item stock is low: " + stockLevel + " left!");
-
-                        // Send email alert
-                        String subject = "Inventory Alert: " + name + " stock is low!";
-                        String message = "Dear User,\n\n" + name + " stock is low: " + stockLevel + " left. Please restock soon.\n\nBest regards,\nYour Inventory Management System";
-                        sendEmail(subject, message);
-                    }
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                }
+                setStock();
             }
         });
-
-
-        this.increase.addActionListener(new ActionListener() {
+        submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
+                    String name = String.valueOf(chooseName.getSelectedItem());
                     Connection con = DbCon.getConnection();
-                    String sql = "UPDATE products SET stock = stock+1 WHERE name = ?";
+                    String sql = "UPDATE products SET stock = " + stockField.getText() + " WHERE name = ?";
                     PreparedStatement stmt = con.prepareStatement(sql);
                     stmt.setString(1, name);
                     stmt.executeUpdate();
@@ -98,6 +71,7 @@ public class UpdateStockView {
                     int stockLevel = 0;
                     while (rs.next()) {
                         stockLevel = rs.getInt("stock");
+                        stockLabel.setText(String.valueOf(stockLevel));
                     }
                     if (stockLevel <= 5) {
                         // Show alert message and send email
@@ -111,9 +85,29 @@ public class UpdateStockView {
             }
         });
 
-
     }
+    public void setStock(){
+        try{
+            String x = String.valueOf(chooseName.getSelectedItem());
+            Connection con = DbCon.getConnection();
+            // load data from the ResultSet into the model
 
+            PreparedStatement stmt = con.prepareStatement("SELECT * FROM products");
+            ResultSet resultSet = stmt.executeQuery();
+            while (resultSet.next()) {
+
+                if (resultSet.getString("name").toString().contains(x.toString())){
+
+                    int stockLevel = resultSet.getInt("stock");
+                    System.out.println(x + resultSet.getString("name").toString() + " " + stockLevel);
+                    stockLabel.setText(String.valueOf(stockLevel));
+                }
+
+            }
+        }catch (SQLException E){
+            E.printStackTrace();
+        }
+    }
     private int getStockLevel(String itemName) throws SQLException {
         Connection con = DbCon.getConnection();
         String sql = "SELECT stock FROM products WHERE name = ?";
@@ -123,6 +117,7 @@ public class UpdateStockView {
         int stockLevel = 0;
         if (resultSet.next()) {
             stockLevel = resultSet.getInt("stock");
+            stockLabel.setText(String.valueOf(stockLevel));
         }
         return stockLevel;
     }

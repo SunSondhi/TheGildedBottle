@@ -1,4 +1,4 @@
-<footer class="page-footer font-small bg-dark text-white">
+<footer class="page-footer font-small">
     <div class="container">
         <div class="row">
             <div class="col-md-4">
@@ -11,10 +11,10 @@
             <div class="col-md-4">
                 <h2>Go to</h2>
                 <ul class="list-unstyled">
-                    <li><a href="">MainPage</a></li>
-                    <li><a href="">Home</a></li>
-                    <li><a href="">Login</a></li>
-                    <li><a href="">Register</a></li>
+                    <li><a href="{{ route('HomePage') }}">MainPage</a></li>
+                    <li><a href="{{ route('home') }}">Home</a></li>
+                    <li><a href="{{ route('login') }}">Login</a></li>
+                    <li><a href="{{ route('register') }}">Register</a></li>
                 </ul>
             </div>
             <div class="col-md-4">
@@ -28,7 +28,7 @@
                 </div>
             </div>
         </div>
-        <hr>
+        <hr style="border-color:#A47E1B;">
         <div class="row">
             <div class="col-md-6">
                 <p>Created by Group 28, The Gilded Bottle. © 2023</p>

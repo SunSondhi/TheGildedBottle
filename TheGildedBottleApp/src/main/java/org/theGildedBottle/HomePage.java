@@ -9,6 +9,11 @@ public class HomePage {
     JButton TableViewButton;
     JButton viewPurchasesButton;
 
+    JButton processOrdersButton;
+    private JButton pdfButton;
+    private JButton logoutButton;
+    private JButton searchProductButton;
+
 
     public HomePage(ContentManager cM) {
 //go to add product page
@@ -23,5 +28,19 @@ public class HomePage {
 //        go to purchases table
         this.viewPurchasesButton.addActionListener(cM);
         this.viewPurchasesButton.setActionCommand("PurchasesList");
+
+        this.processOrdersButton.addActionListener(cM);
+        this.processOrdersButton.setActionCommand("ProcessOrder");
+//        generate pdf
+        this.pdfButton.addActionListener(cM);
+        this.pdfButton.setActionCommand("PDF");
+
+        this.searchProductButton.addActionListener(cM);
+        this.searchProductButton.setActionCommand("SearchProd");
+
+        this.logoutButton.addActionListener(cM);
+        this.logoutButton.setActionCommand("Logout");
+
+
     }
 }

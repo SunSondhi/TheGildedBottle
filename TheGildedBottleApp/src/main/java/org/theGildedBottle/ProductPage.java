@@ -1,6 +1,7 @@
 package org.theGildedBottle;
 
 import javax.swing.*;
+import javax.swing.text.html.StyleSheet;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -27,8 +28,8 @@ public class ProductPage {
     private JLabel flavourLabel;
     private JTextField imageField;
     private JLabel imageLabel;
-    JButton addProductButton;
-    private JButton clearButton;
+    public JButton addProductButton;
+    JButton clearButton;
     private JLabel nameLabel;
     private JTextArea descriptionArea;
     private JLabel descriptionLabel;
@@ -98,8 +99,6 @@ public class ProductPage {
             descriptionArea.setText("");
         }
     });
-    this.logoutButton.addActionListener(cM);
-    this.logoutButton.setActionCommand("Logout");
 
         this.gotToHomepageButton.addActionListener(cM);
         this.gotToHomepageButton.setActionCommand("Homepage");
