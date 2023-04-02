@@ -4,24 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="039f4d70-ef31-4114-b2e0-b4b5658c48ff" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/TheGildedBottleApp.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheGildedBottleApp/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TheGildedBottleApp/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheGildedBottleApp/src/main/java/org/theGildedBottle/ContentManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheGildedBottleApp/src/main/java/org/theGildedBottle/ContentManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheGildedBottleApp/src/main/java/org/theGildedBottle/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheGildedBottleApp/src/main/java/org/theGildedBottle/HomePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheGildedBottleApp/src/main/java/org/theGildedBottle/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheGildedBottleApp/src/main/java/org/theGildedBottle/LoginPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheGildedBottleApp/src/main/java/org/theGildedBottle/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheGildedBottleApp/src/main/java/org/theGildedBottle/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheGildedBottleApp/src/main/java/org/theGildedBottle/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheGildedBottleApp/src/main/java/org/theGildedBottle/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheGildedBottleApp/src/main/java/org/theGildedBottle/ProcessOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheGildedBottleApp/src/main/java/org/theGildedBottle/ProcessOrder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheGildedBottleApp/src/main/java/org/theGildedBottle/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheGildedBottleApp/src/main/java/org/theGildedBottle/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheGildedBottleApp/src/main/java/org/theGildedBottle/ProductPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheGildedBottleApp/src/main/java/org/theGildedBottle/ProductPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheGildedBottleApp/src/main/java/org/theGildedBottle/ProductTableView.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheGildedBottleApp/src/main/java/org/theGildedBottle/ProductTableView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheGildedBottleApp/src/main/java/org/theGildedBottle/PurchasesTableView.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheGildedBottleApp/src/main/java/org/theGildedBottle/PurchasesTableView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheGildedBottleApp/src/main/java/org/theGildedBottle/ReportGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheGildedBottleApp/src/main/java/org/theGildedBottle/ReportGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheGildedBottleApp/src/main/java/org/theGildedBottle/SearchProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheGildedBottleApp/src/main/java/org/theGildedBottle/SearchProduct.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheGildedBottleApp/src/main/java/org/theGildedBottle/UpdateStockView.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheGildedBottleApp/src/main/java/org/theGildedBottle/UpdateStockView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheGildedBottleApp/target/classes/org/theGildedBottle/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/TheGildedBottleApp/target/classes/org/theGildedBottle/Main.class" afterDir="false" />
-    </list>
+    <list default="true" id="039f4d70-ef31-4114-b2e0-b4b5658c48ff" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -108,7 +91,7 @@
       <updated>1680214264570</updated>
       <workItem from="1680214265802" duration="673000" />
       <workItem from="1680214954127" duration="300000" />
-      <workItem from="1680215263226" duration="1619000" />
+      <workItem from="1680215263226" duration="2125000" />
     </task>
     <servers />
   </component>
