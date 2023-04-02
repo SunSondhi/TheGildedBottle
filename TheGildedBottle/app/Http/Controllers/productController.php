@@ -126,10 +126,10 @@ class productController extends Controller
             $price = request('price');
             $product->quantity = $item_quantity;
             $product->baskets_id = $basket->id;
-            if ($user->role == 3){
+            if ($user->membership_role == 3){
             $product->price = ($price)*0.85;
             }else{
-            $products->price = $price;
+            $product->price = $price;
             }
             $product->image = request('image');
             $product->save();
