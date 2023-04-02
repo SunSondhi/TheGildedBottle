@@ -12,7 +12,7 @@
         </div>
         <div class="col-md-6">
             <p>{{ $product->description }}</p>
-            <?php if (Auth::check() && Auth::user()->role == '3') { ?>
+            <?php if (Auth::check() && Auth::user()->membership_role == '3') { ?>
                             <p class="card-text" style="font-size: 1.1rem; margin-bottom: 0;">
                              Price: <span style="text-decoration: line-through; color: gold;">£{{ $product->price }}</span> 
                                 <span style="color: gold ; font-weight: bold; font-size: 1.2rem;">15% Off Gilded discount</span>
