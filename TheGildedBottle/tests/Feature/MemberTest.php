@@ -1,12 +1,17 @@
 <?php
 
+
 namespace Tests\Feature;
 
+use Tests\TestCase;
+use App\Models\User;
+use App\Models\Baskets;
+use App\Models\Basket_product;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
-use Tests\TestCase;
-
-class ProductsTest extends TestCase
+use App\Models\Product;
+class MemberTest extends TestCase
 {
     /**
      * A basic feature test example.
